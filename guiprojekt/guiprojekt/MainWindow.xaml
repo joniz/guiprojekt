@@ -5,5 +5,6 @@
     <Grid>
         <UniformGrid Background="Yellow"></UniformGrid>
         <TextBlock Background="black"></TextBlock>
+        <Ellipse Width="10"></Ellipse>
     </Grid>
 </Window>
