@@ -1,7 +1,6 @@
 <<<<<<< HEAD
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
 =======
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
