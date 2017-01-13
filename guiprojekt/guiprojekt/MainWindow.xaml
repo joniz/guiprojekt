@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <UniformGrid Background="Yellow"></UniformGrid>
-        <TextBlock Background="black"></TextBlock>
+        <UniformGrid></UniformGrid>
+        <TextBlock></TextBlock>
+        <Label Content="Hello"></Label>
         <Ellipse Width="10"></Ellipse>
     </Grid>
 </Window>
