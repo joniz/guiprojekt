@@ -10,3 +10,4 @@ C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guipro
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
+C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
