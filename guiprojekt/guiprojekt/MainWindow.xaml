@@ -1,7 +1,9 @@
 ﻿<Window x:Class="guiprojekt.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+
         Title="MainWindow" Height="430" Width="525">
+
     <Grid ShowGridLines="True">
         <UniformGrid Columns="7" Rows="10" Name="kalenderMainWindow">
             
