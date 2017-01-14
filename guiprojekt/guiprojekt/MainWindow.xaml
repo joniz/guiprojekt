@@ -6,7 +6,7 @@
     
     <Grid ShowGridLines="True" Background="LightBlue">
         
-            <UniformGrid Columns="7" Rows="10" Name="kalenderMainWindow">
+            <UniformGrid Columns="7" Rows="10" Name="kalenderMainWindow" Opacity="100">
             
             <Label Name="monday" Margin="1" Content="Måndag" Background="Beige"></Label>
             <Label Name="tuesday" Margin="1" Content="Tisdag" Background="LightSalmon"></Label>
