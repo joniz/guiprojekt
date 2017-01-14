@@ -4,13 +4,15 @@
         Title="MainWindow" Height="450" Width="525">
     <Grid>
         <UniformGrid Columns="7" Rows="10" Name="kalenderMainWindow">
-            <Label Name="monday" Margin="2" Content="Måndag" Background="Beige"></Label>
-            <Label Name="tuesday" Margin="2" Content="Tisdag" Background="LightSalmon"></Label>
-            <Label Name="wednesday" Margin="2" Content="Onsdag" Background="LightGreen"></Label>
-            <Label Name="thursday" Margin="2" Content="Torsdag" Background="LightCoral"></Label>
-            <Label Name="friday" Margin="2" Content="Fredag" Background="DarkGray"></Label>
-            <Label Name="saturday" Margin="2" Content="Lördag" Background="Purple"></Label>
-            <Label Name="sunday" Margin="2" Content="Söndag" Background="DarkGreen"></Label>
+            <Label Name="monday" Margin="1" Content="Måndag" Background="Beige"></Label>
+            <Label Name="tuesday" Margin="1" Content="Tisdag" Background="LightSalmon"></Label>
+            <Label Name="wednesday" Margin="1" Content="Onsdag" Background="LightGreen"></Label>
+            <Label Name="thursday" Margin="1" Content="Torsdag" Background="LightCoral"></Label>
+            <Label Name="friday" Margin="1" Content="Fredag" Background="DarkGray"></Label>
+            <Label Name="saturday" Margin="1" Content="Lördag" Background="Purple"></Label>
+            <Label Name="sunday" Margin="1" Content="Söndag" Background="DarkGreen"></Label>
+
+            <Line Grid.Column="0" ></Line>
         </UniformGrid>
     
     </Grid>
