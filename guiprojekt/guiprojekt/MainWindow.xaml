@@ -6,6 +6,6 @@
         <UniformGrid></UniformGrid>
         <TextBlock></TextBlock>
         <Label Content="Hello"></Label>
-        <Ellipse Width="10"></Ellipse>
+        <Ellipse Width="10" Height="5"></Ellipse>
     </Grid>
 </Window>
