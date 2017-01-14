@@ -7,6 +7,6 @@
         <TextBlock></TextBlock>
         <Label Content="Hello"></Label>
         <Ellipse Width="10" Height="5"></Ellipse>
-        <Ellipse Width="100" Fill="Black"></Ellipse>
+        <Ellipse Width="100" Fill="Beige"></Ellipse>
     </Grid>
 </Window>
