@@ -15,8 +15,8 @@
             <Label Name="sunday" Margin="1" Content="Söndag" Background="DarkGreen"></Label>
 
             
-            
-            </UniformGrid>
+       </UniformGrid>
+
     
     </Grid>
 </Window>
