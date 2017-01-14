@@ -1,25 +1,6 @@
-<<<<<<< HEAD
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
-=======
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.baml
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.g.cs
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\App.g.cs
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt_MarkupCompile.cache
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.g.resources
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Properties.Resources.resources
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
->>>>>>> master
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.baml
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.g.cs
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\App.g.cs
@@ -27,3 +8,5 @@ C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guipro
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.g.resources
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Properties.Resources.resources
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
+C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
+C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
