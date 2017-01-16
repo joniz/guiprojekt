@@ -24,5 +24,15 @@ namespace guiprojekt
         {
             InitializeComponent();
         }
+
+        public void selectMonth()
+        {
+
+
+
+        }
+    
     }
+
+
 }
