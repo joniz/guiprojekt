@@ -63,8 +63,6 @@ C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\ad
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.baml
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\monthPicker.baml
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\monthPicker.g.cs
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt_MarkupCompile.lref

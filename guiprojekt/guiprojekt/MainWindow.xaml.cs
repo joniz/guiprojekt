@@ -20,6 +20,10 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        DateTime _date = new DateTime(2008, 3,15);
+        int _weekday = 0;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -27,12 +31,12 @@ namespace guiprojekt
 
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
+            
+                    }
 
-        }
 
 
-
-        int weekday = 0;
+        
 
         private void CheckWeekday(int day)
         {
@@ -67,11 +71,11 @@ namespace guiprojekt
 
         private void monday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoMonday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoMonday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 1;
+                _weekday = 1;
             }
             else
             {
@@ -81,11 +85,11 @@ namespace guiprojekt
 
         private void tuesday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoTuesday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoTuesday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 2;
+                _weekday = 2;
             }
             else
             {
@@ -95,11 +99,11 @@ namespace guiprojekt
 
         private void wednesday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoWednesday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoWednesday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 3;
+                _weekday = 3;
             }
             else
             {
@@ -109,11 +113,11 @@ namespace guiprojekt
 
         private void thursday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoThursday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoThursday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 4;
+                _weekday = 4;
             }
             else
             {
@@ -123,11 +127,11 @@ namespace guiprojekt
 
         private void friday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoFriday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoFriday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 5;
+                _weekday = 5;
             }
             else
             {
@@ -137,11 +141,11 @@ namespace guiprojekt
 
         private void saturday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoSaturday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoSaturday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 6;
+                _weekday = 6;
             }
             else
             {
@@ -151,11 +155,11 @@ namespace guiprojekt
 
         private void sunday_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(weekday);
+            CheckWeekday(_weekday);
             if (infoSunday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoSunday.Visibility = System.Windows.Visibility.Visible;
-                weekday = 7;
+                _weekday = 7;
             }
             else
             {
