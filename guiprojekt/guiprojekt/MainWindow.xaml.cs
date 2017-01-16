@@ -30,9 +30,6 @@ namespace guiprojekt
 
         }
 
-        private void monthPicker_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }
