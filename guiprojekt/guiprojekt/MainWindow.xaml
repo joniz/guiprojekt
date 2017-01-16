@@ -19,7 +19,7 @@
             
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="2" Background="#ff471a" Content="Daily reminder" FontSize="20" VerticalContentAlignment="Center"></Label>
+        <Label Grid.ColumnSpan="2" Background="#ff471a" Content="Daily reminder" FontSize="20" HorizontalContentAlignment="Center" FontStyle="Italic"></Label>
         <UniformGrid Rows="8" Name="pickMonth" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="black">
             <Button Content="Måndag"  Foreground="white" Background="#262626"></Button>
             <Button Content="Tisdag"  Foreground="white" Background="#262626"></Button>
