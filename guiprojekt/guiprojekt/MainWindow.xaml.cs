@@ -30,10 +30,7 @@ namespace guiprojekt
 
         }
 
-        private void monthPicker_Loaded_1(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         int weekday = 0;
 
@@ -165,6 +162,7 @@ namespace guiprojekt
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
         }
+
 
     }
 }
