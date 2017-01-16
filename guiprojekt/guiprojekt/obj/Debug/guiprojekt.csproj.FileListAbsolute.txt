@@ -59,3 +59,6 @@ E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.baml
 E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.g.resources
 E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Properties.Resources.resources
 E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.baml
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\GeneratedInternalTypeHelper.g.cs

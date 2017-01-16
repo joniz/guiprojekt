@@ -1,43 +1,20 @@
-<<<<<<< HEAD
 ﻿guiprojekt
 
 
 winexe
 C#
 .cs
-E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
 guiprojekt
 none
 false
 DEBUG;TRACE
-E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\App.xaml
-2-389172184
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
+3-404385127
 
-10-686661912
+11434085873
 12-1401562060
-MainWindow.xaml;monthPicker.xaml;
+addReminder.xaml;MainWindow.xaml;monthPicker.xaml;
 
-True
+False
 
-=======
-﻿guiprojekt
-
-
-winexe
-C#
-.cs
-E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
-guiprojekt
-none
-false
-DEBUG;TRACE
-E:\GUI Projektet\guiprojekt\guiprojekt\guiprojekt\App.xaml
-2-389172184
-
-10-686661912
-12-1401562060
-MainWindow.xaml;monthPicker.xaml;
-
-True
-
->>>>>>> 1ce51e77a6b9bbdc77110544a3ce9c98e21c2120

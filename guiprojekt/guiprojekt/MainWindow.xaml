@@ -30,7 +30,13 @@
             <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"> </Button>
             <Button Content="Lägg till påminnelse" Foreground="White" Background="#262626"></Button>
         </UniformGrid>
+        
+        <UniformGrid Name="addReminder" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+            <local:addReminder />
+            
 
+        </UniformGrid>
+        
         <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
             <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
