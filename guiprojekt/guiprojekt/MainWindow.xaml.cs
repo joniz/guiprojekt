@@ -24,5 +24,15 @@ namespace guiprojekt
         {
             InitializeComponent();
         }
+
+        private void monthPicker_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void monthPicker_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
