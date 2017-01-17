@@ -170,7 +170,16 @@ namespace guiprojekt
 
         private void reminder_Click(object sender, RoutedEventArgs e)
         {
-        }
+            if (newReminder.Visibility == System.Windows.Visibility.Collapsed)
+            {
+                newReminder.Visibility = System.Windows.Visibility.Visible;
+            }
+            
+        
+    }
+
+       
+        
 
     }
 }

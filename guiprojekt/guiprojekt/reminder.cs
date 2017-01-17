@@ -9,13 +9,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace guiprojekt
 {
-    [Serializable()]
-    class reminder : ISerializable
+    
+    class reminder
     {
         private string _title;
         private DateTime _startTime;
         private DateTime _alarmTime;
-        private int _value;
+        private int _valueOfWeekDay;
 
                 
         public reminder(string title, DateTime startTime, DateTime alarmTime, DayOfWeek days)
@@ -23,12 +23,20 @@ namespace guiprojekt
             _title = title;
             _startTime = startTime;
             _alarmTime = alarmTime;
-            _value = (int)days;
+            _valueOfWeekDay = (int)days;
             
             
+
+        
+        
+        }
+        public void saveToFile()
+        {
+
+
 
         }
-
+       
 
 
 

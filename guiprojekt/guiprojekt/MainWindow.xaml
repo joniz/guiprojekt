@@ -31,12 +31,10 @@
         <UniformGrid Name="addReminder" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <local:addReminder />
         </UniformGrid>
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <Label Content="Ny Påminnelse"></Label>
-            <StackPanel Orientation="Horizontal">
-            <Label Content="Titel:" ></Label>
-            <TextBox Width="384" />
-            </StackPanel>
+        <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
+            <local:addReminder />
+            
+            
         </StackPanel>
         
         <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
