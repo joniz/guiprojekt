@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
         <UniformGrid Grid.Row="0">
             <Label Content="Kom ihåg: " FontSize="20" FontStyle="Italic" />
-            <TextBox Name="titleForReminder"  />
-        </UniformGrid>   
-        
+            <TextBox Name="titleForReminder" ></TextBox>
+        </UniformGrid>
+        <DatePicker SelectedDate="{Binding Date, StringFormat={}{0:dd/MM/yyyy}}" Margin="0,35,0,40" Grid.Row="1" Grid.RowSpan="2"></DatePicker>
     </Grid>
 </UserControl>
