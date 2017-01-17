@@ -34,7 +34,7 @@
         </UniformGrid>
 
 
-      
+
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
             <local:addReminder />
             
