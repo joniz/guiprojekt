@@ -46,7 +46,7 @@ namespace guiprojekt
 
 
     
->>>>>>> 4127e8ded4f4780d66c4484ac023fa182b943615
+
     
     }
 }
