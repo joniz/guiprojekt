@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
         Title="MainWindow" Height="450" Width="560">
-    
+
     <Grid  Background="LightBlue">
-       
+
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition  />
-                        
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130" />
             <ColumnDefinition />
-            
+
         </Grid.ColumnDefinitions>
 
         <Label Grid.ColumnSpan="2" Background="#ff471a" Content="Daily reminder" FontSize="20" HorizontalContentAlignment="Center" FontStyle="Italic"></Label>
@@ -25,17 +25,21 @@
             <Button Name="thursday" Content="Torsdag" Foreground="white" Background="#262626" Click="thursday_Click"></Button>
             <Button Name="friday" Content="Fredag"  Foreground="white" Background="#262626" Click="friday_Click"></Button>
             <Button Name="saturday" Content="Lördag"  Foreground="white" Background="#262626" Click="saturday_Click"></Button>
-            <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"> </Button>
-            <Button Content="Lägg till påminnelse" Foreground="White" Background="#262626"></Button>
+            <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"></Button>
+            <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="reminder_Click"></Button>
         </UniformGrid>
-        
         <UniformGrid Name="addReminder" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <local:addReminder />
-            
-
         </UniformGrid>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Content="Ny Påminnelse"></Label>
+            <StackPanel Orientation="Horizontal">
+            <Label Content="Titel:" ></Label>
+            <TextBox Width="384" />
+            </StackPanel>
+        </StackPanel>
         
-        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <Label Content="Information Monday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
             <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
             <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>

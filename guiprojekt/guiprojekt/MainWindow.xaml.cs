@@ -168,6 +168,9 @@ namespace guiprojekt
             }
         }
 
+        private void reminder_Click(object sender, RoutedEventArgs e)
+        {
+        }
 
     }
 }
