@@ -2,11 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
-        Title="MainWindow" Height="450" Width="550">
+        
+        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged" >
     
     
     <Grid  Background="LightBlue">
-
 
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -20,7 +20,7 @@
             
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="2" Background="#ff471a" Content="Daily reminder" FontSize="20" HorizontalContentAlignment="Center" FontStyle="Italic"></Label>
+        <Label Grid.ColumnSpan="2" Background="#ff471a" Content="Daily reminder" FontSize="20" HorizontalContentAlignment="Center" FontStyle="Italic" Margin="0,0,0.333,0"></Label>
         <UniformGrid Rows="8" Name="pickMonth" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="black">
             <Button Content="Måndag"  Foreground="white" Background="#262626"></Button>
             <Button Content="Tisdag"  Foreground="white" Background="#262626"></Button>
@@ -43,6 +43,7 @@
             <Label Name="friday" Margin="1" Content="Fredag" Background="DarkGray"></Label>
             <Label Name="saturday" Margin="1" Content="Lördag" Background="Purple"></Label>
             <Label Name="sunday" Margin="1" Content="Söndag" Background="DarkGreen"></Label>
+            
 
 
         </UniformGrid>
