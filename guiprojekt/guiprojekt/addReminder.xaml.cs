@@ -21,6 +21,7 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
+        
         public addReminder()
         {
             InitializeComponent();
