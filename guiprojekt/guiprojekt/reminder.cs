@@ -15,24 +15,15 @@ namespace guiprojekt
         private string _title;
         private DateTime _startTime;
         private DateTime _alarmTime;
-        public enum WeekDays
-        {
-            Sunday,
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday
+        private int _value;
 
-
-        }        
-        public reminder(string title, DateTime startTime, DateTime alarmTime, WeekDays days)
+                
+        public reminder(string title, DateTime startTime, DateTime alarmTime, DayOfWeek days)
         {
             _title = title;
             _startTime = startTime;
             _alarmTime = alarmTime;
-            WeekDays value = days;
+            _value = (int)days;
             
             
 
