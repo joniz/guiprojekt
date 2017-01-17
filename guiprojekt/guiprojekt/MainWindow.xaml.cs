@@ -19,7 +19,13 @@ namespace guiprojekt
     
     public partial class MainWindow : Window
     {
+
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
+
+        
+        DateTime _date = new DateTime(2008, 3,15);
+        int _weekday = 1;
+        
 
         public MainWindow()
                 {
@@ -47,12 +53,141 @@ namespace guiprojekt
 
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
+            
+                    }
 
+
+
+        
+
+        private void CheckWeekday(int day)
+        {
+            if (day == 1)
+            {
+                infoMonday.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (day == 2)
+            {
+                infoTuesday.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (day == 3)
+            {
+                infoWednesday.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (day == 4)
+            {
+                infoThursday.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (day == 5)
+            {
+                infoFriday.Visibility = System.Windows.Visibility.Hidden;
+            }
+            if (day == 6)
+            {
+                infoSaturday.Visibility = System.Windows.Visibility.Hidden;
+            } if (day == 7)
+            {
+                infoSunday.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else { }
         }
 
-        private void monthPicker_Loaded_1(object sender, RoutedEventArgs e)
+        private void monday_Click(object sender, RoutedEventArgs e)
         {
+            CheckWeekday(_weekday);
+            if (infoMonday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoMonday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 1;
+            }
+            else
+            {
+                infoMonday.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
 
+        private void tuesday_Click(object sender, RoutedEventArgs e)
+        {
+            CheckWeekday(_weekday);
+            if (infoTuesday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoTuesday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 2;
+            }
+            else
+            {
+                infoTuesday.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void wednesday_Click(object sender, RoutedEventArgs e)
+        {
+            CheckWeekday(_weekday);
+            if (infoWednesday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoWednesday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 3;
+            }
+            else
+            {
+                infoWednesday.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void thursday_Click(object sender, RoutedEventArgs e)
+        {
+            CheckWeekday(_weekday);
+            if (infoThursday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoThursday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 4;
+            }
+            else
+            {
+                infoThursday.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void friday_Click(object sender, RoutedEventArgs e)
+        {
+            CheckWeekday(_weekday);
+            if (infoFriday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoFriday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 5;
+            }
+            else
+            {
+                infoFriday.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void saturday_Click(object sender, RoutedEventArgs e)
+        {
+            CheckWeekday(_weekday);
+            if (infoSaturday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoSaturday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 6;
+            }
+            else
+            {
+                infoSaturday.Visibility = System.Windows.Visibility.Hidden;
+            }
+        }
+
+        private void sunday_Click(object sender, RoutedEventArgs e)
+        {
+            CheckWeekday(_weekday);
+            if (infoSunday.Visibility == System.Windows.Visibility.Hidden)
+            {
+                infoSunday.Visibility = System.Windows.Visibility.Visible;
+                _weekday = 7;
+            }
+            else
+            {
+                infoSunday.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
 
@@ -65,6 +200,7 @@ namespace guiprojekt
       
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+
             this.ShowInTaskbar = false;
             MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
             MyNotifyIcon.BalloonTipText = "Minimized the app ";
@@ -73,6 +209,25 @@ namespace guiprojekt
         }
 
        
+
+        private void reminder_Click(object sender, RoutedEventArgs e)
+        {
+            if (newReminder.Visibility == System.Windows.Visibility.Collapsed)
+            {
+                newReminder.Visibility = System.Windows.Visibility.Visible;
+            }
+            
+        
+    }
+
+       
+        
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
 
     }
 }

@@ -13,26 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace guiprojekt
 {
     /// <summary>
-    /// Interaction logic for monthPicker.xaml
+    /// Interaction logic for addReminder.xaml
     /// </summary>
-    public partial class monthPicker : UserControl
+    public partial class addReminder : UserControl
     {
-        public monthPicker()
+        
+        public addReminder()
         {
             InitializeComponent();
         }
-
-        public void selectMonth()
-        {
-
+        public void addReminderToFile(){
+            
 
 
         }
-    
     }
-
-
 }
