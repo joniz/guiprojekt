@@ -42,6 +42,7 @@ namespace guiprojekt
         void MyNotifyIcon_MouseDoubleClick(object sender,System.Windows.Forms.MouseEventArgs e)
         {
             this.WindowState = WindowState.Normal;
+            this.Focus();
             MyNotifyIcon.Visible = false;
             this.ShowInTaskbar = true;
         }
@@ -201,11 +202,11 @@ namespace guiprojekt
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
-            this.ShowInTaskbar = false;
+           /* this.ShowInTaskbar = false;
             MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
             MyNotifyIcon.BalloonTipText = "Minimized the app ";
             MyNotifyIcon.ShowBalloonTip(400);
-            MyNotifyIcon.Visible = true;
+            MyNotifyIcon.Visible = true;*/
         }
 
        
@@ -226,6 +227,15 @@ namespace guiprojekt
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            this.ShowInTaskbar = false;
+            MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
+            MyNotifyIcon.BalloonTipText = "Minimized the app ";
+            MyNotifyIcon.ShowBalloonTip(400);
+            MyNotifyIcon.Visible = true;
         }
 
 
