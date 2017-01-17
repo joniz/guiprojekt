@@ -28,8 +28,8 @@
             <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"></Button>
             <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="reminder_Click"></Button>
         </UniformGrid>
-<<<<<<< HEAD
-=======
+
+
         <UniformGrid Name="addReminder" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <local:addReminder />
         </UniformGrid>
@@ -38,9 +38,9 @@
             
             
         </StackPanel>
->>>>>>> 4127e8ded4f4780d66c4484ac023fa182b943615
+
         
-        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <Label Content="Information Monday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
             <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
             <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
