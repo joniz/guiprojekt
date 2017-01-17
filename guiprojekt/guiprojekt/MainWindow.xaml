@@ -5,9 +5,7 @@
         Title="MainWindow" Height="450" Width="560">
     
     <Grid  Background="LightBlue">
-        
        
-
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition  />
@@ -37,69 +35,69 @@
 
         </UniformGrid>
         
-        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+            <Label Content="Information Monday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
 
         <StackPanel Name="infoTuesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+            <Label Content="Information Tuesday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
         <StackPanel Name="infoWednesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+            <Label Content="Information Wednesday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
         <StackPanel Name="infoThursday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+            <Label Content="Information Thursday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
         <StackPanel Name="infoFriday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+            <Label Content="Information Friday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
         <StackPanel Name="infoSaturday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+            <Label Content="Information Saturday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
         <StackPanel Name="infoSunday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Margin="1" Content="Måndag" Background="Beige" Grid.Row="2" Height="45"></Label>
-            <Label Margin="1" Content="Tisdag" Background="LightSalmon" Height="45"></Label>
-            <Label Margin="1" Content="Onsdag" Background="LightGreen" Height="45"></Label>
-            <Label Margin="1" Content="Torsdag" Background="LightCoral" Height="45"></Label>
-            <Label Margin="1" Content="Fredag" Background="DarkGray" Height="45"></Label>
-            <Label Margin="1" Content="Lördag" Background="Purple" Height="45"></Label>
-            <Label Margin="1" Content="Söndag" Background="DarkGreen" Height="45"/>
+            <Label Content="Information Sunday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
         </StackPanel>
     </Grid>
 </Window>

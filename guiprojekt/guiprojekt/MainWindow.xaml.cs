@@ -22,7 +22,7 @@ namespace guiprojekt
     {
         
         DateTime _date = new DateTime(2008, 3,15);
-        int _weekday = 0;
+        int _weekday = 1;
         
         public MainWindow()
         {
@@ -67,6 +67,7 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
+            else { }
         }
 
         private void monday_Click(object sender, RoutedEventArgs e)
