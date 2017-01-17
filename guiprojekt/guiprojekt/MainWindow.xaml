@@ -39,7 +39,7 @@
         </StackPanel>
 
         
-        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <Label Content="Information Monday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
             <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
             <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
