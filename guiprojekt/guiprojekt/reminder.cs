@@ -31,6 +31,7 @@ namespace guiprojekt
         
         }
 
+
         public void saveToFile()
         {
 
