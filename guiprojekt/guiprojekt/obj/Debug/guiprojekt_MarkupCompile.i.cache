@@ -4,16 +4,11 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
-=======
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
->>>>>>> 6efc6cc39cdaf754838aa464ebac3807fa5b3d64
 guiprojekt
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
 21136335182
 
@@ -21,15 +16,5 @@ C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
 151855326030
 addReminder.xaml;MainWindow.xaml;
 
-False
-=======
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
-21136335182
-
-112093592598
-151855326030
-addReminder.xaml;MainWindow.xaml;
-
 True
->>>>>>> 6efc6cc39cdaf754838aa464ebac3807fa5b3d64
 
