@@ -15,6 +15,7 @@ namespace guiprojekt
         private string _title;
         private DateTime _startTime;
         private DateTime _alarmTime;
+        private WeekDays _value;
         public enum WeekDays
         {
             Sunday,
@@ -27,12 +28,12 @@ namespace guiprojekt
 
 
         }        
-        public reminder(string title, DateTime startTime, DateTime alarmTime, WeekDays days)
+        public reminder(string title, DateTime startTime, DateTime alarmTime, WeekDays day)
         {
             _title = title;
             _startTime = startTime;
             _alarmTime = alarmTime;
-            WeekDays value = days;
+            _value = day;
             
             
 
