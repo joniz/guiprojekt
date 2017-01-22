@@ -11,13 +11,38 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-
+            <RowDefinition />
+            
         </Grid.RowDefinitions>
-        <UniformGrid Grid.Row="0">
-            <Label Content="Kom ihåg: " FontSize="20" FontStyle="Italic" />
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <UniformGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+            <Label Content="Kom ihåg:" FontSize="13" FontStyle="Italic"   />
             <TextBox Name="titleForReminder" ></TextBox>
+            
+        
         </UniformGrid>
-        <DatePicker SelectedDate="{Binding Date, StringFormat={}{0:dd/MM}}" Grid.Row="1" Grid.RowSpan="2"></DatePicker>
+        
+        <Label Content="Starttid:" FontSize="13" FontStyle="Italic" Grid.Row="1"  />
+        <TextBox Name="starttid" Grid.Row="1" Grid.Column="1"></TextBox>
+        <Label Content="Alarmtid:" FontSize="13" FontStyle="Italic" Grid.Row="2"  />
+        <TextBox Name="alarmtid" Grid.Row="2" Grid.Column="1"></TextBox>
+        <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
+            <CheckBox Name="mondaybox">monday</CheckBox>
+            <CheckBox>tuesday</CheckBox>
+            <CheckBox>wednesday</CheckBox>
+            <CheckBox>thursday</CheckBox>
+            <CheckBox>friday</CheckBox>
+            <CheckBox>saturday</CheckBox>
+            <CheckBox>sunday</CheckBox>
+            
+            
+        </UniformGrid>
+        <Button Name="createReminder" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center"></Button>
         
     </Grid>
 </UserControl>

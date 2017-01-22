@@ -25,11 +25,41 @@ namespace guiprojekt
         public addReminder()
         {
             InitializeComponent();
+ 
+    
         }
         public void addReminderToFile(){
             
 
 
         }
+        /*private void mondaybox_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((bool)mondaybox.IsChecked)
+            { }
+
+            else
+                mondaybox.Foreground = Color.Red;
+        }
+    */
+        private void createReminder_Click(object sender, RoutedEventArgs e)
+        {
+            string reminderTitle = titleForReminder.Text;
+            
+
+        }
+
+        
+    
+    
     }
+    
+
+
+
+
+
+
+
+
 }

@@ -13,12 +13,12 @@ namespace guiprojekt
     class reminder
     {
         private string _title;
-        private DateTime _startTime;
-        private DateTime _alarmTime;
+        private TimeSpan _startTime;
+        private TimeSpan _alarmTime;
         private int _valueOfWeekDay;
 
                 
-        public reminder(string title, DateTime startTime, DateTime alarmTime, DayOfWeek days)
+        public reminder(string title, TimeSpan startTime, TimeSpan alarmTime, DayOfWeek days)
         {
             _title = title;
             _startTime = startTime;
