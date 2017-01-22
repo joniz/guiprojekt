@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
@@ -15,3 +16,6 @@ C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\gu
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
+=======
+C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
+>>>>>>> 6efc6cc39cdaf754838aa464ebac3807fa5b3d64
