@@ -29,6 +29,13 @@ namespace guiprojekt
             InitializeComponent();
         }
 
+        private void newReminder_Click(object sender, RoutedEventArgs e)
+        {
+            newReminder.Visibility = System.Windows.Visibility.Visible;
+
+
+        }
+        
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
             
