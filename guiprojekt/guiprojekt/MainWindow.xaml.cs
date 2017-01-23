@@ -21,8 +21,8 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        DateTime _date = new DateTime(2008, 3, 15);
+        private System.Windows.Forms.NotifyIcon MyNotifyIcon;
+        
         int _page = 0;
         string[] _days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
@@ -31,14 +31,35 @@ namespace guiprojekt
         public MainWindow()
         {
             InitializeComponent();
-<<<<<<< HEAD
+
 
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             //MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
 
-=======
->>>>>>> fead5238f198c46953cb1b4ae7cd9537d8586682
+
+        }
+        void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+
+            this.WindowState = WindowState.Normal;
+            this.Focus();
+            MyNotifyIcon.Visible = false;
+            this.ShowInTaskbar = true;
+        }
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            this.ShowInTaskbar = false;
+
+        }
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            this.ShowInTaskbar = false;
+            MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
+            MyNotifyIcon.BalloonTipText = "Minimized the app ";
+            MyNotifyIcon.ShowBalloonTip(400);
+            MyNotifyIcon.Visible = true;
+
         }
 
         private void newReminder_Click(object sender, RoutedEventArgs e)
@@ -100,7 +121,7 @@ namespace guiprojekt
         {
             int count = 0;
             string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Johannes\Documents\reminders.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
             while ((line = file.ReadLine()) != null)
             {
                 count++;
@@ -110,9 +131,9 @@ namespace guiprojekt
 
         private void readFromFile(string day, StackPanel panel)
         {
-            if (File.Exists(@"C:\Users\Johannes\Documents\reminders.txt"))
+            if (File.Exists(@"reminders.txt"))
             {
-                System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Johannes\Documents\reminders.txt");
+                System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
 
                 int count = checkNumberOfLines();
 
