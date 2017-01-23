@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
+
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace guiprojekt
@@ -23,13 +23,16 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-
+        
         List<reminder> _reminderList = new List<reminder>();
 
         public addReminder()
         {
             InitializeComponent();
+            
         }
+       
+
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +80,7 @@ namespace guiprojekt
             //writeToFile();
             readFromFile();
             
-            writeToFile(reminderObj);
+            //writeToFile(reminderObj);
         }
 
        
@@ -85,7 +88,7 @@ namespace guiprojekt
         
         
 
-        private void writeToFile(reminder remObj)
+       /* private void writeToFile(reminder remObj)
         {
             using (StreamWriter outputFile = new StreamWriter(@"C:\Users\Johannes\Documents\reminders.txt", true))
             {
@@ -101,7 +104,7 @@ namespace guiprojekt
                 }
             }
 
-        }
+        }*/
 
         private bool isValidTime(string time)
         {
