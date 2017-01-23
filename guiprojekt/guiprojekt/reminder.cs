@@ -31,11 +31,9 @@ namespace guiprojekt
         
         }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 701bc6a501cb0fe36be5c20491f52cdfc50638b3
-        public void saveToFile()
+
+    public void saveToFile()
         {
 
 

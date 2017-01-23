@@ -34,13 +34,13 @@
         </UniformGrid>
 
 
-<<<<<<< HEAD
+
         <UniformGrid Name="addReminder" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
             <local:addReminder />
         </UniformGrid>
-=======
+
       
->>>>>>> 701bc6a501cb0fe36be5c20491f52cdfc50638b3
+
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
             <local:addReminder />
             
