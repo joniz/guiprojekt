@@ -151,7 +151,7 @@ namespace guiprojekt
                             if (read.Split(' ')[y] == day)
                             {
                                 Label label = new Label();
-                                label.Content = title + " " + date + " " + time + " ";
+                                label.Content ="Titel: " + title + " " + "Datum " + date + " " + "Tid " + time + " ";
                                 addLabel(panel, label);
                             }
                             y++;

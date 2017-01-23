@@ -1,3 +1,6 @@
 
 adawd1 2017-01-23 13:00:00 Tuesday Friday 
 1313 2017-01-23 13:00:00 Monday Thursday Friday 
+Mata katten 2017-01-23 13:00:00 Monday Thursday 
+Hej 2017-01-23 13:00:00 Wednesday 
+Hej hej hej hje 2017-01-23 13:00:00 Saturday 
