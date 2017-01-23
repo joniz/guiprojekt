@@ -2,26 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
-<<<<<<< HEAD
+
 
         
 
         Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged"  Deactivated="Window_Deactivated">
-=======
-        Title="MainWindow" Height="450" Width="550" >
->>>>>>> 8d951130f771351ceea3bcfe89ac632c05a22944
 
-    <Window.Resources>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
-        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
 
-    </Window.Resources>
+   
     
     <Grid  Background="LightBlue">
 
