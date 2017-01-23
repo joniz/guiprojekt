@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace guiprojekt
 {
-    
+    [Serializable]
     class reminder
     {
         public string _title { get; set; }
