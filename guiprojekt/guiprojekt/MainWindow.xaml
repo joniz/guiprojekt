@@ -5,7 +5,7 @@
 
         
 
-        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged" Deactivated="Window_Deactivated">
+        Title="MainWindow" Height="450" Width="550" >
 
     
     
@@ -34,6 +34,15 @@
             <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"></Button>
             <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="newReminder_Click"></Button>
         </UniformGrid>
+
+
+
+
+        <UniformGrid Name="addReminder" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+            <local:addReminder />
+        </UniformGrid>
+
+      
 
 
 

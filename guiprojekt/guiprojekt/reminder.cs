@@ -30,7 +30,14 @@ namespace guiprojekt
             _weekDays = days;
 
             
-            
+                 
+        
+        }
+
+
+
+    public void saveToFile()
+        {
 
 
         }
