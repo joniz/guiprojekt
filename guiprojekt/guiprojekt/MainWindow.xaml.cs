@@ -24,7 +24,6 @@ namespace guiprojekt
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         
         int _page = 0;
-        string[] _days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
         System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         System.Windows.Thickness _thick = new Thickness(1);
@@ -146,8 +145,8 @@ namespace guiprojekt
                         string title = read.Split(' ')[0];
                         string date = read.Split(' ')[1];
                         string time = read.Split(' ')[2];
-                        int numberOfDays = checkNumberOfDays(read);
-                        for (int y = 3; y < numberOfDays; y++)
+                        int y = 3;
+                        while (read.Split(' ')[y] != "")
                         {
                             if (read.Split(' ')[y] == day)
                             {
@@ -155,20 +154,11 @@ namespace guiprojekt
                                 label.Content = title + " " + date + " " + time + " ";
                                 addLabel(panel, label);
                             }
+                            y++;
                         }
                     }
                 }
             }
-        }
-
-        private int checkNumberOfDays(string read)
-        {
-            int start = 3;
-            while (read.Split(' ')[start] != "")
-            {
-                start++;
-            }
-            return start;
         }
 
         private void monday_Click(object sender, RoutedEventArgs e)
@@ -183,6 +173,7 @@ namespace guiprojekt
             {
                 infoMonday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoMonday.Children.Clear();
             readFromFile("Monday", infoMonday);
         }
 
@@ -198,6 +189,7 @@ namespace guiprojekt
             {
                 infoTuesday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoTuesday.Children.Clear();
             readFromFile("Tuesday", infoTuesday);
         }
 
@@ -213,6 +205,7 @@ namespace guiprojekt
             {
                 infoWednesday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoWednesday.Children.Clear();
             readFromFile("Wednesday", infoWednesday);
         }
 
@@ -228,6 +221,7 @@ namespace guiprojekt
             {
                 infoThursday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoThursday.Children.Clear();
             readFromFile("Thursday", infoThursday);
         }
 
@@ -243,6 +237,7 @@ namespace guiprojekt
             {
                 infoFriday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoFriday.Children.Clear();
             readFromFile("Friday", infoFriday);
         }
 
@@ -258,6 +253,7 @@ namespace guiprojekt
             {
                 infoSaturday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoSaturday.Children.Clear();
             readFromFile("Saturday", infoSaturday);
         }
 
@@ -273,6 +269,7 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoSunday.Children.Clear();
             readFromFile("Sunday", infoSunday);
         }
 
