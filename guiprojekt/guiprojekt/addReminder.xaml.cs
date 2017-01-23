@@ -78,6 +78,17 @@ namespace guiprojekt
                 System.Diagnostics.Debug.WriteLine(reminderObj._weekDays[i]);
             }
             writeToFile(reminderObj);
+
+            titleForReminder.Text = "";
+            alarmtid.Text = "";
+            starttid.Text = "";
+            mondaybox.IsChecked = false;
+            tuesdaybox.IsChecked = false;
+            wednesdaybox.IsChecked = false;
+            thursdaybox.IsChecked = false;
+            fridaybox.IsChecked = false;
+            saturdaybox.IsChecked = false;
+            sundaybox.IsChecked = false;
         }
 
         private void checkTextFile()
