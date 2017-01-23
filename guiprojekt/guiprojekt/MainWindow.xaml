@@ -5,7 +5,7 @@
         Title="MainWindow" Height="450" Width="550" >
 
     <Window.Resources>
-        <ImageBrush x:Key="buttonMondag" ImageSource="C:\Users\Johannes\Documents\GitHub\ReminderIcon.jpg"/>
+        <ImageBrush x:Key="buttonMondag" ImageSource=""/>
 
     </Window.Resources>
     
