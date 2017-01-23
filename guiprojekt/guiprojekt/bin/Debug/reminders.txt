@@ -1,2 +1,2 @@
 
-åka till ikea,2017-01-23 08:50:00,Monday,Wednesday,Thursday,Saturday,
+åka till ikea,2017-01-23 08:50:00,Monday,Tuesday,Friday,Sunday,
