@@ -93,7 +93,7 @@ namespace guiprojekt
 
         private void checkTextFile()
         {
-            string path = @"C:\Users\Johannes\Documents\reminders.txt";
+            string path = @"reminders.txt";
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
@@ -102,7 +102,7 @@ namespace guiprojekt
 
         private void writeToFile(reminder remObj)
         {
-            using (StreamWriter outputFile = new StreamWriter(@"C:\Users\Johannes\Documents\reminders.txt", true))
+            using (StreamWriter outputFile = new StreamWriter(@"reminders.txt", true))
             {
                 outputFile.WriteLine("");
                 outputFile.Write(remObj._title);
