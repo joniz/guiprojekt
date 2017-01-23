@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,9 @@ namespace guiprojekt
         DateTime _date = new DateTime(2008, 3, 15);
         int _page = 0;
         string[] _days = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
+        System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        System.Windows.Thickness _thick = new Thickness(1);
         public MainWindow()
         {
             InitializeComponent();
@@ -76,9 +80,66 @@ namespace guiprojekt
             }
         }
 
-        private void readFromFile()
+        private void addLabel(StackPanel day, Label text)
         {
+            text.Background = _brush;
+            text.BorderBrush = _brush2;
+            text.BorderThickness = _thick;
+            day.Children.Add(text);
+        }
 
+        private int checkNumberOfLines()
+        {
+            int count = 0;
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Johannes\Documents\reminders.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                count++;
+            }
+            return count;
+        }
+
+        private void readFromFile(string day, StackPanel panel)
+        {
+            if (File.Exists(@"C:\Users\Johannes\Documents\reminders.txt"))
+            {
+                System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Johannes\Documents\reminders.txt");
+
+                int count = checkNumberOfLines();
+
+                for (int x = 0; x < count; x++)
+                {
+
+                    string read = file.ReadLine();
+                    if (read != "")
+                    {
+                        string title = read.Split(' ')[0];
+                        string date = read.Split(' ')[1];
+                        string time = read.Split(' ')[2];
+                        int numberOfDays = checkNumberOfDays(read);
+                        for (int y = 3; y < numberOfDays; y++)
+                        {
+                            if (read.Split(' ')[y] == day)
+                            {
+                                Label label = new Label();
+                                label.Content = title + " " + date + " " + time + " ";
+                                addLabel(panel, label);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private int checkNumberOfDays(string read)
+        {
+            int start = 3;
+            while (read.Split(' ')[start] != "")
+            {
+                start++;
+            }
+            return start;
         }
 
         private void monday_Click(object sender, RoutedEventArgs e)
@@ -93,6 +154,7 @@ namespace guiprojekt
             {
                 infoMonday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Monday", infoMonday);
         }
 
         private void tuesday_Click(object sender, RoutedEventArgs e)
@@ -107,6 +169,7 @@ namespace guiprojekt
             {
                 infoTuesday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Tuesday", infoTuesday);
         }
 
         private void wednesday_Click(object sender, RoutedEventArgs e)
@@ -121,6 +184,7 @@ namespace guiprojekt
             {
                 infoWednesday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Wednesday", infoWednesday);
         }
 
         private void thursday_Click(object sender, RoutedEventArgs e)
@@ -135,6 +199,7 @@ namespace guiprojekt
             {
                 infoThursday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Thursday", infoThursday);
         }
 
         private void friday_Click(object sender, RoutedEventArgs e)
@@ -149,6 +214,7 @@ namespace guiprojekt
             {
                 infoFriday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Friday", infoFriday);
         }
 
         private void saturday_Click(object sender, RoutedEventArgs e)
@@ -163,6 +229,7 @@ namespace guiprojekt
             {
                 infoSaturday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Saturday", infoSaturday);
         }
 
         private void sunday_Click(object sender, RoutedEventArgs e)
@@ -177,6 +244,7 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
+            readFromFile("Sunday", infoSunday);
         }
 
 
