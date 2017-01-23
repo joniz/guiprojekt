@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,22 +22,22 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
+
         List<reminder> _reminderList = new List<reminder>();
+
         public addReminder()
         {
             InitializeComponent();
-
-
         }
+
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
             List<DayOfWeek> weekDays = new List<DayOfWeek>();
-            
+
             string reminderTitle = titleForReminder.Text;
             string startTime = starttid.Text;
             string alarmTime = alarmtid.Text;
 
-            
             if ((bool)mondaybox.IsChecked)
             {
                 weekDays.Add(DayOfWeek.Monday);
@@ -65,8 +66,9 @@ namespace guiprojekt
             {
                 weekDays.Add(DayOfWeek.Sunday);
             }
-            
-            reminder reminderObj = new reminder(reminderTitle,startTime, alarmTime,weekDays);
+            checkTextFile();
+
+            reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
             _reminderList.Add(reminderObj);
             System.Diagnostics.Debug.WriteLine(reminderObj._title);
             System.Diagnostics.Debug.WriteLine(reminderObj._startTime);
@@ -74,18 +76,43 @@ namespace guiprojekt
             for (int i = 0; reminderObj._weekDays.Count > i; i++)
             {
                 System.Diagnostics.Debug.WriteLine(reminderObj._weekDays[i]);
+            }
+            writeToFile(reminderObj);
+        }
 
-
+        private void checkTextFile()
+        {
+            string path = @"C:\Users\Johannes\Documents\reminders.txt";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter sw = File.CreateText(path)) { }
             }
         }
-        public bool isValidTime(string time)
+
+        private void writeToFile(reminder remObj)
+        {
+            using (StreamWriter outputFile = new StreamWriter(@"C:\Users\Johannes\Documents\reminders.txt", true))
+            {
+                outputFile.WriteLine("");
+                outputFile.Write(remObj._title);
+                outputFile.Write(" ");
+                outputFile.Write(remObj._startTime);
+                outputFile.Write(" ");
+                for (int i = 0; remObj._weekDays.Count > i; i++)
+                {
+                    outputFile.Write(remObj._weekDays[i]);
+                    outputFile.Write(" ");
+                }
+            }
+        }
+
+        private bool isValidTime(string time)
         {
             DateTime testVariable;
             return DateTime.TryParse(time, out testVariable);
-            
-
         }
-        public void testTimeInput(object sender, TextChangedEventArgs e)
+
+        private void testTimeInput(object sender, TextChangedEventArgs e)
         {
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text))
             {
@@ -93,20 +120,7 @@ namespace guiprojekt
 
             }
             else createReminder.IsEnabled = false;
-
-
         }
-        
-    
-    
+
     }
-    
-
-
-
-
-
-
-
-
 }
