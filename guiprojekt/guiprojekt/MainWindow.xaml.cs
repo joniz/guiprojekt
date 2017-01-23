@@ -12,49 +12,68 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Drawing;
 
 namespace guiprojekt
 {
-    
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
-
-        private System.Windows.Forms.NotifyIcon MyNotifyIcon;
-
         
         DateTime _date = new DateTime(2008, 3,15);
-        int _weekday = 1;
+        int _weekday = 0;
+        private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         
-
         public MainWindow()
-                {
-                    InitializeComponent();
-                    MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-                    MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico",16,16);
-                    MyNotifyIcon.MouseDoubleClick +=
-                        new System.Windows.Forms.MouseEventHandler
-                            (MyNotifyIcon_MouseDoubleClick);
-                }
-
-
-
-        void MyNotifyIcon_MouseDoubleClick(object sender,System.Windows.Forms.MouseEventArgs e)
         {
+            InitializeComponent();
+
+            
+           MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
+           MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
+           MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
+        }
+
+        private void newReminder_Click(object sender, RoutedEventArgs e)
+        {
+            newReminder.Visibility = System.Windows.Visibility.Visible;
+
+
+        
+        }
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            this.ShowInTaskbar = false;
+
+
+        }
+        private void Window_Deactivated(object sender, EventArgs e)
+         {
+             this.ShowInTaskbar = false;
+             MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
+             MyNotifyIcon.BalloonTipText = "Minimized the app ";
+             MyNotifyIcon.ShowBalloonTip(400);
+             MyNotifyIcon.Visible = true;
+         }
+        
+        void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            
             this.WindowState = WindowState.Normal;
+            this.Focus();
             MyNotifyIcon.Visible = false;
             this.ShowInTaskbar = true;
         }
-
         
-
-
-
-
+        
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
             
-                    }
+             
+                    
+        
+        }
 
 
 
@@ -89,7 +108,6 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
-            else { }
         }
 
         private void monday_Click(object sender, RoutedEventArgs e)
@@ -188,44 +206,6 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
-        }
-
-
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            
-        }
-
-      
-        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-            this.ShowInTaskbar = false;
-            MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
-            MyNotifyIcon.BalloonTipText = "Minimized the app ";
-            MyNotifyIcon.ShowBalloonTip(400);
-            MyNotifyIcon.Visible = true;
-        }
-
-       
-
-        private void reminder_Click(object sender, RoutedEventArgs e)
-        {
-            if (newReminder.Visibility == System.Windows.Visibility.Collapsed)
-            {
-                newReminder.Visibility = System.Windows.Visibility.Visible;
-            }
-            
-        
-    }
-
-       
-        
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
 

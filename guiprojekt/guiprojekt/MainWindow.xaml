@@ -4,7 +4,9 @@
         xmlns:local="clr-namespace:guiprojekt"
 
         
-        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged" >
+
+        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged" Deactivated="Window_Deactivated">
+
     
     
     <Grid  Background="LightBlue">
@@ -30,8 +32,9 @@
             <Button Name="friday" Content="Fredag"  Foreground="white" Background="#262626" Click="friday_Click"></Button>
             <Button Name="saturday" Content="Lördag"  Foreground="white" Background="#262626" Click="saturday_Click"></Button>
             <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"></Button>
-            <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="reminder_Click"></Button>
+            <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="newReminder_Click"></Button>
         </UniformGrid>
+
 
 
 
@@ -40,6 +43,8 @@
         </UniformGrid>
 
       
+
+
 
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
             <local:addReminder />
