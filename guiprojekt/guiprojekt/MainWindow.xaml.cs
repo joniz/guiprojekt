@@ -23,10 +23,16 @@ namespace guiprojekt
         
         DateTime _date = new DateTime(2008, 3,15);
         int _weekday = 0;
+        private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         
         public MainWindow()
         {
             InitializeComponent();
+
+            
+           MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
+           MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
+           MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
         }
 
         private void newReminder_Click(object sender, RoutedEventArgs e)
@@ -34,7 +40,32 @@ namespace guiprojekt
             newReminder.Visibility = System.Windows.Visibility.Visible;
 
 
+        
         }
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            this.ShowInTaskbar = false;
+
+
+        }
+        private void Window_Deactivated(object sender, EventArgs e)
+         {
+             this.ShowInTaskbar = false;
+             MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
+             MyNotifyIcon.BalloonTipText = "Minimized the app ";
+             MyNotifyIcon.ShowBalloonTip(400);
+             MyNotifyIcon.Visible = true;
+         }
+        
+        void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            
+            this.WindowState = WindowState.Normal;
+            this.Focus();
+            MyNotifyIcon.Visible = false;
+            this.ShowInTaskbar = true;
+        }
+        
         
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
