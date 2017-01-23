@@ -12,29 +12,31 @@ namespace guiprojekt
     
     class reminder
     {
-        private string _title;
-        private DateTime _startTime;
+        public string _title { get; set; }
+        public DateTime _startTime { get; set; }
         private DateTime _alarmTime;
-        private int _valueOfWeekDay;
+
+        public List<DayOfWeek> _weekDays { get; set; }
+       
+
 
                 
-        public reminder(string title, DateTime startTime, DateTime alarmTime, DayOfWeek days)
+        public reminder(string title, string startTime, string alarmTime, List<DayOfWeek> days)
 
         {
             _title = title;
-            _startTime = startTime;
-            _alarmTime = alarmTime;
-            _valueOfWeekDay = (int)days;
+            _startTime = Convert.ToDateTime(startTime);
+            _alarmTime = Convert.ToDateTime(alarmTime);
+            _weekDays = days;
 
-        }
-
-
-        public void saveToFile()
-        {
-
+            
+            
 
 
         }
+
+
+        
        
 
 

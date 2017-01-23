@@ -21,34 +21,81 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        
+        List<reminder> _reminderList = new List<reminder>();
         public addReminder()
         {
             InitializeComponent();
- 
-    
-        }
-        public void addReminderToFile(){
-            
 
 
         }
-        /*private void mondaybox_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((bool)mondaybox.IsChecked)
-            { }
-
-            else
-                mondaybox.Foreground = Color.Red;
-        }
-    */
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
+            List<DayOfWeek> weekDays = new List<DayOfWeek>();
+            
             string reminderTitle = titleForReminder.Text;
+            string startTime = starttid.Text;
+            string alarmTime = alarmtid.Text;
+
+            
+            if ((bool)mondaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Monday);
+            }
+            if ((bool)tuesdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Tuesday);
+            }
+            if ((bool)wednesdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Wednesday);
+            }
+            if ((bool)thursdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Thursday);
+            }
+            if ((bool)fridaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Friday);
+            }
+            if ((bool)saturdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Saturday);
+            }
+            if ((bool)sundaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Sunday);
+            }
+            
+            reminder reminderObj = new reminder(reminderTitle,startTime, alarmTime,weekDays);
+            _reminderList.Add(reminderObj);
+            System.Diagnostics.Debug.WriteLine(reminderObj._title);
+            System.Diagnostics.Debug.WriteLine(reminderObj._startTime);
+            System.Diagnostics.Debug.WriteLine(_reminderList.Count);
+            for (int i = 0; reminderObj._weekDays.Count > i; i++)
+            {
+                System.Diagnostics.Debug.WriteLine(reminderObj._weekDays[i]);
+
+
+            }
+        }
+        public bool isValidTime(string time)
+        {
+            DateTime testVariable;
+            return DateTime.TryParse(time, out testVariable);
             
 
         }
+        public void testTimeInput(object sender, TextChangedEventArgs e)
+        {
+            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text))
+            {
+                createReminder.IsEnabled = true;
 
+            }
+            else createReminder.IsEnabled = false;
+
+
+        }
         
     
     
