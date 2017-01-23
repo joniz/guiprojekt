@@ -1,3 +1,2 @@
 
-adawd1 2017-01-23 13:00:00 Tuesday Friday 
-1313 2017-01-23 13:00:00 Monday Thursday Friday 
+åka till ikea,2017-01-23 08:50:00,Monday,Wednesday,Thursday,Saturday,
