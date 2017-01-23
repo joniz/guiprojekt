@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace guiprojekt
 {
@@ -66,28 +67,23 @@ namespace guiprojekt
             {
                 weekDays.Add(DayOfWeek.Sunday);
             }
-            checkTextFile();
+            //checkTextFile();
 
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
             _reminderList.Add(reminderObj);
-            System.Diagnostics.Debug.WriteLine(reminderObj._title);
-            System.Diagnostics.Debug.WriteLine(reminderObj._startTime);
-            System.Diagnostics.Debug.WriteLine(_reminderList.Count);
-            for (int i = 0; reminderObj._weekDays.Count > i; i++)
-            {
-                System.Diagnostics.Debug.WriteLine(reminderObj._weekDays[i]);
-            }
+            //System.Diagnostics.Debug.WriteLine(reminderObj._title);
+            //System.Diagnostics.Debug.WriteLine(reminderObj._startTime);
+            //System.Diagnostics.Debug.WriteLine(_reminderList.Count);
+            //writeToFile();
+            readFromFile();
+            
             writeToFile(reminderObj);
         }
 
-        private void checkTextFile()
-        {
-            string path = @"C:\Users\Johannes\Documents\reminders.txt";
-            if (!File.Exists(path))
-            {
-                using (StreamWriter sw = File.CreateText(path)) { }
-            }
-        }
+       
+        
+        
+        
 
         private void writeToFile(reminder remObj)
         {
@@ -104,6 +100,7 @@ namespace guiprojekt
                     outputFile.Write(" ");
                 }
             }
+
         }
 
         private bool isValidTime(string time)
@@ -116,11 +113,54 @@ namespace guiprojekt
         {
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text))
             {
-                createReminder.IsEnabled = true;
+                createReminder.IsEnabled = true;    
 
             }
             else createReminder.IsEnabled = false;
         }
 
+        public void writeToFile()
+        {
+      
+            using (Stream stream = File.Open("data.bin", FileMode.Create))
+            {
+                BinaryFormatter bin = new BinaryFormatter();
+                bin.Serialize(stream, _reminderList);
+
+            }
+           
+        } 
+        public void readFromFile()
+        {
+      
+
+            using (Stream stream = File.Open("data.bin", FileMode.Open))
+            {
+                BinaryFormatter bin = new BinaryFormatter();
+                List<reminder> remList = (List<reminder>)bin.Deserialize(stream);
+                
+                for (int i = 0; remList.Count > i; i++)
+                {
+                    System.Diagnostics.Debug.WriteLine("tja");
+                    System.Diagnostics.Debug.WriteLine(remList[i]._title);
+
+
+                }
+            }
+                                        
+
+        }
+    
     }
-}
+    
+
+
+
+
+
+
+
+
+
+    }
+
