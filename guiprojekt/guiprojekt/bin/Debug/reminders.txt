@@ -1,2 +1,7 @@
 
+<<<<<<< HEAD
 awdad|14:0|13:0|Monday|
+=======
+tid|14:0|14:33|Tuesday|Friday|
+alarm|5:33|14:42|Wednesday|Saturday|
+>>>>>>> f6bab1c02426e65f77d4c48379faf10052c7dddb

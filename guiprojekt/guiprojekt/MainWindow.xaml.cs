@@ -174,8 +174,8 @@ namespace guiprojekt
                 while (alarms.Split('|')[x] != "")
                 {
                     string alarm = alarms.Split('|')[x];
-                    string hour = alarm.Split(':')[0];
-                    if (currentTime.Hour == Int32.Parse(hour))
+                    string time = currentTime.Hour + ":" + currentTime.Minute;
+                    if (alarm == time)
                     {
                         System.Windows.Forms.MessageBox.Show("ALARM!!!");
                     }
