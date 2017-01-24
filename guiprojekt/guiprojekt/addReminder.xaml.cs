@@ -106,13 +106,13 @@ namespace guiprojekt
             {
                 outputFile.WriteLine("");
                 outputFile.Write(remObj._title);
-                outputFile.Write(",");
+                outputFile.Write("|");
                 outputFile.Write(remObj._startTime);
-                outputFile.Write(",");
+                outputFile.Write("|");
                 for (int i = 0; remObj._weekDays.Count > i; i++)
                 {
                     outputFile.Write(remObj._weekDays[i]);
-                    outputFile.Write(",");
+                    outputFile.Write("|");
                 }
             }
         }

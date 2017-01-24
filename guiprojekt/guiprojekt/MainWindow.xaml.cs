@@ -145,9 +145,9 @@ namespace guiprojekt
                         string title = read.Split(',')[0];
                         string date = read.Split(',')[1];
                         int y = 2;
-                        while (read.Split(',')[y] != "")
+                        while (read.Split('|')[y] != "")
                         {
-                            if (read.Split(',')[y] == day)
+                            if (read.Split('|')[y] == day)
                             {
                                 Label label = new Label();
                                 label.Content = title + " " + date;
