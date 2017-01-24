@@ -142,16 +142,19 @@ namespace guiprojekt
                     string read = file.ReadLine();
                     if (read != "")
                     {
-                        string title = read.Split(' ')[0];
-                        string date = read.Split(' ')[1];
-                        string time = read.Split(' ')[2];
-                        int y = 3;
-                        while (read.Split(' ')[y] != "")
+                        string title = read.Split(',')[0];
+                        string date = read.Split(',')[1];
+                        int y = 2;
+                        while (read.Split(',')[y] != "")
                         {
-                            if (read.Split(' ')[y] == day)
+                            if (read.Split(',')[y] == day)
                             {
                                 Label label = new Label();
-                                label.Content ="Titel: " + title + " " + "Datum " + date + " " + "Tid " + time + " ";
+
+                                
+
+                                label.Content = title + " " + date;
+
                                 addLabel(panel, label);
                             }
                             y++;
