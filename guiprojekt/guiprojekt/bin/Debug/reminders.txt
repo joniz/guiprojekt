@@ -1,7 +1,2 @@
 
-tid|14:0|14:33|Tuesday|Friday|
-alarm|5:33|14:42|Wednesday|Saturday|
-mata fiskar|13:0|13:0|Monday|Thursday|Sunday|
-Åka Skidor|15:0|14:30|Monday|Thursday|Sunday|
-Bada Bastu|18:0|18:10|Monday|Tuesday|Thursday|Friday|Sunday|
-Kolla på TV|21:30|21:0|Monday|Thursday|
+tjo|15:50|15:19|Tuesday|Friday|

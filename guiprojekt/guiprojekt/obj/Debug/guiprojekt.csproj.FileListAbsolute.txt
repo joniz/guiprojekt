@@ -15,7 +15,6 @@ C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Pr
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
-C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.baml
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.g.cs
