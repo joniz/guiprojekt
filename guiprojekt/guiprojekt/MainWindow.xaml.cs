@@ -170,11 +170,11 @@ namespace guiprojekt
             if (File.Exists(@"reminders.txt"))
             {
                 DateTime currentTime = DateTime.Now;
+                string time = currentTime.Hour + ":" + currentTime.Minute;
                 int x = 0;
                 while (alarms.Split('|')[x] != "")
                 {
                     string alarm = alarms.Split('|')[x];
-                    string time = currentTime.Hour + ":" + currentTime.Minute;
                     if (alarm == time)
                     {
                         System.Windows.Forms.MessageBox.Show("ALARM!!!");
