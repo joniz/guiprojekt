@@ -104,7 +104,13 @@ namespace guiprojekt
                 outputFile.WriteLine("");
                 outputFile.Write(remObj._title);
                 outputFile.Write("|");
-                outputFile.Write(remObj._startTime);
+                outputFile.Write(remObj._startTime.Hour);
+                outputFile.Write(":");
+                outputFile.Write(remObj._startTime.Minute);
+                outputFile.Write("|");
+                outputFile.Write(remObj._alarmTime.Hour);
+                outputFile.Write(":");
+                outputFile.Write(remObj._alarmTime.Minute);
                 outputFile.Write("|");
                 for (int i = 0; remObj._weekDays.Count > i; i++)
                 {

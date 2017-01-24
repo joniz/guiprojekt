@@ -24,19 +24,18 @@ namespace guiprojekt
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         
         int _page = 0;
+        string _alarms;
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
         System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
+        System.Windows.Media.Brush _brush4 = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         System.Windows.Thickness _thick = new Thickness(1);
         public MainWindow()
         {
             InitializeComponent();
-
-
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            //MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
+            MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
-
-
         }
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -133,7 +132,7 @@ namespace guiprojekt
             if (File.Exists(@"reminders.txt"))
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
-
+                _alarms = "";
                 int count = checkNumberOfLines();
 
                 for (int x = 0; x < count; x++)
@@ -143,25 +142,43 @@ namespace guiprojekt
                     if (read != "")
                     {
                         string title = read.Split('|')[0];
-                        string date = read.Split('|')[1];
-                        int y = 2;
+
+
+                        string start = read.Split('|')[1];
+                        string alarm = read.Split('|')[2];
+                        int y = 3;
+
                         while (read.Split('|')[y] != "")
                         {
                             if (read.Split('|')[y] == day)
                             {
                                 Label label = new Label();
-
-                                
-
-                                label.Content = title + " " + date;
-
+                                label.Content ="Titel: "  + title + " Starttid: " + start + " Alarmtid: " + alarm;
                                 addLabel(panel, label);
+                                alarm = alarm + "|";
+                                _alarms += alarm;
                             }
                             y++;
                         }
                     }
                 }
             }
+        }
+
+        private void alarm(string alarms)
+        {
+            DateTime currentTime = DateTime.Now;
+            int x = 0;
+            while(alarms.Split('|')[x] != ""){
+                string alarm = alarms.Split('|')[x];
+                string hour = alarm.Split(':')[0];
+                if (currentTime.Hour == Int32.Parse(hour))
+                {
+                    System.Windows.Forms.MessageBox.Show("ALARM!!!");
+                } 
+                x++;
+            }
+           
         }
 
         private void monday_Click(object sender, RoutedEventArgs e)
@@ -178,6 +195,7 @@ namespace guiprojekt
             }
             infoMonday.Children.Clear();
             readFromFile("Monday", infoMonday);
+            alarm(_alarms);
         }
 
         private void tuesday_Click(object sender, RoutedEventArgs e)
@@ -194,6 +212,7 @@ namespace guiprojekt
             }
             infoTuesday.Children.Clear();
             readFromFile("Tuesday", infoTuesday);
+            alarm(_alarms);
         }
 
         private void wednesday_Click(object sender, RoutedEventArgs e)
@@ -210,6 +229,7 @@ namespace guiprojekt
             }
             infoWednesday.Children.Clear();
             readFromFile("Wednesday", infoWednesday);
+            alarm(_alarms);
         }
 
         private void thursday_Click(object sender, RoutedEventArgs e)
@@ -226,6 +246,7 @@ namespace guiprojekt
             }
             infoThursday.Children.Clear();
             readFromFile("Thursday", infoThursday);
+            alarm(_alarms);
         }
 
         private void friday_Click(object sender, RoutedEventArgs e)
@@ -242,6 +263,7 @@ namespace guiprojekt
             }
             infoFriday.Children.Clear();
             readFromFile("Friday", infoFriday);
+            alarm(_alarms);
         }
 
         private void saturday_Click(object sender, RoutedEventArgs e)
@@ -258,6 +280,7 @@ namespace guiprojekt
             }
             infoSaturday.Children.Clear();
             readFromFile("Saturday", infoSaturday);
+            alarm(_alarms);
         }
 
         private void sunday_Click(object sender, RoutedEventArgs e)
@@ -274,6 +297,7 @@ namespace guiprojekt
             }
             infoSunday.Children.Clear();
             readFromFile("Sunday", infoSunday);
+            alarm(_alarms);
         }
 
 
