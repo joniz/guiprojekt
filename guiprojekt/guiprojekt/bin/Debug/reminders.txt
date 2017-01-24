@@ -1,2 +1,6 @@
 
-åka till ikea,2017-01-23 08:50:00,Monday,Tuesday,Friday,Sunday,
+adawd1 2017-01-23 13:00:00 Tuesday Friday 
+1313 2017-01-23 13:00:00 Monday Thursday Friday 
+Mata katten 2017-01-23 13:00:00 Monday Thursday 
+Hej 2017-01-23 13:00:00 Wednesday 
+Hej hej hej hje 2017-01-23 13:00:00 Saturday 

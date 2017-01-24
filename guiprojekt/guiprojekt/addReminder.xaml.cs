@@ -70,13 +70,7 @@ namespace guiprojekt
 
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
             _reminderList.Add(reminderObj);
-            System.Diagnostics.Debug.WriteLine(reminderObj._title);
-            System.Diagnostics.Debug.WriteLine(reminderObj._startTime);
-            System.Diagnostics.Debug.WriteLine(_reminderList.Count);
-            for (int i = 0; reminderObj._weekDays.Count > i; i++)
-            {
-                System.Diagnostics.Debug.WriteLine(reminderObj._weekDays[i]);
-            }
+           
             writeToFile(reminderObj);
 
             titleForReminder.Text = "";
