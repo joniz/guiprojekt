@@ -2,11 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
-
         
-        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged" Deactivated="Window_Deactivated" >
-    
-    
+
+        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged"  Deactivated="Window_Deactivated">
+
     <Grid  Background="LightBlue">
 
 
@@ -30,81 +29,39 @@
             <Button Name="friday" Content="Fredag"  Foreground="white" Background="#262626" Click="friday_Click"></Button>
             <Button Name="saturday" Content="Lördag"  Foreground="white" Background="#262626" Click="saturday_Click"></Button>
             <Button Name="sunday" Content="Söndag"  Foreground="white" Background="#262626" Click="sunday_Click"></Button>
-            <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="reminder_Click"></Button>
+            <Button Name="reminder" Content="Lägg till påminnelse" Foreground="White" Background="#262626" Click="newReminder_Click"></Button>
         </UniformGrid>
 
 
 
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
             <local:addReminder />
-            
-            
+
+
         </StackPanel>
 
-        
+
         <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Monday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
 
         <StackPanel Name="infoTuesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Tuesday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
         <StackPanel Name="infoWednesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Wednesday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
         <StackPanel Name="infoThursday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Thursday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
         <StackPanel Name="infoFriday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Friday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
         <StackPanel Name="infoSaturday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Saturday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
         <StackPanel Name="infoSunday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
-            <Label Content="Information Sunday" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1" ></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
-            <Label Content="Information" Background="Beige" BorderBrush="Black" BorderThickness="1"></Label>
+
         </StackPanel>
     </Grid>
 </Window>

@@ -9,35 +9,41 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace guiprojekt
 {
-    
+    [Serializable]
     class reminder
     {
-        private string _title;
-        private DateTime _startTime;
-        private DateTime _alarmTime;
-        private int _valueOfWeekDay;
+        public string _title { get; set; }
+        public DateTime _startTime { get; set; }
+        public DateTime _alarmTime { get; set; }
+
+        public List<DayOfWeek> _weekDays { get; set; }
+       
+
 
                 
-        public reminder(string title, DateTime startTime, DateTime alarmTime, DayOfWeek days)
+        public reminder(string title, string startTime, string alarmTime, List<DayOfWeek> days)
+
         {
             _title = title;
-            _startTime = startTime;
-            _alarmTime = alarmTime;
-            _valueOfWeekDay = (int)days;
-            
-            
+            _startTime = Convert.ToDateTime(startTime);
+            _alarmTime = Convert.ToDateTime(alarmTime);
+            _weekDays = days;
 
-        
+            
+                 
         
         }
 
 
-        public void saveToFile()
+
+    public void saveToFile()
         {
 
 
-
         }
+
+
+        
        
 
 

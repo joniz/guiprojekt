@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿guiprojekt
 
 
@@ -18,3 +19,25 @@ addReminder.xaml;MainWindow.xaml;
 
 False
 
+=======
+﻿guiprojekt
+
+
+winexe
+C#
+.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
+guiprojekt
+none
+false
+DEBUG;TRACE
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
+21136335182
+
+71815002054
+151855326030
+addReminder.xaml;MainWindow.xaml;
+
+False
+
+>>>>>>> 86c3b78ca38fc0deb2dd44d672f17ca7f0d9a6c6

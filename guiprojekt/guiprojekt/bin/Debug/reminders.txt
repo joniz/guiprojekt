@@ -1,0 +1,6 @@
+
+<<<<<<< HEAD
+awdawd|14:45|16:30|Monday|Thursday|
+=======
+tjo|15:50|15:19|Tuesday|Friday|
+>>>>>>> 9266220826bba232b4f9fdfdf62b26178c110044
