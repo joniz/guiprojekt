@@ -22,10 +22,9 @@ namespace guiprojekt
 
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
 
-        
         DateTime _date = new DateTime(2008, 3,15);
         int _weekday = 1;
-        
+     
 
         public MainWindow()
                 {
@@ -37,8 +36,6 @@ namespace guiprojekt
                             (MyNotifyIcon_MouseDoubleClick);
                 }
 
-
-
         void MyNotifyIcon_MouseDoubleClick(object sender,System.Windows.Forms.MouseEventArgs e)
         {
             this.WindowState = WindowState.Normal;
@@ -47,19 +44,10 @@ namespace guiprojekt
             this.ShowInTaskbar = true;
         }
 
-        
-
-
-
-
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
             
                     }
-
-
-
-        
 
         private void CheckWeekday(int day)
         {
@@ -191,14 +179,6 @@ namespace guiprojekt
             }
         }
 
-
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            
-        }
-
-      
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
@@ -209,8 +189,6 @@ namespace guiprojekt
             MyNotifyIcon.Visible = true;*/
         }
 
-       
-
         private void reminder_Click(object sender, RoutedEventArgs e)
         {
             if (newReminder.Visibility == System.Windows.Visibility.Collapsed)
@@ -220,9 +198,6 @@ namespace guiprojekt
             
         
     }
-
-       
-        
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
