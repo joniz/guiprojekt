@@ -69,6 +69,9 @@ namespace guiprojekt
             checkTextFile();
 
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
+            
+
+
             _reminderList.Add(reminderObj);
            
             writeToFile(reminderObj);
@@ -117,16 +120,17 @@ namespace guiprojekt
             return DateTime.TryParse(time, out testVariable);
         }
 
-        private void testTimeInput(object sender, TextChangedEventArgs e)
+        private void testInput(object sender, TextChangedEventArgs e)
         {
-            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text))
+            string titel = titleForReminder.Text;
+            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3))
             {
                 createReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false;
+            else createReminder.IsEnabled = false; ;
         }
-
+   
     }
 }
 

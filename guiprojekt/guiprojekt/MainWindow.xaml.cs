@@ -142,8 +142,8 @@ namespace guiprojekt
                     string read = file.ReadLine();
                     if (read != "")
                     {
-                        string title = read.Split(',')[0];
-                        string date = read.Split(',')[1];
+                        string title = read.Split('|')[0];
+                        string date = read.Split('|')[1];
                         int y = 2;
                         while (read.Split('|')[y] != "")
                         {
