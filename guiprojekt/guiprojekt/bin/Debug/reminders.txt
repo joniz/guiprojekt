@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 mata fiskar|13:45|13:50|Monday|Tuesday|Thursday|
 alarm|14:0|14:0|Monday|Thursday|
 alarm|13:0|14:30|Tuesday|Friday|
 blabla|15:0|15:33|Wednesday|
+=======
+Hej,2017-01-24 14:00:00,Tuesday,Thursday,Friday,
+>>>>>>> 33af6ea6a17a06247080aa059314868107450555
