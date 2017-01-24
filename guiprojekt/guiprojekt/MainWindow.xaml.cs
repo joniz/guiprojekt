@@ -167,18 +167,21 @@ namespace guiprojekt
 
         private void alarm(string alarms)
         {
-            DateTime currentTime = DateTime.Now;
-            int x = 0;
-            while(alarms.Split('|')[x] != ""){
-                string alarm = alarms.Split('|')[x];
-                string hour = alarm.Split(':')[0];
-                if (currentTime.Hour == Int32.Parse(hour))
+            if (File.Exists(@"reminders.txt"))
+            {
+                DateTime currentTime = DateTime.Now;
+                int x = 0;
+                while (alarms.Split('|')[x] != "")
                 {
-                    System.Windows.Forms.MessageBox.Show("ALARM!!!");
-                } 
-                x++;
+                    string alarm = alarms.Split('|')[x];
+                    string hour = alarm.Split(':')[0];
+                    if (currentTime.Hour == Int32.Parse(hour))
+                    {
+                        System.Windows.Forms.MessageBox.Show("ALARM!!!");
+                    }
+                    x++;
+                }
             }
-           
         }
 
         private void monday_Click(object sender, RoutedEventArgs e)
