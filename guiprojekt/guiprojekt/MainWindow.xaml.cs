@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace guiprojekt
 {
@@ -22,39 +23,32 @@ namespace guiprojekt
     public partial class MainWindow : Window
     {
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
-<<<<<<< HEAD
 
         DateTime _date = new DateTime(2008, 3,15);
         int _weekday = 1;
-     
+        bool running = true;
 
-        public MainWindow()
-                {
-                    InitializeComponent();
-                    MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-                    MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico",16,16);
-                    MyNotifyIcon.MouseDoubleClick +=
-                        new System.Windows.Forms.MouseEventHandler
-                            (MyNotifyIcon_MouseDoubleClick);
-                }
 
-        void MyNotifyIcon_MouseDoubleClick(object sender,System.Windows.Forms.MouseEventArgs e)
-=======
-        
+
+
+        List<reminder> _reminderList = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
         int _page = 0;
         string _alarms;
+        string _alarms2; //testvariabel for now, tas bort senare om det går annars döps om
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
         System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
         System.Windows.Media.Brush _brush4 = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         System.Windows.Thickness _thick = new Thickness(1);
+        
         public MainWindow()
->>>>>>> 86c3b78ca38fc0deb2dd44d672f17ca7f0d9a6c6
         {
             InitializeComponent();
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
+            Thread aalarms = new Thread(new ThreadStart(AlarmThread)); //skapar threaden med funktionen AlarmThread, men startar den inte
+            aalarms.Start();
         }
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -67,25 +61,33 @@ namespace guiprojekt
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             this.ShowInTaskbar = false;
+        }
 
-<<<<<<< HEAD
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
             
-                    }
-
-        private void CheckWeekday(int day)
-=======
         }
-        private void Window_Deactivated(object sender, EventArgs e)
+
+
+        private void AlarmThread()
         {
-            this.ShowInTaskbar = false;
-            MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
-            MyNotifyIcon.BalloonTipText = "Minimized the app ";
-            MyNotifyIcon.ShowBalloonTip(400);
-            MyNotifyIcon.Visible = true;
-
+            while (running) 
+            {
+                if (_reminderList.Count != 0)
+                {
+                    for (int i = 0; i < _reminderList.Count; i++)
+                    {
+                        if (_reminderList[i]._alarmTime == DateTime.Now)
+                        {
+                            System.Windows.Forms.MessageBox.Show("ALARM!!!");
+                            MyNotifyIcon.ShowBalloonTip(4000);
+                        }
+                    }
+                }
+            }
         }
+
+       
 
         private void newReminder_Click(object sender, RoutedEventArgs e)
         {
@@ -94,13 +96,9 @@ namespace guiprojekt
             newReminder.Visibility = System.Windows.Visibility.Visible;
         }
 
-        private void monthPicker_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void CheckWeekday(int page)
->>>>>>> 86c3b78ca38fc0deb2dd44d672f17ca7f0d9a6c6
         {
             if (page == 1)
             {
@@ -161,19 +159,21 @@ namespace guiprojekt
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
                 _alarms = "";
+                _alarms2 = "";
                 int count = checkNumberOfLines();
 
                 for (int x = 0; x < count; x++)
                 {
-
+                    List<DayOfWeek> days = new List<DayOfWeek>(); //listan med vilka dagar en viss reminder ska vara på
                     string read = file.ReadLine();
                     if (read != "")
                     {
                         string title = read.Split('|')[0];
-
-
                         string start = read.Split('|')[1];
                         string alarm = read.Split('|')[2];
+                        _alarms2 = read.Split('|')[2];
+
+                        
                         int y = 3;
 
                         while (read.Split('|')[y] != "")
@@ -183,11 +183,18 @@ namespace guiprojekt
                                 Label label = new Label();
                                 label.Content ="Titel: "  + title + " Starttid: " + start + " Alarmtid: " + alarm;
                                 addLabel(panel, label);
+                                
                                 alarm = alarm + "|";
                                 _alarms += alarm;
+                                
+                                
                             }
+                            days.Add((DayOfWeek)Enum.Parse(typeof(DayOfWeek), read.Split('|')[y])); // lägger till dagen i en lista
                             y++;
+                            
+                            
                         }
+                       _reminderList.Add(new reminder(title,start,_alarms2,days)); //lägger till remindern i en lista med reminders
                     }
                 }
             }
@@ -202,7 +209,7 @@ namespace guiprojekt
                 int x = 0;
                 while (alarms.Split('|')[x] != "")
                 {
-                    string alarm = alarms.Split('|')[x];
+                    string alarm = alarms.Split('|')[x]; //samma variabelnamn som funktion
                     if (alarm == time)
                     {
                         System.Windows.Forms.MessageBox.Show("ALARM!!!");
@@ -326,18 +333,9 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
-<<<<<<< HEAD
         }
 
-        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-           /* this.ShowInTaskbar = false;
-            MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
-            MyNotifyIcon.BalloonTipText = "Minimized the app ";
-            MyNotifyIcon.ShowBalloonTip(400);
-            MyNotifyIcon.Visible = true;*/
-        }
+       
 
         private void reminder_Click(object sender, RoutedEventArgs e)
         {
@@ -361,11 +359,11 @@ namespace guiprojekt
             MyNotifyIcon.BalloonTipText = "Minimized the app ";
             MyNotifyIcon.ShowBalloonTip(400);
             MyNotifyIcon.Visible = true;
-=======
+
             infoSunday.Children.Clear();
             readFromFile("Sunday", infoSunday);
             alarm(_alarms);
->>>>>>> 86c3b78ca38fc0deb2dd44d672f17ca7f0d9a6c6
+
         }
 
 
