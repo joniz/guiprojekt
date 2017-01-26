@@ -12,9 +12,9 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            
+
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140" />
             <ColumnDefinition />
@@ -22,19 +22,19 @@
         </Grid.ColumnDefinitions>
         <UniformGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
             <Label Content="Kom ihåg:" FontSize="13" FontStyle="Italic"   />
-            <TextBox Name="titleForReminder" ></TextBox>
-            
-        
+            <TextBox Name="titleForReminder"  TextChanged="testInput"></TextBox>
+
+
         </UniformGrid>
-        
+
         <Label Content="starttid: (hh:mm)" FontSize="13" FontStyle="Italic" Grid.Row="1"   />
-        <TextBox Name="starttid" Grid.Row="1" Grid.Column="1" TextChanged="testTimeInput" ></TextBox>
+        <TextBox Name="starttid" Grid.Row="1" Grid.Column="1" TextChanged="testInput" ></TextBox>
         <Grid>
-            
-            
+
+
         </Grid>
         <Label Content="Alarmtid: (hh:mm)" FontSize="13" FontStyle="Italic" Grid.Row="2"  />
-        <TextBox Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testTimeInput"></TextBox>
+        <TextBox Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
         <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
             <CheckBox Name="mondaybox">monday</CheckBox>
             <CheckBox Name="tuesdaybox">tuesday</CheckBox>
@@ -43,10 +43,11 @@
             <CheckBox Name="fridaybox">friday</CheckBox>
             <CheckBox Name="saturdaybox">saturday</CheckBox>
             <CheckBox Name="sundaybox">sunday</CheckBox>
-            
-            
+
+
         </UniformGrid>
         <Button Name="createReminder" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="False"></Button>
-        
+
     </Grid>
 </UserControl>
+

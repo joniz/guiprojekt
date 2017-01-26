@@ -9,12 +9,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace guiprojekt
 {
-    
+    [Serializable]
     class reminder
     {
         public string _title { get; set; }
         public DateTime _startTime { get; set; }
-        private DateTime _alarmTime;
+        public DateTime _alarmTime { get; set; }
 
         public List<DayOfWeek> _weekDays { get; set; }
        
@@ -30,7 +30,14 @@ namespace guiprojekt
             _weekDays = days;
 
             
-            
+                 
+        
+        }
+
+
+
+    public void saveToFile()
+        {
 
 
         }
