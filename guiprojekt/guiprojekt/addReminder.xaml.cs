@@ -21,13 +21,21 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        List<reminder> _reminderList = new List<reminder>();
+        private List<reminder> _reminderList = new List<reminder>();
         public addReminder()
         {
             InitializeComponent();
 
 
         }
+        public List<reminder> getReminderList
+        {
+           get { return _reminderList;}
+
+
+        }
+        
+        
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
             List<DayOfWeek> weekDays = new List<DayOfWeek>();

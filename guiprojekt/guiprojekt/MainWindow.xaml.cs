@@ -20,6 +20,8 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
+        addReminder reminder = new addReminder();
+        
         
         DateTime _date = new DateTime(2008, 3,15);
         int _weekday = 0;
