@@ -32,7 +32,7 @@ namespace guiprojekt
 
         
         int _weekday = 1;
-        bool running = true;
+       
 
 
 
@@ -54,10 +54,10 @@ namespace guiprojekt
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
 
-            aTimer = new System.Timers.Timer(10000);
+            aTimer = new System.Timers.Timer(1000);
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
-
+            
             //Thread aalarms = new Thread(new ThreadStart(AlarmThread)); //skapar threaden med funktionen AlarmThread, men startar den inte
             //aalarms.Start();
         }
@@ -86,10 +86,6 @@ namespace guiprojekt
            
             System.Diagnostics.Debug.WriteLine(System.DateTime.Now.DayOfWeek);
             System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute);
-
-
-
-
             if (_reminderListForThreads.Count != 0)
                 {
                     for (int i = 0; i < _reminderListForThreads.Count; i++)
@@ -104,6 +100,7 @@ namespace guiprojekt
                     }
                 }
             }
+
             if (ok)
             {
                 
@@ -391,7 +388,7 @@ namespace guiprojekt
 
             infoSunday.Children.Clear();
             readFromFile("Sunday", infoSunday);
-            alarm(_alarms);
+            //alarm(_alarms);
 
         }
 
