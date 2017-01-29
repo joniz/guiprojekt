@@ -24,11 +24,11 @@ namespace guiprojekt
     {
 
         //addReminder reminder = new addReminder();
-        
+
         
 
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
-
+        private static System.Timers.Timer aTimer;
 
         
         int _weekday = 1;
@@ -53,8 +53,13 @@ namespace guiprojekt
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
-            Thread aalarms = new Thread(new ThreadStart(AlarmThread)); //skapar threaden med funktionen AlarmThread, men startar den inte
-            aalarms.Start();
+
+            aTimer = new System.Timers.Timer(10000);
+            aTimer.Start();
+            aTimer.Elapsed += OnTimedEvent;
+
+            //Thread aalarms = new Thread(new ThreadStart(AlarmThread)); //skapar threaden med funktionen AlarmThread, men startar den inte
+            //aalarms.Start();
         }
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -75,23 +80,40 @@ namespace guiprojekt
         }
 
 
-        private void AlarmThread()
+        private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
-            while (running) 
-            {
-                if (_reminderListForThreads.Count != 0)
+            bool ok = false;
+           
+            System.Diagnostics.Debug.WriteLine(DateTime.Now.Hour);
+            System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute);
+
+
+
+
+            if (_reminderListForThreads.Count != 0)
                 {
                     for (int i = 0; i < _reminderListForThreads.Count; i++)
                     {
-                        if (_reminderListForThreads[i]._alarmTime == DateTime.Now)
+                        if (_reminderListForThreads[i]._alarmTime.Hour == DateTime.Now.Hour && _reminderListForThreads[i]._alarmTime.Minute == DateTime.Now.Minute)
                         {
-                            System.Windows.Forms.MessageBox.Show("ALARM!!!");
-                            MyNotifyIcon.ShowBalloonTip(4000);
-                        }
+                            
+                            ok = true;
+                            System.Diagnostics.Debug.WriteLine("Hej");
+
+                        
                     }
                 }
             }
+            if (ok)
+            {
+                
+                //System.Windows.Forms.MessageBox.Show("ALARM!!!");
+                MyNotifyIcon.ShowBalloonTip(4000);
+                MyNotifyIcon.BalloonTipTitle = "Daily reminder";
+                MyNotifyIcon.BalloonTipText = "Du har ett alarm som kan stängas av";
+            }
         }
+
 
        
 

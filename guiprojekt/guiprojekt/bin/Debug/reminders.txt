@@ -1,3 +1,18 @@
 
 hej|13:0|14:0|Monday|
 Hej|13:0|14:0|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|
+hej|13:0|19:53|Monday|
+awdaw|13:0|19:54|Monday|
+awdawd|13:0|19:56|Monday|
+awdad|14:0|19:57|Monday|
+awdawd|13:0|14:0|Monday|Thursday|
+test|14:0|18:4|Monday|
+test|14:0|18:10|Monday|
+titel|18:25|18:25|Monday|
+awdaw|14:0|18:33|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|
+adwd|13:0|18:38|Monday|
+adwa|13:0|18:39|Monday|
+132|13:0|18:42|Monday|
+13213|13:0|18:45|Monday|
+13:00|13:0|19:4|Monday|
+tig|14:0|19:22|
