@@ -53,7 +53,7 @@ namespace guiprojekt
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
-
+            MyNotifyIcon.BalloonTipClicked += CheckAlarm;
             aTimer = new System.Timers.Timer(1000);
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
@@ -65,9 +65,10 @@ namespace guiprojekt
         {
 
             this.WindowState = WindowState.Normal;
-            this.Focus();
+            
             MyNotifyIcon.Visible = false;
             this.ShowInTaskbar = true;
+            this.Focus();
         }
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -79,7 +80,11 @@ namespace guiprojekt
             
         }
 
+        public void CheckAlarm(object sender, EventArgs e)
+        {
+           //för att bocka av alarm typ
 
+        }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
             bool ok = false;
@@ -380,16 +385,19 @@ namespace guiprojekt
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            this.ShowInTaskbar = false;
-            MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
-            MyNotifyIcon.BalloonTipText = "Minimized the app ";
-            MyNotifyIcon.ShowBalloonTip(400);
-            MyNotifyIcon.Visible = true;
+            if (this.WindowState == System.Windows.WindowState.Minimized)
+            {
+                this.ShowInTaskbar = false;
+                MyNotifyIcon.Visible = true;
+                MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
+                MyNotifyIcon.BalloonTipText = "Minimized the app ";
+                MyNotifyIcon.ShowBalloonTip(400);
+                
 
-            infoSunday.Children.Clear();
-            readFromFile("Sunday", infoSunday);
-            //alarm(_alarms);
-
+                infoSunday.Children.Clear();
+                readFromFile("Sunday", infoSunday);
+                //alarm(_alarms);
+            }
         }
 
 
