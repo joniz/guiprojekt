@@ -84,7 +84,7 @@ namespace guiprojekt
         {
             bool ok = false;
            
-            System.Diagnostics.Debug.WriteLine(DateTime.Now.Hour);
+            System.Diagnostics.Debug.WriteLine(System.DateTime.Now.DayOfWeek);
             System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute);
 
 
@@ -94,7 +94,7 @@ namespace guiprojekt
                 {
                     for (int i = 0; i < _reminderListForThreads.Count; i++)
                     {
-                        if (_reminderListForThreads[i]._alarmTime.Hour == DateTime.Now.Hour && _reminderListForThreads[i]._alarmTime.Minute == DateTime.Now.Minute)
+                        if (_reminderListForThreads[i]._alarmTime.Hour == DateTime.Now.Hour && _reminderListForThreads[i]._alarmTime.Minute == DateTime.Now.Minute && _reminderListForThreads[i]._weekDays[i] == System.DateTime.Now.DayOfWeek)
                         {
                             
                             ok = true;
@@ -183,6 +183,7 @@ namespace guiprojekt
 
         private void readFromFile(string day, StackPanel panel)
         {
+            _reminderListForThreads.Clear();
             if (File.Exists(@"reminders.txt"))
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");

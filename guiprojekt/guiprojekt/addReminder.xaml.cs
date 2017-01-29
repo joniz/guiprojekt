@@ -22,7 +22,7 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        private List<reminder> _reminderList = new List<reminder>();
+        
 
 
         //List<reminder> _reminderList = new List<reminder>();
@@ -86,7 +86,7 @@ namespace guiprojekt
             
 
 
-            _reminderList.Add(reminderObj);
+            
            
             writeToFile(reminderObj);
 
@@ -148,7 +148,7 @@ namespace guiprojekt
                 createReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false; ;
+            else createReminder.IsEnabled = false; 
         }
    
     }
