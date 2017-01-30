@@ -15,7 +15,7 @@ namespace guiprojekt
         public string _title { get; set; }
         public DateTime _startTime { get; set; }
         public DateTime _alarmTime { get; set; }
-
+        public int _idNum;
         public List<DayOfWeek> _weekDays { get; set; }
        
 

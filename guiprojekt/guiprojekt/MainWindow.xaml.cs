@@ -73,12 +73,14 @@ namespace guiprojekt
             aTimer = new System.Timers.Timer(5000);
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
-            if(args[1] == "startup")
+            if(args.Length > 1)
             {
-                this.WindowState = System.Windows.WindowState.Minimized;
-                Window_Deactivated();                
+                 if(args[1] == "startup")
+                 {
+                 this.WindowState = System.Windows.WindowState.Minimized;
+                 Window_Deactivated();                
+                 }
             }
-           
         }
 
       
@@ -132,6 +134,9 @@ namespace guiprojekt
                 }
             }
         }
+
+
+        
 
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
