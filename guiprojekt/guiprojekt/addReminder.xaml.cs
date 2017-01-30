@@ -120,35 +120,37 @@ namespace guiprojekt
         {
             using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
             {
+
                 BinaryFormatter bin = new BinaryFormatter();
                 bin.Serialize(stream, remObj);
 
-            }
-            
-            
-            
-            
-            
-            
-            /* using (StreamWriter outputFile = new StreamWriter(@"reminders.txt", true))
-             {
-                 outputFile.WriteLine("");
+
+                /* outputFile.WriteLine("");
                  outputFile.Write(remObj._title);
                  outputFile.Write("|");
-                 outputFile.Write(remObj._startTime.Hour);
+                 outputFile.Write(remObj._startTime.Hour.ToString());
                  outputFile.Write(":");
-                 outputFile.Write(remObj._startTime.Minute);
+                 outputFile.Write(remObj._startTime.Minute.ToString());
                  outputFile.Write("|");
-                 outputFile.Write(remObj._alarmTime.Hour);
+                 outputFile.Write(remObj._alarmTime.Hour.ToString());
                  outputFile.Write(":");
-                 outputFile.Write(remObj._alarmTime.Minute);
+                 outputFile.Write(remObj._alarmTime.Minute.ToString());
                  outputFile.Write("|");
                  for (int i = 0; remObj._weekDays.Count > i; i++)
                  {
                      outputFile.Write(remObj._weekDays[i]);
                      outputFile.Write("|");
                  }
-             }*/
+
+             }
+             */
+
+
+
+
+
+          
+            }
         }
 
         private bool isValidTime(string time)
