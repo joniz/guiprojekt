@@ -1,2 +1,5 @@
 
-tjo|15:50|15:19|Tuesday|Friday|
+Mata Fiskarna|14:30|14:20|Monday|Thursday|Friday|
+ramla|6:30|6:0|
+Åka Skidor|13:0|12:30|Monday|Tuesday|Friday|
+alarm|6:30|10:39|Saturday|
