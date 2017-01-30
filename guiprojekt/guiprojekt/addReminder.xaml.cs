@@ -23,10 +23,10 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        
-
 
         List<reminder> _reminderList = new List<reminder>();
+
+        
 
 
         public addReminder()
@@ -47,6 +47,7 @@ namespace guiprojekt
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
+               
             List<DayOfWeek> weekDays = new List<DayOfWeek>();
 
             string reminderTitle = titleForReminder.Text;
@@ -85,12 +86,12 @@ namespace guiprojekt
 
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
             
-
+            
 
             
            
-            writeToFile(reminderObj);
-
+            reminder.writeToFile(_reminderList);
+            reminder.readFromFile();
             titleForReminder.Text = "";
             alarmtid.Text = "";
             starttid.Text = "";
@@ -116,42 +117,16 @@ namespace guiprojekt
             }
         }
 
-        private void writeToFile(reminder remObj)
-        {
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
-            {
-
-                BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(stream, remObj);
-
-
-                /* outputFile.WriteLine("");
-                 outputFile.Write(remObj._title);
-                 outputFile.Write("|");
-                 outputFile.Write(remObj._startTime.Hour.ToString());
-                 outputFile.Write(":");
-                 outputFile.Write(remObj._startTime.Minute.ToString());
-                 outputFile.Write("|");
-                 outputFile.Write(remObj._alarmTime.Hour.ToString());
-                 outputFile.Write(":");
-                 outputFile.Write(remObj._alarmTime.Minute.ToString());
-                 outputFile.Write("|");
-                 for (int i = 0; remObj._weekDays.Count > i; i++)
-                 {
-                     outputFile.Write(remObj._weekDays[i]);
-                     outputFile.Write("|");
-                 }
-
-             }
-             */
+        
+             
 
 
 
 
 
           
-            }
-        }
+            
+        
 
         private bool isValidTime(string time)
         {
