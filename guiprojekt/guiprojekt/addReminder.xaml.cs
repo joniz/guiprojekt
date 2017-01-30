@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 namespace guiprojekt
@@ -22,10 +23,10 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        private List<reminder> _reminderList = new List<reminder>();
+        
 
 
-        //List<reminder> _reminderList = new List<reminder>();
+        List<reminder> _reminderList = new List<reminder>();
 
 
         public addReminder()
@@ -86,7 +87,7 @@ namespace guiprojekt
             
 
 
-            _reminderList.Add(reminderObj);
+            
            
             writeToFile(reminderObj);
 
@@ -100,37 +101,57 @@ namespace guiprojekt
             fridaybox.IsChecked = false;
             saturdaybox.IsChecked = false;
             sundaybox.IsChecked = false;
+
+            
         }
 
         private void checkTextFile()
         {
             string path = @"reminders.txt";
+            string path2 = @"remindersBin.bin";
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
+            }else if (!File.Exists(path2))
+            {
+                using (StreamWriter sw = File.CreateText(path2)) { }
             }
         }
 
         private void writeToFile(reminder remObj)
         {
-            using (StreamWriter outputFile = new StreamWriter(@"reminders.txt", true))
+            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
             {
-                outputFile.WriteLine("");
-                outputFile.Write(remObj._title);
-                outputFile.Write("|");
-                outputFile.Write(remObj._startTime.Hour);
-                outputFile.Write(":");
-                outputFile.Write(remObj._startTime.Minute);
-                outputFile.Write("|");
-                outputFile.Write(remObj._alarmTime.Hour);
-                outputFile.Write(":");
-                outputFile.Write(remObj._alarmTime.Minute);
-                outputFile.Write("|");
-                for (int i = 0; remObj._weekDays.Count > i; i++)
-                {
-                    outputFile.Write(remObj._weekDays[i]);
-                    outputFile.Write("|");
-                }
+
+                BinaryFormatter bin = new BinaryFormatter();
+                bin.Serialize(stream, remObj);
+
+
+                /* outputFile.WriteLine("");
+                 outputFile.Write(remObj._title);
+                 outputFile.Write("|");
+                 outputFile.Write(remObj._startTime.Hour.ToString());
+                 outputFile.Write(":");
+                 outputFile.Write(remObj._startTime.Minute.ToString());
+                 outputFile.Write("|");
+                 outputFile.Write(remObj._alarmTime.Hour.ToString());
+                 outputFile.Write(":");
+                 outputFile.Write(remObj._alarmTime.Minute.ToString());
+                 outputFile.Write("|");
+                 for (int i = 0; remObj._weekDays.Count > i; i++)
+                 {
+                     outputFile.Write(remObj._weekDays[i]);
+                     outputFile.Write("|");
+                 }
+
+             }
+             */
+
+
+
+
+
+          
             }
         }
 
@@ -148,7 +169,7 @@ namespace guiprojekt
                 createReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false; ;
+            else createReminder.IsEnabled = false; 
         }
    
     }
