@@ -1,2 +1,4 @@
 
 adawd|13:0|14:0|Monday|Sunday|
+asdasd|19:1|19:26|Monday|Thursday|
+tea|19:33|19:50|Sunday|
