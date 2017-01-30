@@ -22,13 +22,27 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
+        
 
-        List<reminder> _reminderList = new List<reminder>();
+
+        //List<reminder> _reminderList = new List<reminder>();
+
 
         public addReminder()
         {
             InitializeComponent();
         }
+
+       /* public List<reminder> getReminderList
+        {
+           get { return _reminderList;}
+
+
+        }*/
+        
+        
+
+
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
@@ -72,7 +86,7 @@ namespace guiprojekt
             
 
 
-            _reminderList.Add(reminderObj);
+            
            
             writeToFile(reminderObj);
 
@@ -104,13 +118,13 @@ namespace guiprojekt
                 outputFile.WriteLine("");
                 outputFile.Write(remObj._title);
                 outputFile.Write("|");
-                outputFile.Write(remObj._startTime.Hour);
+                outputFile.Write(remObj._startTime.Hour.ToString());
                 outputFile.Write(":");
-                outputFile.Write(remObj._startTime.Minute);
+                outputFile.Write(remObj._startTime.Minute.ToString());
                 outputFile.Write("|");
-                outputFile.Write(remObj._alarmTime.Hour);
+                outputFile.Write(remObj._alarmTime.Hour.ToString());
                 outputFile.Write(":");
-                outputFile.Write(remObj._alarmTime.Minute);
+                outputFile.Write(remObj._alarmTime.Minute.ToString());
                 outputFile.Write("|");
                 for (int i = 0; remObj._weekDays.Count > i; i++)
                 {
@@ -134,7 +148,7 @@ namespace guiprojekt
                 createReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false; ;
+            else createReminder.IsEnabled = false; 
         }
    
     }

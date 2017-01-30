@@ -36,17 +36,17 @@
         <Label Content="Alarmtid: (hh:mm)" FontSize="13" FontStyle="Italic" Grid.Row="2"  />
         <TextBox Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
         <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
-            <CheckBox Name="mondaybox">Måndag</CheckBox>
-            <CheckBox Name="tuesdaybox">Tisdag</CheckBox>
-            <CheckBox Name ="wednesdaybox">Onsdag</CheckBox>
-            <CheckBox Name="thursdaybox">Torsdag</CheckBox>
-            <CheckBox Name="fridaybox">Fredag</CheckBox>
-            <CheckBox Name="saturdaybox">Lördag</CheckBox>
-            <CheckBox Name="sundaybox">Söndag</CheckBox>
+            <CheckBox Name="mondaybox">monday</CheckBox>
+            <CheckBox Name="tuesdaybox">tuesday</CheckBox>
+            <CheckBox Name ="wednesdaybox">wednesday</CheckBox>
+            <CheckBox Name="thursdaybox">thursday</CheckBox>
+            <CheckBox Name="fridaybox">friday</CheckBox>
+            <CheckBox Name="saturdaybox">saturday</CheckBox>
+            <CheckBox Name="sundaybox">sunday</CheckBox>
 
 
         </UniformGrid>
-        <Button Name="createReminder" Content="Skapa Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="False"></Button>
+        <Button Name="createReminder" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="False"></Button>
 
     </Grid>
 </UserControl>
