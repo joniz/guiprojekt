@@ -22,16 +22,22 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        //addReminder reminder = new addReminder();
+        
+        
+
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
 
-        DateTime _date = new DateTime(2008, 3,15);
+
+        
         int _weekday = 1;
         bool running = true;
 
 
 
 
-        List<reminder> _reminderList = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
+        List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
         int _page = 0;
         string _alarms;
         string _alarms2; //testvariabel for now, tas bort senare om det går annars döps om
@@ -73,11 +79,11 @@ namespace guiprojekt
         {
             while (running) 
             {
-                if (_reminderList.Count != 0)
+                if (_reminderListForThreads.Count != 0)
                 {
-                    for (int i = 0; i < _reminderList.Count; i++)
+                    for (int i = 0; i < _reminderListForThreads.Count; i++)
                     {
-                        if (_reminderList[i]._alarmTime == DateTime.Now)
+                        if (_reminderListForThreads[i]._alarmTime == DateTime.Now)
                         {
                             System.Windows.Forms.MessageBox.Show("ALARM!!!");
                             MyNotifyIcon.ShowBalloonTip(4000);
@@ -194,7 +200,7 @@ namespace guiprojekt
                             
                             
                         }
-                       _reminderList.Add(new reminder(title,start,_alarms2,days)); //lägger till remindern i en lista med reminders
+                        _reminderListForThreads.Add(new reminder(title,start,_alarms2,days)); //lägger till remindern i en lista med reminders
                     }
                 }
             }
