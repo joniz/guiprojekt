@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
+
 namespace guiprojekt
 {
     /// <summary>
@@ -32,7 +33,7 @@ namespace guiprojekt
         List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
         int _page = 0;
         string _alarms;
-        string _alarms2; //testvariabel for now, tas bort senare om det går annars döps om
+        
         string[] _allAlarms = new string[20];
         string[] _allStartAlarms = new string[20];
         string[] _allAlarmDays = new string[20];
@@ -44,6 +45,22 @@ namespace guiprojekt
 
         public MainWindow()
         {
+            string path = @"C:\Users\Oscar\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
+            string batStart = "cd \"";
+            batStart += Directory.GetCurrentDirectory();
+            string batContinue = "Start guiprojekt.exe startup";
+            using (StreamWriter sw = File.CreateText(path)) 
+            {
+                    sw.WriteLine(batStart);
+                    sw.WriteLine(batContinue);
+            }
+            
+
+            string[] args = Environment.GetCommandLineArgs();
+
+            
+
+            
             InitializeComponent();
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
@@ -52,9 +69,19 @@ namespace guiprojekt
             aTimer = new System.Timers.Timer(5000);
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
-
-           
+            if(args.Length > 1)
+            {
+                 if(args[1] == "startup")
+                 {
+                 this.WindowState = System.Windows.WindowState.Minimized;
+                 Window_Deactivated();                
+                 }
+            }
         }
+
+      
+
+
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
 
@@ -64,11 +91,7 @@ namespace guiprojekt
             this.ShowInTaskbar = true;
             this.Focus();
         }
-        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            this.ShowInTaskbar = false;
-        }
-
+      
         private void monthPicker_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -108,14 +131,17 @@ namespace guiprojekt
             }
         }
 
+
+        
+
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
             /*bool ok = false;*/
             /*System.Diagnostics.Debug.WriteLine(System.DateTime.Now.DayOfWeek);
             System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute);*/
 
-            DateTime currentTime = DateTime.Now;
-
+           // DateTime currentTime = DateTime.Now;
+            
             int x = 1;
             string time = DateTime.Now.Hour + ":" + DateTime.Now.Minute;
             string day = DateTime.Now.DayOfWeek.ToString();
@@ -277,24 +303,7 @@ namespace guiprojekt
             } 
         
 
-        private void alarm(string alarms)
-        {
-            if (File.Exists(@"reminders.txt"))
-            {
-                DateTime currentTime = DateTime.Now;
-                string time = currentTime.Hour + ":" + currentTime.Minute;
-                int x = 0;
-                while (alarms.Split('|')[x] != "")
-                {
-                    string alarm = alarms.Split('|')[x]; //samma variabelnamn som funktion
-                    if (alarm == time)
-                    {
-                        System.Windows.Forms.MessageBox.Show("ALARM!!!");
-                    }
-                    x++;
-                }
-            }
-        }
+
 
         private void monday_Click(object sender, RoutedEventArgs e)
         {
@@ -429,7 +438,7 @@ namespace guiprojekt
 
         }
 
-        private void Window_Deactivated(object sender, EventArgs e)
+        private void Window_Deactivated(object sender=null, EventArgs e=null)
         {
             if (this.WindowState == System.Windows.WindowState.Minimized)
             {
@@ -438,11 +447,7 @@ namespace guiprojekt
                 MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
                 MyNotifyIcon.BalloonTipText = "Minimized the app ";
                 MyNotifyIcon.ShowBalloonTip(400);
-
-
-                infoSunday.Children.Clear();
-                readFromFile("Sunday", infoSunday);
-                //alarm(_alarms);
+                
             }
         }
 

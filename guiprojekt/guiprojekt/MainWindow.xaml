@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:guiprojekt"
         
 
-        Title="MainWindow" Height="450" Width="550" IsVisibleChanged="Window_IsVisibleChanged"  Deactivated="Window_Deactivated">
+        Title="MainWindow" Height="450" Width="550"   Deactivated="Window_Deactivated">
 
     <Grid  Background="LightBlue">
 

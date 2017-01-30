@@ -101,6 +101,8 @@ namespace guiprojekt
             fridaybox.IsChecked = false;
             saturdaybox.IsChecked = false;
             sundaybox.IsChecked = false;
+
+            
         }
 
         private void checkTextFile()
