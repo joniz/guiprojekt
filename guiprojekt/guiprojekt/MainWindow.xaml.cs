@@ -48,11 +48,7 @@ namespace guiprojekt
             string path = @"C:\Users\Oscar\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
             string batStart = "cd \"";
             batStart += Directory.GetCurrentDirectory();
-            string batContinue = "Start guiprojekt.exe -startup";
-           
-            
-           
-            
+            string batContinue = "Start guiprojekt.exe startup";
             using (StreamWriter sw = File.CreateText(path)) 
             {
                     sw.WriteLine(batStart);
@@ -451,11 +447,7 @@ namespace guiprojekt
                 MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
                 MyNotifyIcon.BalloonTipText = "Minimized the app ";
                 MyNotifyIcon.ShowBalloonTip(400);
-
-
-                infoSunday.Children.Clear();
-                readFromFile("Sunday", infoSunday);
-                //alarm(_alarms);
+                
             }
         }
 
