@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Threading;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace guiprojekt
 {
@@ -58,8 +59,7 @@ namespace guiprojekt
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
 
-            //Thread aalarms = new Thread(new ThreadStart(AlarmThread)); //skapar threaden med funktionen AlarmThread, men startar den inte
-            //aalarms.Start();
+           
         }
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -183,10 +183,25 @@ namespace guiprojekt
 
         private void readFromFile(string day, StackPanel panel)
         {
-            _reminderListForThreads.Clear();
-            if (File.Exists(@"reminders.txt"))
+            if (File.Exists(@"remindersBin.bin"))
             {
-                System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
+
+
+
+
+
+            }
+            
+            
+            
+            
+            
+            
+            
+            /*if (File.Exists(@"reminders.txt"))
+            {
+              
+                 System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
                 _alarms = "";
                 _alarms2 = "";
                 int count = checkNumberOfLines();
@@ -225,8 +240,8 @@ namespace guiprojekt
                         }
                         _reminderListForThreads.Add(new reminder(title,start,_alarms2,days)); //lägger till remindern i en lista med reminders
                     }
-                }
-            }
+                } */
+            } 
         }
 
         private void alarm(string alarms)
