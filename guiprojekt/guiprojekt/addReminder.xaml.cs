@@ -24,14 +24,9 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
+        MainWindow _parentWindow;
 
 
-        MainWindow parentWindow; 
-        
-
-        List<reminder> _reminderList = new List<reminder>();
-
-        
 
 
         public addReminder()
@@ -39,21 +34,21 @@ namespace guiprojekt
             InitializeComponent();
         }
 
-       /* public List<reminder> getReminderList
-        {
-           get { return _reminderList;}
+        /* public List<reminder> getReminderList
+         {
+            get { return _reminderList;}
 
 
-        }*/
-        
-        
+         }*/
+
+
 
 
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
-            parentWindow = Application.Current.MainWindow as MainWindow;
-            System.Diagnostics.Debug.WriteLine(parentWindow._listWithAllReminders.Count);
+            _parentWindow = Application.Current.MainWindow as MainWindow;
+            System.Diagnostics.Debug.WriteLine(_parentWindow._listWithAllReminders.Count);
             if (boxCheck())
             {
                 List<DayOfWeek> weekDays = new List<DayOfWeek>();
@@ -96,15 +91,15 @@ namespace guiprojekt
 
 
 
-                parentWindow._listWithAllReminders.Add(reminderObj);
-                
-
-                writeToFile(parentWindow._listWithAllReminders);
-                
+                _parentWindow._listWithAllReminders.Add(reminderObj);
 
 
+                writeToFile(_parentWindow._listWithAllReminders);
 
-                
+
+
+
+
 
                 titleForReminder.Text = "";
                 alarmtid.Text = "";
@@ -122,6 +117,7 @@ namespace guiprojekt
 
 
 
+
         private void writeToFile(List<reminder> reminderList)
         {
 
@@ -134,41 +130,7 @@ namespace guiprojekt
                 bin.Serialize(stream, reminderList);
 
 
-                /* outputFile.WriteLine("");
 
-                 outputFile.Write(remObj._title);
-
-                 outputFile.Write("|");
-
-                 outputFile.Write(remObj._startTime.Hour.ToString());
-
-                 outputFile.Write(":");
-
-                 outputFile.Write(remObj._startTime.Minute.ToString());
-
-                 outputFile.Write("|");
-
-                 outputFile.Write(remObj._alarmTime.Hour.ToString());
-
-                 outputFile.Write(":");
-
-                 outputFile.Write(remObj._alarmTime.Minute.ToString());
-
-                 outputFile.Write("|");
-
-                 for (int i = 0; remObj._weekDays.Count > i; i++)
-
-                 {
-
-                     outputFile.Write(remObj._weekDays[i]);
-
-                     outputFile.Write("|");
-
-                 }
-
-             }
-
-             */
 
 
 
@@ -182,10 +144,18 @@ namespace guiprojekt
                 return true;
             }
             else return false;
-
-
-
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
         private void checkTextFile()
@@ -195,14 +165,15 @@ namespace guiprojekt
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
-            }else if (!File.Exists(path2))
+            }
+            else if (!File.Exists(path2))
             {
                 using (StreamWriter sw = File.CreateText(path2)) { }
             }
         }
 
 
-       
+
 
         private bool isValidTime(string time)
         {
@@ -218,9 +189,13 @@ namespace guiprojekt
                 createReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false; 
+            else createReminder.IsEnabled = false;
         }
-   
     }
 }
+
+    
+
+
+
 

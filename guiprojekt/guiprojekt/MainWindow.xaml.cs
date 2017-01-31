@@ -48,12 +48,14 @@ namespace guiprojekt
 
         public MainWindow()
         {
+
             readFromFile();
             
             string env = Environment.UserName;
             string path="";
             if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 2)
                 path += @"C:\Users\" + env + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
+
             else
                 path += @"C:\Users\Hugoqqqq\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
             string batStart = "cd \"";
@@ -240,6 +242,7 @@ namespace guiprojekt
 
 
 
+<<<<<<< HEAD
 
             _reminderListForThreads.Add(reminderObj) ;
 
@@ -289,6 +292,57 @@ namespace guiprojekt
         }
 
 
+=======
+
+            _reminderListForThreads.Add(reminderObj) ;
+
+            testeet.titleForReminder.Text = "";
+            testeet.alarmtid.Text = "";
+            testeet.starttid.Text = "";
+            testeet.mondaybox.IsChecked = false;
+            testeet.tuesdaybox.IsChecked = false;
+            testeet.wednesdaybox.IsChecked = false;
+            testeet.thursdaybox.IsChecked = false;
+            testeet.fridaybox.IsChecked = false;
+            testeet.saturdaybox.IsChecked = false;
+            testeet.sundaybox.IsChecked = false;
+        }
+
+        private void checkTextFile()
+        {
+            
+            string path = @"reminders.txt";
+            string path2 = @"remindersBin.bin";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter sw = File.CreateText(path)) { }
+            }
+            else if (!File.Exists(path2))
+            {
+                using (StreamWriter sw = File.CreateText(path2)) { }
+            }
+        }
+
+        private bool isValidTime(string time)
+        {
+            DateTime testVariable;
+            return DateTime.TryParse(time, out testVariable);
+        }
+
+        private void testInput(object sender, TextChangedEventArgs e)
+        {
+            
+            string titel = testeet.titleForReminder.Text;
+            if (isValidTime(testeet.starttid.Text) && isValidTime(testeet.alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3))
+            {
+                testeet.createReminder.IsEnabled = true;
+
+            }
+            else testeet.createReminder.IsEnabled = false;
+        }
+
+
+>>>>>>> 9be84ccead9592e1081c80a8ac687a1a534b5617
 
         */
         //------------------------------------------------------------------------------------------------------
@@ -369,11 +423,11 @@ namespace guiprojekt
                 using (Stream stream = File.Open(@"remindersBin.bin", FileMode.Open))
                 {
                     BinaryFormatter bin = new BinaryFormatter();
+
                     _listWithAllReminders = (List<reminder>)bin.Deserialize(stream);
                          
                     
-                    
-                }
+                 }
 
 
 
@@ -383,49 +437,7 @@ namespace guiprojekt
         }
 
 
-        /*
-
-            
-             if (File.Exists(@"reminders.txt"))
-             {
-
-                 System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
-                 _alarms = "";
-                 _alarms2 = "";
-                 int count = checkNumberOfLines();
-
-                 for (int x = 0; x < count; x++)
-                 {
-                     List<DayOfWeek> days = new List<DayOfWeek>(); //listan med vilka dagar en viss reminder ska vara på
-                     string read = file.ReadLine();
-                     if (read != "")
-                     {
-                         string title = read.Split('|')[0];
-                         string start = read.Split('|')[1];
-                         string alarm = read.Split('|')[2];
-                         _alarms2 = read.Split('|')[2];
-
-                         int y = 3;
-
-                         while (read.Split('|')[y] != "")
-                         {
-                             if (read.Split('|')[y] == day)
-                             {
-                                 Label label = new Label();
-                                 label.Content = "Titel: " + title + " Starttid: " + start + " Alarmtid: " + alarm;
-                                 addLabel(panel, label);
-
-                                 alarm = alarm + "|";
-                                 _alarms += alarm;
-                             }
-                             days.Add((DayOfWeek)Enum.Parse(typeof(DayOfWeek), read.Split('|')[y])); // lägger till dagen i en lista
-                             y++;
-                         }
-                         _reminderListForThreads.Add(new reminder(title, start, _alarms2, days)); //lägger till remindern i en lista med reminders
-                     }
-                 }
-             }
-    } */
+        
         
         
 
