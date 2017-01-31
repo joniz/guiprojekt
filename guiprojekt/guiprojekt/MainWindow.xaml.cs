@@ -17,6 +17,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 
 
+
 namespace guiprojekt
 {
     /// <summary>
@@ -24,13 +25,15 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        //addReminder reminder = new addReminder();
+        List<reminder> _listWithAllReminders = new List<reminder>();
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private static System.Timers.Timer aTimer;
+
         
         int _weekday = 1;
         
         public List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
+
         int _page = 0;
         string _alarms;
         
@@ -66,6 +69,7 @@ namespace guiprojekt
 
             
             InitializeComponent();
+
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
@@ -73,7 +77,7 @@ namespace guiprojekt
             aTimer = new System.Timers.Timer(5000);
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
-            
+
             if(args.Length > 1)
             {
                  if(args[1] == "startup")
@@ -84,7 +88,6 @@ namespace guiprojekt
             }
         }
 
-      
 
 
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -330,6 +333,7 @@ namespace guiprojekt
 
         private void addLabel(StackPanel day, Label text)
         {
+            
             text.Background = _brush;
             text.BorderBrush = _brush2;
             text.BorderThickness = _thick;
@@ -348,70 +352,85 @@ namespace guiprojekt
             return count;
         }
 
-        private void readFromFile(string day, StackPanel panel)
+        public void NewReminder(reminder obj)
+        {
+            
+
+            
+        }
+
+        public static void readFromFile()
         {
             if (File.Exists(@"remindersBin.bin"))
             {
-
                 using (Stream stream = File.Open(@"remindersBin.bin", FileMode.Open))
                 {
                     BinaryFormatter bin = new BinaryFormatter();
-                    List<reminder> _reminderListForThreads = (List<reminder>)bin.Deserialize(stream);
+                    List<reminder> _listWithAllReminders = (List<reminder>)bin.Deserialize(stream);
 
+                    for (int i = 0; _listWithAllReminders.Count > i; i++)
+                    {
+                        
+                        System.Diagnostics.Debug.WriteLine(_listWithAllReminders.Count);
+
+                
+
+                    }
                 }
 
 
 
+
             }
+
+        }
+
+
+        /*
+
             
-            
-            
-            
-            
-            
-            
-            /*if (File.Exists(@"reminders.txt"))
-            {
-              
+             if (File.Exists(@"reminders.txt"))
+             {
+
                  System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
-                _alarms = "";
-                _alarms2 = "";
-                int count = checkNumberOfLines();
+                 _alarms = "";
+                 _alarms2 = "";
+                 int count = checkNumberOfLines();
 
-                for (int x = 0; x < count; x++)
-                {
-                    List<DayOfWeek> days = new List<DayOfWeek>(); //listan med vilka dagar en viss reminder ska vara på
-                    string read = file.ReadLine();
-                    if (read != "")
-                    {
-                        string title = read.Split('|')[0];
-                        string start = read.Split('|')[1];
-                        string alarm = read.Split('|')[2];
-                        _alarms2 = read.Split('|')[2];
+                 for (int x = 0; x < count; x++)
+                 {
+                     List<DayOfWeek> days = new List<DayOfWeek>(); //listan med vilka dagar en viss reminder ska vara på
+                     string read = file.ReadLine();
+                     if (read != "")
+                     {
+                         string title = read.Split('|')[0];
+                         string start = read.Split('|')[1];
+                         string alarm = read.Split('|')[2];
+                         _alarms2 = read.Split('|')[2];
 
-                        int y = 3;
+                         int y = 3;
 
-                        while (read.Split('|')[y] != "")
-                        {
-                            if (read.Split('|')[y] == day)
-                            {
-                                Label label = new Label();
-                                label.Content = "Titel: " + title + " Starttid: " + start + " Alarmtid: " + alarm;
-                                addLabel(panel, label);
+                         while (read.Split('|')[y] != "")
+                         {
+                             if (read.Split('|')[y] == day)
+                             {
+                                 Label label = new Label();
+                                 label.Content = "Titel: " + title + " Starttid: " + start + " Alarmtid: " + alarm;
+                                 addLabel(panel, label);
 
-                                alarm = alarm + "|";
-                                _alarms += alarm;
-                            }
-                            days.Add((DayOfWeek)Enum.Parse(typeof(DayOfWeek), read.Split('|')[y])); // lägger till dagen i en lista
-                            y++;
-                        }
-                        _reminderListForThreads.Add(new reminder(title, start, _alarms2, days)); //lägger till remindern i en lista med reminders
-                    }
-                } */
-            } 
+                                 alarm = alarm + "|";
+                                 _alarms += alarm;
+                             }
+                             days.Add((DayOfWeek)Enum.Parse(typeof(DayOfWeek), read.Split('|')[y])); // lägger till dagen i en lista
+                             y++;
+                         }
+                         _reminderListForThreads.Add(new reminder(title, start, _alarms2, days)); //lägger till remindern i en lista med reminders
+                     }
+                 }
+             }
+    } */
         
-
-
+        
 
         private void monday_Click(object sender, RoutedEventArgs e)
         {
@@ -426,7 +445,7 @@ namespace guiprojekt
                 infoMonday.Visibility = System.Windows.Visibility.Hidden;
             }
             infoMonday.Children.Clear();
-            readFromFile("Monday", infoMonday);
+            readFromFile();
             saveAlarms();
         }
 
@@ -443,7 +462,7 @@ namespace guiprojekt
                 infoTuesday.Visibility = System.Windows.Visibility.Hidden;
             }
             infoTuesday.Children.Clear();
-            readFromFile("Tuesday", infoTuesday);
+            //readFromFile("Tuesday", infoTuesday);
             saveAlarms();
         }
 
@@ -460,7 +479,7 @@ namespace guiprojekt
                 infoWednesday.Visibility = System.Windows.Visibility.Hidden;
             }
             infoWednesday.Children.Clear();
-            readFromFile("Wednesday", infoWednesday);
+            //readFromFile("Wednesday", infoWednesday);
             saveAlarms();
         }
 
@@ -477,7 +496,7 @@ namespace guiprojekt
                 infoThursday.Visibility = System.Windows.Visibility.Hidden;
             }
             infoThursday.Children.Clear();
-            readFromFile("Thursday", infoThursday);
+            //readFromFile("Thursday", infoThursday);
             saveAlarms();
         }
 
@@ -494,7 +513,7 @@ namespace guiprojekt
                 infoFriday.Visibility = System.Windows.Visibility.Hidden;
             }
             infoFriday.Children.Clear();
-            readFromFile("Friday", infoFriday);
+            //readFromFile("Friday", infoFriday);
             saveAlarms();
         }
 
@@ -511,7 +530,7 @@ namespace guiprojekt
                 infoSaturday.Visibility = System.Windows.Visibility.Hidden;
             }
             infoSaturday.Children.Clear();
-            readFromFile("Saturday", infoSaturday);
+            //readFromFile("Saturday", infoSaturday);
             saveAlarms();
         }
 
@@ -555,7 +574,6 @@ namespace guiprojekt
                 MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
                 MyNotifyIcon.BalloonTipText = "Minimized the app ";
                 MyNotifyIcon.ShowBalloonTip(400);
-                
             }
         }
 

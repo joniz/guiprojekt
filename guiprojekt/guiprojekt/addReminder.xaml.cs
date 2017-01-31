@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.Serialization.Formatters.Binary;
+using guiprojekt;
 
 
 namespace guiprojekt
@@ -24,9 +25,13 @@ namespace guiprojekt
     public partial class addReminder : UserControl
     {
 
+
         MainWindow parentWindow = Application.Current.MainWindow as MainWindow;
 
+
         List<reminder> _reminderList = new List<reminder>();
+
+        
 
 
         public addReminder()
@@ -47,6 +52,7 @@ namespace guiprojekt
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
+               
             List<DayOfWeek> weekDays = new List<DayOfWeek>();
 
             string reminderTitle = titleForReminder.Text;
@@ -86,11 +92,17 @@ namespace guiprojekt
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
 
 
+
             parentWindow._reminderListForThreads.Add(reminderObj);
 
 
             writeToFile(parentWindow._reminderListForThreads);
 
+
+
+
+            writeToFile(_reminderList);
+            
             titleForReminder.Text = "";
             alarmtid.Text = "";
             starttid.Text = "";
@@ -106,6 +118,7 @@ namespace guiprojekt
         }
 
 
+
         private void writeToFile(List<reminder> reminderList)
         {
 
@@ -114,7 +127,9 @@ namespace guiprojekt
 
                 BinaryFormatter bin = new BinaryFormatter();
 
+
                 bin.Serialize(stream, reminderList);
+
 
                 /* outputFile.WriteLine("");
 
@@ -158,6 +173,7 @@ namespace guiprojekt
 
         }
 
+
         private void checkTextFile()
         {
             string path = @"reminders.txt";
@@ -170,6 +186,7 @@ namespace guiprojekt
                 using (StreamWriter sw = File.CreateText(path2)) { }
             }
         }
+
 
        
 
