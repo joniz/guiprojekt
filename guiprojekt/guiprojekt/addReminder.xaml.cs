@@ -23,8 +23,8 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        
 
+        MainWindow parentWindow = Application.Current.MainWindow as MainWindow;
 
         List<reminder> _reminderList = new List<reminder>();
 
@@ -84,12 +84,12 @@ namespace guiprojekt
             checkTextFile();
 
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
-            
 
 
-            
-           
-            writeToFile(reminderObj);
+            parentWindow._reminderListForThreads.Add(reminderObj);
+
+
+            writeToFile(parentWindow._reminderListForThreads);
 
             titleForReminder.Text = "";
             alarmtid.Text = "";
@@ -105,6 +105,59 @@ namespace guiprojekt
             
         }
 
+
+        private void writeToFile(List<reminder> reminderList)
+        {
+
+            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
+            {
+
+                BinaryFormatter bin = new BinaryFormatter();
+
+                bin.Serialize(stream, reminderList);
+
+                /* outputFile.WriteLine("");
+
+                 outputFile.Write(remObj._title);
+
+                 outputFile.Write("|");
+
+                 outputFile.Write(remObj._startTime.Hour.ToString());
+
+                 outputFile.Write(":");
+
+                 outputFile.Write(remObj._startTime.Minute.ToString());
+
+                 outputFile.Write("|");
+
+                 outputFile.Write(remObj._alarmTime.Hour.ToString());
+
+                 outputFile.Write(":");
+
+                 outputFile.Write(remObj._alarmTime.Minute.ToString());
+
+                 outputFile.Write("|");
+
+                 for (int i = 0; remObj._weekDays.Count > i; i++)
+
+                 {
+
+                     outputFile.Write(remObj._weekDays[i]);
+
+                     outputFile.Write("|");
+
+                 }
+
+             }
+
+             */
+
+
+
+            }
+
+        }
+
         private void checkTextFile()
         {
             string path = @"reminders.txt";
@@ -118,42 +171,7 @@ namespace guiprojekt
             }
         }
 
-        private void writeToFile(reminder remObj)
-        {
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
-            {
-
-                BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(stream, remObj);
-
-
-                /* outputFile.WriteLine("");
-                 outputFile.Write(remObj._title);
-                 outputFile.Write("|");
-                 outputFile.Write(remObj._startTime.Hour.ToString());
-                 outputFile.Write(":");
-                 outputFile.Write(remObj._startTime.Minute.ToString());
-                 outputFile.Write("|");
-                 outputFile.Write(remObj._alarmTime.Hour.ToString());
-                 outputFile.Write(":");
-                 outputFile.Write(remObj._alarmTime.Minute.ToString());
-                 outputFile.Write("|");
-                 for (int i = 0; remObj._weekDays.Count > i; i++)
-                 {
-                     outputFile.Write(remObj._weekDays[i]);
-                     outputFile.Write("|");
-                 }
-
-             }
-             */
-
-
-
-
-
-          
-            }
-        }
+       
 
         private bool isValidTime(string time)
         {

@@ -70,8 +70,6 @@ C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\gu
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
-C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.baml
-C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.g.cs
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\App.g.cs
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -83,3 +81,5 @@ C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\gu
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
 C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
+C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.baml
+C:\Users\Hugoqqqq\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs

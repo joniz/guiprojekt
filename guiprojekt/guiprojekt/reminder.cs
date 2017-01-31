@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace guiprojekt
 {
     [Serializable]
-    class reminder
+    public class reminder
     {
         public string _title { get; set; }
         public DateTime _startTime { get; set; }
@@ -29,8 +29,6 @@ namespace guiprojekt
             _alarmTime = Convert.ToDateTime(alarmTime);
             _weekDays = days;
 
-            
-                 
         
         }
 
