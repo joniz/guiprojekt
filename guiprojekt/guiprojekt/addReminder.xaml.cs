@@ -87,20 +87,15 @@ namespace guiprojekt
                 }
                 checkTextFile();
 
-                reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
 
-
-
-                _parentWindow._listWithAllReminders.Add(reminderObj);
-
+                for (int x = 0; x < weekDays.Count; x++)
+                {
+                    reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays[x].ToString());
+                    _parentWindow._listWithAllReminders.Add(reminderObj);
+                }
 
                 writeToFile(_parentWindow._listWithAllReminders);
-
-
-
-
-
-
+                _parentWindow.readFromFile();
                 titleForReminder.Text = "";
                 alarmtid.Text = "";
                 starttid.Text = "";
@@ -146,18 +141,6 @@ namespace guiprojekt
             else return false;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
         private void checkTextFile()
         {
             string path = @"reminders.txt";
@@ -171,9 +154,6 @@ namespace guiprojekt
                 using (StreamWriter sw = File.CreateText(path2)) { }
             }
         }
-
-
-
 
         private bool isValidTime(string time)
         {
