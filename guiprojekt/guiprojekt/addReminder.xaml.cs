@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Runtime.Serialization.Formatters.Binary;
+using guiprojekt;
 
 
 namespace guiprojekt
@@ -22,10 +24,9 @@ namespace guiprojekt
     /// </summary>
     public partial class addReminder : UserControl
     {
-        
+        MainWindow _parentWindow;
 
 
-        //List<reminder> _reminderList = new List<reminder>();
 
 
         public addReminder()
@@ -33,105 +34,124 @@ namespace guiprojekt
             InitializeComponent();
         }
 
-       /* public List<reminder> getReminderList
-        {
-           get { return _reminderList;}
+        /* public List<reminder> getReminderList
+         {
+            get { return _reminderList;}
 
 
-        }*/
-        
-        
+         }*/
+
+
 
 
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
-            List<DayOfWeek> weekDays = new List<DayOfWeek>();
+            _parentWindow = Application.Current.MainWindow as MainWindow;
+            System.Diagnostics.Debug.WriteLine(_parentWindow._listWithAllReminders.Count);
+            if (boxCheck())
+            {
+                List<DayOfWeek> weekDays = new List<DayOfWeek>();
 
-            string reminderTitle = titleForReminder.Text;
-            string startTime = starttid.Text;
-            string alarmTime = alarmtid.Text;
+                string reminderTitle = titleForReminder.Text;
+                string startTime = starttid.Text;
+                string alarmTime = alarmtid.Text;
 
-            if ((bool)mondaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Monday);
-            }
-            if ((bool)tuesdaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Tuesday);
-            }
-            if ((bool)wednesdaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Wednesday);
-            }
-            if ((bool)thursdaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Thursday);
-            }
-            if ((bool)fridaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Friday);
-            }
-            if ((bool)saturdaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Saturday);
-            }
-            if ((bool)sundaybox.IsChecked)
-            {
-                weekDays.Add(DayOfWeek.Sunday);
-            }
-            checkTextFile();
-
-            reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
-            
+                if ((bool)mondaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Monday);
+                }
+                if ((bool)tuesdaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Tuesday);
+                }
+                if ((bool)wednesdaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Wednesday);
+                }
+                if ((bool)thursdaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Thursday);
+                }
+                if ((bool)fridaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Friday);
+                }
+                if ((bool)saturdaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Saturday);
+                }
+                if ((bool)sundaybox.IsChecked)
+                {
+                    weekDays.Add(DayOfWeek.Sunday);
+                }
+                checkTextFile();
 
 
-            
-           
-            writeToFile(reminderObj);
+                for (int x = 0; x < weekDays.Count; x++)
+                {
+                    reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays[x].ToString());
+                    _parentWindow._listWithAllReminders.Add(reminderObj);
+                }
 
-            titleForReminder.Text = "";
-            alarmtid.Text = "";
-            starttid.Text = "";
-            mondaybox.IsChecked = false;
-            tuesdaybox.IsChecked = false;
-            wednesdaybox.IsChecked = false;
-            thursdaybox.IsChecked = false;
-            fridaybox.IsChecked = false;
-            saturdaybox.IsChecked = false;
-            sundaybox.IsChecked = false;
+                writeToFile(_parentWindow._listWithAllReminders);
+                _parentWindow.readFromFile();
+                titleForReminder.Text = "";
+                alarmtid.Text = "";
+                starttid.Text = "";
+                mondaybox.IsChecked = false;
+                tuesdaybox.IsChecked = false;
+                wednesdaybox.IsChecked = false;
+                thursdaybox.IsChecked = false;
+                fridaybox.IsChecked = false;
+                saturdaybox.IsChecked = false;
+                sundaybox.IsChecked = false;
+
+            }
+        }
+
+
+
+
+        private void writeToFile(List<reminder> reminderList)
+        {
+
+            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
+            {
+
+                BinaryFormatter bin = new BinaryFormatter();
+
+
+                bin.Serialize(stream, reminderList);
+
+
+
+
+
+
+            }
+
+        }
+        public bool boxCheck()
+        {
+            if ((bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked)
+            {
+                return true;
+            }
+            else return false;
         }
 
         private void checkTextFile()
         {
             string path = @"reminders.txt";
+            string path2 = @"remindersBin.bin";
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
             }
-        }
-
-        private void writeToFile(reminder remObj)
-        {
-            using (StreamWriter outputFile = new StreamWriter(@"reminders.txt", true))
+            else if (!File.Exists(path2))
             {
-                for (int i = 0; remObj._weekDays.Count > i; i++)
-                {
-                    outputFile.WriteLine("");
-                    outputFile.Write(remObj._title);
-                    outputFile.Write("|");
-                    outputFile.Write(remObj._startTime.Hour.ToString());
-                    outputFile.Write(":");
-                    outputFile.Write(remObj._startTime.Minute.ToString());
-                    outputFile.Write("|");
-                    outputFile.Write(remObj._alarmTime.Hour.ToString());
-                    outputFile.Write(":");
-                    outputFile.Write(remObj._alarmTime.Minute.ToString());
-                    outputFile.Write("|");
-                    outputFile.Write(remObj._weekDays[i]);
-                    outputFile.Write("|");
-                    
-                }
+                using (StreamWriter sw = File.CreateText(path2)) { }
             }
         }
 
@@ -149,9 +169,13 @@ namespace guiprojekt
                 createReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false; 
+            else createReminder.IsEnabled = false;
         }
-   
     }
 }
+
+    
+
+
+
 

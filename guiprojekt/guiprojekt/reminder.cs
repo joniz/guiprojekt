@@ -16,18 +16,18 @@ namespace guiprojekt
         public DateTime _startTime { get; set; }
         public DateTime _alarmTime { get; set; }
         public int _idNum;
-        public List<DayOfWeek> _weekDays { get; set; }
-       
+        public String _weekDays { get; set; }
+        
 
 
                 
-        public reminder(string title, string startTime, string alarmTime, List<DayOfWeek> days)
+        public reminder(string title, string startTime, string alarmTime, String day)
 
         {
             _title = title;
             _startTime = Convert.ToDateTime(startTime);
             _alarmTime = Convert.ToDateTime(alarmTime);
-            _weekDays = days;
+            _weekDays = day;
 
         
         }
