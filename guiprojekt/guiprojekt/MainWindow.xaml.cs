@@ -25,13 +25,15 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<reminder> _listWithAllReminders = new List<reminder>();
+        public List<reminder> _listWithAllReminders =  new List<reminder>();
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private static System.Timers.Timer aTimer;
 
         
+        int _weekday = 1;
+        
+        public List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
 
-        List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
         int _page = 0;
         string _alarms;
         
@@ -46,7 +48,14 @@ namespace guiprojekt
 
         public MainWindow()
         {
-            string path = @"C:\Users\Oscar\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
+            readFromFile();
+            
+            string env = Environment.UserName;
+            string path="";
+            if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 2)
+                path += @"C:\Users\" + env + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
+            else
+                path += @"C:\Users\Hugoqqqq\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
             string batStart = "cd \"";
             batStart += Directory.GetCurrentDirectory();
             string batContinue = "Start guiprojekt.exe startup";
@@ -184,7 +193,105 @@ namespace guiprojekt
                  * */
             }
         }
+ //--------------------------------------------------------------------------------------------
+/*
+        public void createReminder_Click(object sender, RoutedEventArgs e)
+        {
+           
 
+            List<DayOfWeek> weekDays = new List<DayOfWeek>();
+
+            string reminderTitle = testeet.titleForReminder.Text;
+            string startTime = testeet.starttid.Text;
+            string alarmTime = testeet.alarmtid.Text;
+
+            if ((bool)testeet.mondaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Monday);
+            }
+            if ((bool)testeet.tuesdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Tuesday);
+            }
+            if ((bool)testeet.wednesdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Wednesday);
+            }
+            if ((bool)testeet.thursdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Thursday);
+            }
+            if ((bool)testeet.fridaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Friday);
+            }
+            if ((bool)testeet.saturdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Saturday);
+            }
+            if ((bool)testeet.sundaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Sunday);
+            }
+            checkTextFile();
+
+            reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
+
+
+
+
+
+            _reminderListForThreads.Add(reminderObj) ;
+
+            testeet.titleForReminder.Text = "";
+            testeet.alarmtid.Text = "";
+            testeet.starttid.Text = "";
+            testeet.mondaybox.IsChecked = false;
+            testeet.tuesdaybox.IsChecked = false;
+            testeet.wednesdaybox.IsChecked = false;
+            testeet.thursdaybox.IsChecked = false;
+            testeet.fridaybox.IsChecked = false;
+            testeet.saturdaybox.IsChecked = false;
+            testeet.sundaybox.IsChecked = false;
+        }
+
+        private void checkTextFile()
+        {
+            
+            string path = @"reminders.txt";
+            string path2 = @"remindersBin.bin";
+            if (!File.Exists(path))
+            {
+                using (StreamWriter sw = File.CreateText(path)) { }
+            }
+            else if (!File.Exists(path2))
+            {
+                using (StreamWriter sw = File.CreateText(path2)) { }
+            }
+        }
+
+        private bool isValidTime(string time)
+        {
+            DateTime testVariable;
+            return DateTime.TryParse(time, out testVariable);
+        }
+
+        private void testInput(object sender, TextChangedEventArgs e)
+        {
+            
+            string titel = testeet.titleForReminder.Text;
+            if (isValidTime(testeet.starttid.Text) && isValidTime(testeet.alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3))
+            {
+                testeet.createReminder.IsEnabled = true;
+
+            }
+            else testeet.createReminder.IsEnabled = false;
+        }
+
+
+
+        */
+        //------------------------------------------------------------------------------------------------------
         private void newReminder_Click(object sender, RoutedEventArgs e)
         {
             CheckWeekday(_page);
@@ -255,23 +362,17 @@ namespace guiprojekt
             
         }
 
-        public static void readFromFile()
+        public void readFromFile()
         {
             if (File.Exists(@"remindersBin.bin"))
             {
                 using (Stream stream = File.Open(@"remindersBin.bin", FileMode.Open))
                 {
                     BinaryFormatter bin = new BinaryFormatter();
-                    List<reminder> _listWithAllReminders = (List<reminder>)bin.Deserialize(stream);
-
-                    for (int i = 0; _listWithAllReminders.Count > i; i++)
-                    {
-                        
-                        System.Diagnostics.Debug.WriteLine(_listWithAllReminders.Count);
-
-
-
-                    }
+                    _listWithAllReminders = (List<reminder>)bin.Deserialize(stream);
+                         
+                    
+                    
                 }
 
 
