@@ -29,17 +29,8 @@ namespace guiprojekt
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private static System.Timers.Timer aTimer;
 
-        
-        int _weekday = 1;
-        
-        public List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
-
         int _page = 0;
-        string _alarms;
         
-        string[] _allAlarms = new string[20];
-        string[] _allStartAlarms = new string[20];
-        string[] _allAlarmDays = new string[20];
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
         System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
@@ -51,10 +42,10 @@ namespace guiprojekt
 
             readFromFile();
             
-            string env = Environment.UserName;
+            string user = Environment.UserName;
             string path="";
             if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 2)
-                path += @"C:\Users\" + env + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
+                path += @"C:\Users\" + user + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
 
             else
                 path += @"C:\Users\Hugoqqqq\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
