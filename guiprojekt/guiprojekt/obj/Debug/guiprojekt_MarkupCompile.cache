@@ -4,12 +4,20 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
+=======
+C:\labbar\GUIProjekt\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
+>>>>>>> 411778fc1d8296925ee8764cac85296b24e93a2d
 guiprojekt
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
+=======
+C:\labbar\GUIProjekt\guiprojekt\guiprojekt\guiprojekt\App.xaml
+>>>>>>> 411778fc1d8296925ee8764cac85296b24e93a2d
 21136335182
 
 71815002054

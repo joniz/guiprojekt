@@ -122,6 +122,14 @@ namespace guiprojekt {
         #line hidden
         
         
+        #line 38 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal guiprojekt.addReminder test1;
+        
+        #line default
+        #line hidden
+        
+        
         #line 44 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.StackPanel infoMonday;
@@ -294,24 +302,27 @@ namespace guiprojekt {
             this.newReminder = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 12:
-            this.infoMonday = ((System.Windows.Controls.StackPanel)(target));
+            this.test1 = ((guiprojekt.addReminder)(target));
             return;
             case 13:
-            this.infoTuesday = ((System.Windows.Controls.StackPanel)(target));
+            this.infoMonday = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 14:
-            this.infoWednesday = ((System.Windows.Controls.StackPanel)(target));
+            this.infoTuesday = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 15:
-            this.infoThursday = ((System.Windows.Controls.StackPanel)(target));
+            this.infoWednesday = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 16:
-            this.infoFriday = ((System.Windows.Controls.StackPanel)(target));
+            this.infoThursday = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 17:
-            this.infoSaturday = ((System.Windows.Controls.StackPanel)(target));
+            this.infoFriday = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 18:
+            this.infoSaturday = ((System.Windows.Controls.StackPanel)(target));
+            return;
+            case 19:
             this.infoSunday = ((System.Windows.Controls.StackPanel)(target));
             return;
             }
