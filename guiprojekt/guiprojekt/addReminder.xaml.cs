@@ -115,21 +115,22 @@ namespace guiprojekt
         {
             using (StreamWriter outputFile = new StreamWriter(@"reminders.txt", true))
             {
-                outputFile.WriteLine("");
-                outputFile.Write(remObj._title);
-                outputFile.Write("|");
-                outputFile.Write(remObj._startTime.Hour.ToString());
-                outputFile.Write(":");
-                outputFile.Write(remObj._startTime.Minute.ToString());
-                outputFile.Write("|");
-                outputFile.Write(remObj._alarmTime.Hour.ToString());
-                outputFile.Write(":");
-                outputFile.Write(remObj._alarmTime.Minute.ToString());
-                outputFile.Write("|");
                 for (int i = 0; remObj._weekDays.Count > i; i++)
                 {
+                    outputFile.WriteLine("");
+                    outputFile.Write(remObj._title);
+                    outputFile.Write("|");
+                    outputFile.Write(remObj._startTime.Hour.ToString());
+                    outputFile.Write(":");
+                    outputFile.Write(remObj._startTime.Minute.ToString());
+                    outputFile.Write("|");
+                    outputFile.Write(remObj._alarmTime.Hour.ToString());
+                    outputFile.Write(":");
+                    outputFile.Write(remObj._alarmTime.Minute.ToString());
+                    outputFile.Write("|");
                     outputFile.Write(remObj._weekDays[i]);
                     outputFile.Write("|");
+                    
                 }
             }
         }

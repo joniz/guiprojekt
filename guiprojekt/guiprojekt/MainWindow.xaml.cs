@@ -26,15 +26,13 @@ namespace guiprojekt
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private static System.Timers.Timer aTimer;
 
-        int _weekday = 1;
-
         List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
         int _page = 0;
-        string _alarms;
-        string _alarms2; //testvariabel for now, tas bort senare om det går annars döps om
-        string[] _allAlarms = new string[20];
-        string[] _allStartAlarms = new string[20];
-        string[] _allAlarmDays = new string[20];
+        int _count = 0;
+        List<String> _allAlarms = new List<String>();
+        List<String> _allStartAlarms = new List<String>();
+        List<String> _allAlarmDays = new List<String>();
+        List<String> _allTitles = new List<String>(); 
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
         System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
@@ -57,9 +55,7 @@ namespace guiprojekt
         }
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
             this.WindowState = WindowState.Normal;
-
             MyNotifyIcon.Visible = false;
             this.ShowInTaskbar = true;
             this.Focus();
@@ -77,7 +73,6 @@ namespace guiprojekt
         public void CheckAlarm(object sender, EventArgs e)
         {
             //för att bocka av alarm typ
-
         }
 
         private void saveAlarms()
@@ -93,16 +88,13 @@ namespace guiprojekt
                     {
                         string alarm = read.Split('|')[2];
                         string startAlarm = read.Split('|')[1];
-                        string days = "";
-                        int y = 3;
-                        while (read.Split('|')[y] != "")
-                        {
-                            days += read.Split('|')[y] + "|";
-                            y++;
-                        }
-                        _allAlarms[x] = alarm;
-                        _allStartAlarms[x] = startAlarm;
-                        _allAlarmDays[x] = days;
+                        string days = read.Split('|')[3];
+                        string title = read.Split('|')[0];
+                        
+                        _allAlarms.Add(alarm);
+                        _allStartAlarms.Add(startAlarm);
+                        _allAlarmDays.Add(days);
+                        _allTitles.Add(title);
                     }
                 }
             }
@@ -113,47 +105,43 @@ namespace guiprojekt
             /*bool ok = false;*/
             /*System.Diagnostics.Debug.WriteLine(System.DateTime.Now.DayOfWeek);
             System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute);*/
-
-            DateTime currentTime = DateTime.Now;
-
-            int x = 1;
-            string time = DateTime.Now.Hour + ":" + DateTime.Now.Minute;
-            string day = DateTime.Now.DayOfWeek.ToString();
+            int x = 0;
             while (_allAlarms[x] != null)
             {
-                int y = 0;
-                while (_allAlarmDays[x].Split('|')[y] != "")
+                DateTime currentTime = DateTime.Now;
+
+                string time = DateTime.Now.Hour + ":" + DateTime.Now.Minute;
+                string day = DateTime.Now.DayOfWeek.ToString();
+
+                if (_allAlarmDays[x] == day && _allAlarms[x] == time)
                 {
-                    string checkDay = _allAlarmDays[x].Split('|')[y];
-                    if (checkDay == day && _allAlarms[x] == time)
-                    {
-                        System.Diagnostics.Debug.WriteLine(_allAlarms[x]);
-                    }
-                    y++;
+                    System.Diagnostics.Debug.WriteLine(_allAlarms[x]);
                 }
                 x++;
             }
-            /*if (_reminderListForThreads.Count != 0)
-                {
-                    for (int i = 0; i < _reminderListForThreads.Count; i++)
+                
+                /*if (_reminderListForThreads.Count != 0)
                     {
-                        if (_reminderListForThreads[i]._alarmTime.Hour == DateTime.Now.Hour && _reminderListForThreads[i]._alarmTime.Minute == DateTime.Now.Minute && _reminderListForThreads[i]._weekDays[i] == System.DateTime.Now.DayOfWeek)
+                        for (int i = 0; i < _reminderListForThreads.Count; i++)
                         {
+                            if (_reminderListForThreads[i]._alarmTime.Hour == DateTime.Now.Hour && _reminderListForThreads[i]._alarmTime.Minute == DateTime.Now.Minute && _reminderListForThreads[i]._weekDays[i] == System.DateTime.Now.DayOfWeek)
+                            {
                             
-                            ok = true;
-                            System.Diagnostics.Debug.WriteLine("Hej");                        
+                                ok = true;
+                                System.Diagnostics.Debug.WriteLine("Hej");                        
+                        }
                     }
                 }
-            }
 
-            if (ok)
-            {                
-                //System.Windows.Forms.MessageBox.Show("ALARM!!!");
-                MyNotifyIcon.ShowBalloonTip(4000);
-                MyNotifyIcon.BalloonTipTitle = "Daily reminder";
-                MyNotifyIcon.BalloonTipText = "Du har ett alarm som kan stängas av";
-            }
-             * */
+                if (ok)
+                {                
+                    //System.Windows.Forms.MessageBox.Show("ALARM!!!");
+                    MyNotifyIcon.ShowBalloonTip(4000);
+                    MyNotifyIcon.BalloonTipTitle = "Daily reminder";
+                    MyNotifyIcon.BalloonTipText = "Du har ett alarm som kan stängas av";
+                }
+                 * */
+            
         }
 
         private void newReminder_Click(object sender, RoutedEventArgs e)
@@ -198,11 +186,12 @@ namespace guiprojekt
             }
         }
 
-        private void addLabel(StackPanel day, Label text)
+        private void addLabel(StackPanel day, Label text, int x)
         {
             text.Background = _brush;
             text.BorderBrush = _brush2;
             text.BorderThickness = _thick;
+            text.Name = "Line" + x.ToString();
             day.Children.Add(text);
         }
 
@@ -215,6 +204,7 @@ namespace guiprojekt
             {
                 count++;
             }
+            _count = count;
             return count;
         }
 
@@ -224,8 +214,6 @@ namespace guiprojekt
             if (File.Exists(@"reminders.txt"))
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(@"reminders.txt");
-                _alarms = "";
-                _alarms2 = "";
                 int count = checkNumberOfLines();
 
                 for (int x = 0; x < count; x++)
@@ -237,45 +225,14 @@ namespace guiprojekt
                         string title = read.Split('|')[0];
                         string start = read.Split('|')[1];
                         string alarm = read.Split('|')[2];
-                        _alarms2 = read.Split('|')[2];
-
-                        int y = 3;
-
-                        while (read.Split('|')[y] != "")
-                        {
-                            if (read.Split('|')[y] == day)
+                        string alarmDay = read.Split('|')[3];
+                            if (alarmDay == day)
                             {
                                 Label label = new Label();
                                 label.Content = "Titel: " + title + " Starttid: " + start + " Alarmtid: " + alarm;
-                                addLabel(panel, label);
-
-                                alarm = alarm + "|";
-                                _alarms += alarm;
-                            }
-                            days.Add((DayOfWeek)Enum.Parse(typeof(DayOfWeek), read.Split('|')[y])); // lägger till dagen i en lista
-                            y++;
-                        }
-                        _reminderListForThreads.Add(new reminder(title, start, _alarms2, days)); //lägger till remindern i en lista med reminders
+                                addLabel(panel, label, x);
+                            }                                                
                     }
-                }
-            }
-        }
-
-        private void alarm(string alarms)
-        {
-            if (File.Exists(@"reminders.txt"))
-            {
-                DateTime currentTime = DateTime.Now;
-                string time = currentTime.Hour + ":" + currentTime.Minute;
-                int x = 0;
-                while (alarms.Split('|')[x] != "")
-                {
-                    string alarm = alarms.Split('|')[x]; //samma variabelnamn som funktion
-                    if (alarm == time)
-                    {
-                        System.Windows.Forms.MessageBox.Show("ALARM!!!");
-                    }
-                    x++;
                 }
             }
         }
@@ -394,6 +351,9 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Hidden;
             }
+            infoSunday.Children.Clear();
+            readFromFile("Sunday", infoSunday);
+            saveAlarms();
         }
 
 

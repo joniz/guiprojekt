@@ -1,4 +1,9 @@
 
-adawd|13:0|14:0|Monday|Sunday|
-asdasd|19:1|19:26|Monday|Thursday|
-tea|19:33|19:50|Sunday|
+alarm|6:34|13:33|Monday|
+alarm|6:34|13:33|Tuesday|
+alarm|6:34|13:33|Wednesday|
+alarm|6:34|13:33|Thursday|
+alarm|6:34|13:33|Friday|
+alarm|6:34|13:33|Saturday|
+alarm|6:34|13:33|Sunday|
+alarm2|4:33|13:34|Tuesday|
