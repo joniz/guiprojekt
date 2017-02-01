@@ -31,3 +31,5 @@ C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\MainWindow.ba
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.g.resources
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Properties.Resources.resources
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
+C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\EditReminder.baml
+C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\EditReminder.g.cs

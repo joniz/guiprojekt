@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="guiprojekt.addReminder"
+﻿<UserControl x:Class="guiprojekt.EditReminder"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -60,7 +60,7 @@
             <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Söndag</CheckBox>
         </UniformGrid>
 
-        <Button Margin="0,10,0,0" Name="createReminder" FontFamily="Rockwell Extra Bold" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="false"></Button>
+        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="False"></Button>
 
 
         <!--<StackPanel Orientation="Horizontal">
