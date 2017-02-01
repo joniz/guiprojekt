@@ -155,6 +155,8 @@ namespace guiprojekt
             }
             else createReminder.IsEnabled = false;
         }
+
+        
     }
 }
 
