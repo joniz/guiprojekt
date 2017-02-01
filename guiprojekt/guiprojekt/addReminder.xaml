@@ -51,13 +51,13 @@
 
 
         <UniformGrid Margin="0,10,0,0" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
-            <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold">Måndag</CheckBox>
-            <CheckBox Name="tuesdaybox" FontFamily="Rockwell Extra Bold">Tisdag</CheckBox>
-            <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold">Onsdag</CheckBox>
-            <CheckBox Name="thursdaybox" FontFamily="Rockwell Extra Bold">Torsdag</CheckBox>
-            <CheckBox Name="fridaybox" FontFamily="Rockwell Extra Bold">Fredag</CheckBox>
-            <CheckBox Name="saturdaybox" FontFamily="Rockwell Extra Bold">Lördag</CheckBox>
-            <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold">Söndag</CheckBox>
+            <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput"     >Måndag</CheckBox>
+            <CheckBox Name="tuesdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Tisdag</CheckBox>
+            <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Onsdag</CheckBox>
+            <CheckBox Name="thursdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Torsdag</CheckBox>
+            <CheckBox Name="fridaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Fredag</CheckBox>
+            <CheckBox Name="saturdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Lördag</CheckBox>
+            <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Söndag</CheckBox>
         </UniformGrid>
 
         <Button Margin="0,10,0,0" Name="createReminder" FontFamily="Rockwell Extra Bold" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="True"></Button>
