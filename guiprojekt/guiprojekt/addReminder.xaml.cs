@@ -84,13 +84,13 @@ namespace guiprojekt
             checkTextFile();
 
             reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays);
-            
+            _reminderList.Add(reminderObj);
 
 
             
            
-            writeToFile(reminderObj);
-
+            writeToFile(_reminderList);
+            
             titleForReminder.Text = "";
             alarmtid.Text = "";
             starttid.Text = "";
@@ -118,13 +118,13 @@ namespace guiprojekt
             }
         }
 
-        private void writeToFile(reminder remObj)
+        private void writeToFile(List<reminder> remList)
         {
             using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
             {
 
                 BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(stream, remObj);
+                bin.Serialize(stream, remList);
 
 
                 /* outputFile.WriteLine("");
@@ -155,6 +155,15 @@ namespace guiprojekt
             }
         }
 
+        private bool validateSelectedDays()
+        {
+            if ((bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked)
+                return true;
+            else return false;
+
+        }
+
+
         private bool isValidTime(string time)
         {
             DateTime testVariable;
@@ -166,6 +175,7 @@ namespace guiprojekt
             string titel = titleForReminder.Text;
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3))
             {
+                if(validateSelectedDays())
                 createReminder.IsEnabled = true;
 
             }

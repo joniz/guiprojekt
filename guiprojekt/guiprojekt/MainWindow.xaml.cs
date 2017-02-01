@@ -45,7 +45,7 @@ namespace guiprojekt
 
         public MainWindow()
         {
-            string path = @"C:\Users\Oscar\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
+            /*string path = @"C:\Users\..\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
             string batStart = "cd \"";
             batStart += Directory.GetCurrentDirectory();
             string batContinue = "Start guiprojekt.exe startup";
@@ -57,10 +57,10 @@ namespace guiprojekt
             
 
             string[] args = Environment.GetCommandLineArgs();
-
+            
             
 
-            
+            */
             InitializeComponent();
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
@@ -69,14 +69,14 @@ namespace guiprojekt
             aTimer = new System.Timers.Timer(5000);
             aTimer.Start();
             aTimer.Elapsed += OnTimedEvent;
-            if(args.Length > 1)
+          /*  if(args.Length > 1)
             {
                  if(args[1] == "startup")
                  {
                  this.WindowState = System.Windows.WindowState.Minimized;
                  Window_Deactivated();                
                  }
-            }
+            } */ 
         }
 
       
@@ -249,7 +249,21 @@ namespace guiprojekt
         {
             if (File.Exists(@"remindersBin.bin"))
             {
+                using (Stream stream = File.Open(@"remindersBin.bin", FileMode.Open))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    List<reminder> _reminderListForThreads = (List<reminder>)bin.Deserialize(stream);
 
+                    for (int i = 0; _reminderListForThreads.Count > i; i++)
+                    {
+                        for (int j = 0; _reminderListForThreads[i]._weekDays.Count > j; j++)
+                        {
+                            System.Diagnostics.Debug.WriteLine(_reminderListForThreads.Count);
+                            System.Diagnostics.Debug.WriteLine(_reminderListForThreads[i]._weekDays[j]);
+
+                        }
+                    }
+                }
 
 
 
