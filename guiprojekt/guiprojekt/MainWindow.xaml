@@ -378,14 +378,14 @@
 
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
 
-            <local:addReminder />
+            <local:addReminder  x:Name="editreminder"/>
 
 
 
         </StackPanel>
 
 
-        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Visible">
+        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
         </StackPanel>
 
