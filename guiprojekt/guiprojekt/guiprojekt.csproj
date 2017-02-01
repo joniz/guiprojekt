@@ -56,8 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditReminder.xaml.cs">
+      <DependentUpon>EditReminder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="reminder.cs" />
+    <Compile Include="ReminderList.cs" />
     <Page Include="addReminder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditReminder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,6 +111,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dailyReminder2.png" />
+    <Resource Include="fredag2.png" />
+    <Resource Include="fredagPushed2.png" />
+    <Resource Include="lördag2.png" />
+    <Resource Include="lördagPushed2.png" />
+    <Resource Include="måndag3.png" />
+    <Resource Include="måndagPushed3.png" />
+    <Resource Include="onsdag2.png" />
+    <Resource Include="onsdagPushed2.png" />
+    <Resource Include="påminnelse3.png" />
+    <Resource Include="påminnelsePushed3.png" />
+    <Resource Include="redigera.png" />
+    <Resource Include="redigeraPushed.png" />
+    <Resource Include="söndag2.png" />
+    <Resource Include="söndagPushed2.png" />
+    <Resource Include="Tabort.png" />
+    <Resource Include="TabortPushed.png" />
+    <Resource Include="tisdag2.png" />
+    <Resource Include="tisdagPushed2.png" />
+    <Resource Include="torsdag2.png" />
+    <Resource Include="torsdagPushed2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

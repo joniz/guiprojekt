@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="guiprojekt.EditReminder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <StackPanel Background="LightBlue">
+
+        <Label HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
+        <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>
+
+        <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Starttid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
+
+
+
+        <Grid>
+            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" ></TextBox>
+            <TextBlock FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=starttid}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+
+        <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Alarmtid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="2"  />
+
+        <Grid>
+            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
+            <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=alarmtid}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+
+
+        <UniformGrid Margin="0,10,0,0" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
+            <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput"     >Måndag</CheckBox>
+            <CheckBox Name="tuesdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Tisdag</CheckBox>
+            <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Onsdag</CheckBox>
+            <CheckBox Name="thursdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Torsdag</CheckBox>
+            <CheckBox Name="fridaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Fredag</CheckBox>
+            <CheckBox Name="saturdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Lördag</CheckBox>
+            <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Söndag</CheckBox>
+        </UniformGrid>
+
+        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="False"></Button>
+
+
+        <!--<StackPanel Orientation="Horizontal">
+            <Label HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
+            -->
+        <!--<TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>-->
+        <!--
+        </StackPanel>-->
+
+
+    </StackPanel>
+
+    <!--<Grid Background="LightBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        
+        <UniformGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+            <Label Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
+            <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>
+
+
+        </UniformGrid>
+
+        <Label Content="Starttid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="1"   />
+        <TextBox Background="#DB0A5B" Name="starttid" Grid.Row="1" Grid.Column="1" TextChanged="testInput" ></TextBox>
+        <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=starttid}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+
+        </TextBlock>
+        <Grid>
+
+
+        </Grid>
+        <Label Content="Alarmtid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="2"  />
+        <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
+        <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=alarmtid}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+            
+        </TextBlock>
+        <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
+            <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold">Måndag</CheckBox>
+            <CheckBox Name="tuesdaybox" FontFamily="Rockwell Extra Bold">Tisdag</CheckBox>
+            <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold">Onsdag</CheckBox>
+            <CheckBox Name="thursdaybox" FontFamily="Rockwell Extra Bold">Torsdag</CheckBox>
+            <CheckBox Name="fridaybox" FontFamily="Rockwell Extra Bold">Fredag</CheckBox>
+            <CheckBox Name="saturdaybox" FontFamily="Rockwell Extra Bold">Lördag</CheckBox>
+            <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold">Söndag</CheckBox>
+        </UniformGrid>
+        <Button Name="createReminder" FontFamily="Rockwell Extra Bold" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="False"></Button>
+
+    </Grid>-->
+</UserControl>
+

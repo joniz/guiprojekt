@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\
+C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\obj\Debug\
 guiprojekt
 none
 false
 DEBUG;TRACE
-C:\Users\Yoyo\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\App.xaml
-21136335182
+C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\App.xaml
+3302712708
 
-71815002054
+9-663520525
 151855326030
-addReminder.xaml;MainWindow.xaml;
+addReminder.xaml;EditReminder.xaml;MainWindow.xaml;
 
 False
 
