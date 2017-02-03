@@ -22,11 +22,11 @@ namespace guiprojekt
     /// <summary>
     /// Interaction logic for addReminder.xaml
     /// </summary>
-    public partial class addReminder : UserControl
+    public partial class EditReminder : UserControl
     {
         MainWindow _parentWindow;
 
-        public addReminder()
+        public EditReminder()
         {
             InitializeComponent();
         }
@@ -38,10 +38,10 @@ namespace guiprojekt
 
          }*/
 
-        private void createReminder_Click(object sender, RoutedEventArgs e)
+        private void editReminder_Click(object sender, RoutedEventArgs e)
         {
             _parentWindow = Application.Current.MainWindow as MainWindow;
-           
+            System.Diagnostics.Debug.WriteLine(_parentWindow._listWithAllReminders.Count);
             if (boxCheck())
             {
                 List<DayOfWeek> weekDays = new List<DayOfWeek>();
@@ -80,13 +80,20 @@ namespace guiprojekt
                 }
                 checkTextFile();
 
+                for (int x = 0; x < _parentWindow._listWithAllReminders.Count; x++ )
+                {
+                    if (_parentWindow._listWithAllReminders[x]._editing == true)
+                    {
+                        _parentWindow._listWithAllReminders.RemoveAt(x);
+                    }
+                }
 
                 for (int x = 0; x < weekDays.Count; x++)
                 {
                     reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays[x].ToString());
                     _parentWindow._listWithAllReminders.Add(reminderObj);
                 }
-
+                
                 writeToFile(_parentWindow._listWithAllReminders);
                 _parentWindow.readFromFile();
                 titleForReminder.Text = "";
@@ -150,19 +157,16 @@ namespace guiprojekt
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
                 (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked))
             {
-                createReminder.IsEnabled = true;
+                editReminder.IsEnabled = true;
 
             }
-            else createReminder.IsEnabled = false;
+            else editReminder.IsEnabled = false;
         }
-
-        
     }
 }
 
-    
 
 
 
 
-    
+
