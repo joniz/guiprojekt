@@ -49,11 +49,9 @@ namespace guiprojekt
             
             string env = Environment.UserName;
             string path="";
-            if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor >= 2)
-                path += @"C:\Users\" + env + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
+            
+            path += @"C:\Users\" + env + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
 
-            else
-                path += @"C:\Users\Hugoqqqq\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startupreminder.bat";
             string batStart = "cd \"";
             batStart += Directory.GetCurrentDirectory();
             string batContinue = "Start guiprojekt.exe startup";
@@ -172,9 +170,14 @@ namespace guiprojekt
             }
             if (ok)
             {
-                MyNotifyIcon.BalloonTipTitle = "ALARM";
-                MyNotifyIcon.BalloonTipText = "Du har ett alarm";
-                MyNotifyIcon.ShowBalloonTip(400);
+                if (this.WindowState == System.Windows.WindowState.Minimized)
+                {
+                    MyNotifyIcon.BalloonTipTitle = "ALARM";
+                    MyNotifyIcon.BalloonTipText = "Du har ett alarm";
+                    MyNotifyIcon.ShowBalloonTip(400);
+                }
+                
+
             }
 
         }
