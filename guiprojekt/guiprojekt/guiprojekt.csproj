@@ -56,9 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditReminder.xaml.cs">
+      <DependentUpon>EditReminder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="reminder.cs" />
     <Compile Include="ReminderList.cs" />
     <Page Include="addReminder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditReminder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,7 +17,7 @@ namespace guiprojekt
         public DateTime _alarmTime { get; set; }
         public int _idNum;
         public String _weekDays { get; set; }
-        
+        public bool _editing { get; set; }
 
 
                 
@@ -28,7 +28,7 @@ namespace guiprojekt
             _startTime = Convert.ToDateTime(startTime);
             _alarmTime = Convert.ToDateTime(alarmTime);
             _weekDays = day;
-
+            _editing = false;
         
         }
         public static void writeToFile(List<reminder> reminderList)
