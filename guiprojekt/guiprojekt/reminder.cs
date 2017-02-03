@@ -18,8 +18,8 @@ namespace guiprojekt
         public int _idNum;
         public String _weekDays { get; set; }
         public bool _editing { get; set; }
-
-
+        public bool _isChecked { get; set; }
+        public int _alarmStatus { get; set; }
 
                 
         public reminder(string title, string startTime, string alarmTime, String day)
@@ -30,6 +30,8 @@ namespace guiprojekt
             _alarmTime = Convert.ToDateTime(alarmTime);
             _weekDays = day;
             _editing = false;
+            _isChecked = false;
+            _alarmStatus = 0;
         
         }
         public static void writeToFile(List<reminder> reminderList)

@@ -18,6 +18,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 
 
+
 namespace guiprojekt
 {
     /// <summary>
@@ -36,9 +37,7 @@ namespace guiprojekt
         int _page = 0;
         int _idCount = 0;
 
-        string[] _allAlarms = new string[20];
-        string[] _allStartAlarms = new string[20];
-        string[] _allAlarmDays = new string[20];
+       
 
 
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
@@ -46,6 +45,11 @@ namespace guiprojekt
         System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
         System.Windows.Media.Brush _brush4 = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         System.Windows.Thickness _thick = new Thickness(1);
+        Brush[] alarmColors = new Brush[3]
+        {
+            Brushes.Yellow, Brushes.Green, Brushes.Red
+
+        };
 
         public MainWindow()
         {
@@ -70,7 +74,7 @@ namespace guiprojekt
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
             MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
-            MyNotifyIcon.BalloonTipClicked += CheckAlarm;
+            MyNotifyIcon.BalloonTipClicked += showAlarm;
             aTimer = new System.Timers.Timer(3000);
             aTimer.Start();
             aTimer.Elapsed += alarm;
@@ -97,10 +101,14 @@ namespace guiprojekt
       
         
 
-        public void CheckAlarm(object sender, EventArgs e)
+        public void showAlarm(object sender, EventArgs e)
         {
-            //för att bocka av alarm typ
+            this.WindowState = WindowState.Normal;
 
+            MyNotifyIcon.Visible = false;
+            this.ShowInTaskbar = true;
+            this.Focus();
+            
         }
 
         
@@ -150,41 +158,74 @@ namespace guiprojekt
             }
         }
 
+        
+        
+
         private void alarm(object source, System.Timers.ElapsedEventArgs e)
         {
+            
+
             bool ok = false;
+            int value = 0;
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
                 DateTime currentTime = DateTime.Now;
-                string time = currentTime.Hour + ":" + currentTime.Minute;
-                string test = _listWithAllReminders[x]._alarmTime.Hour + ":" + _listWithAllReminders[x]._alarmTime.Minute;
-                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == test)
+                string time = currentTime.ToShortTimeString();
+                string reminderAlarmTime = _listWithAllReminders[x]._alarmTime.ToShortTimeString();
+                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == reminderAlarmTime && _listWithAllReminders[x]._isChecked == false)
                 {
+                    loadCurrentDay();
                     System.Diagnostics.Debug.WriteLine("alarm");
                     ok = true;
+                    value = x;
                 }
             }
             if (ok)
             {
-
-                if (this.WindowState == System.Windows.WindowState.Minimized)
+                this.Dispatcher.Invoke(() =>
                 {
-                    MyNotifyIcon.BalloonTipTitle = "ALARM";
-                    MyNotifyIcon.BalloonTipText = "Du har ett alarm";
-                    MyNotifyIcon.ShowBalloonTip(400);
-                }else
-                {
-                    System.Windows.Forms.MessageBox.Show("Du har ett alarm");
 
-                }
-                }
+                    if (this.WindowState == System.Windows.WindowState.Minimized)
+                    {
+                        MyNotifyIcon.BalloonTipTitle = "ALARM";
+                        MyNotifyIcon.BalloonTipText = "Du har ett alarm";
+                        MyNotifyIcon.ShowBalloonTip(400);
+                    }
+                    else
+                    {
+                        System.Windows.Forms.DialogResult result1 = System.Windows.Forms.MessageBox.Show("Vill du bocka av alarmet?",
+                        "Important Question",
+                         System.Windows.Forms.MessageBoxButtons.OK);
+                        while (_listWithAllReminders[value]._isChecked == false)
+                        {
+                            if (result1 == System.Windows.Forms.DialogResult.OK)
+                            {
+                                _listWithAllReminders[value]._isChecked = true;
 
 
+                            }
+                        }
+                    }
+
+                });
+            }
 
                 
             }
 
-        
+        private void loadCurrentDay()
+        {
+            switch (Convert.ToInt32(DateTime.Now.DayOfWeek))
+            {
+                case 0: sunday_Click(); break;
+                case 1: monday_Click(); break;
+                case 2: tuesday_Click(); break;
+                case 3: wednesday_Click(); break;
+                case 4: thursday_Click(); break;
+                case 5: friday_Click(); break;
+                case 6: saturday_Click(); break;
+            }
+        }
 
         private void addLabel(StackPanel panel,String day)
         {
@@ -229,13 +270,14 @@ namespace guiprojekt
                     editButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(editButton_Click));
 
                     //text.Width = 325;      
-                    text.Background = _brush;
+                    text.Background = alarmColors[_listWithAllReminders[x]._alarmStatus];
                     text.BorderBrush = _brush2;
                     text.BorderThickness = _thick;
-                    text.Content = "Titel: " + _listWithAllReminders[x]._title + " Starttid: " + _listWithAllReminders[x]._startTime.Hour + ":" + _listWithAllReminders[x]._startTime.Minute + " Alarmtid: " + _listWithAllReminders[x]._alarmTime.Hour + ":" + _listWithAllReminders[x]._alarmTime.Minute;
+                    text.Content = "Titel: " + _listWithAllReminders[x]._title + " Starttid: " + _listWithAllReminders[x]._startTime.ToShortTimeString() +  " Alarmtid: " + _listWithAllReminders[x]._alarmTime.ToShortTimeString();
                     text.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     editButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     deleteButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
+                    
                     stack.Children.Add(text);
                     stack.Children.Add(editButton);
                     stack.Children.Add(deleteButton);
@@ -293,8 +335,8 @@ namespace guiprojekt
                 {
                     _listWithAllReminders[i]._editing = true;
                     editReminder.titleForReminder.Text = _listWithAllReminders[i]._title;
-                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.Hour.ToString() + ":" + _listWithAllReminders[i]._startTime.Minute.ToString();
-                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.Hour.ToString() + ":" + _listWithAllReminders[i]._alarmTime.Minute.ToString();
+                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.ToShortTimeString();
+                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.ToShortTimeString();
                     if (_listWithAllReminders[i]._weekDays == "Monday")
                     {
                         editReminder.mondaybox.IsChecked = true;
@@ -347,7 +389,7 @@ namespace guiprojekt
             }
         }
 
-        private void monday_Click(object sender, RoutedEventArgs e)
+        private void monday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoMonday.Visibility == System.Windows.Visibility.Hidden)
@@ -364,7 +406,7 @@ namespace guiprojekt
             addLabel(infoMonday,"Monday");
         }
 
-        private void tuesday_Click(object sender, RoutedEventArgs e)
+        private void tuesday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoTuesday.Visibility == System.Windows.Visibility.Hidden)
@@ -381,7 +423,7 @@ namespace guiprojekt
             addLabel(infoTuesday,"Tuesday");
         }
 
-        private void wednesday_Click(object sender, RoutedEventArgs e)
+        private void wednesday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoWednesday.Visibility == System.Windows.Visibility.Hidden)
@@ -398,7 +440,7 @@ namespace guiprojekt
             addLabel(infoWednesday,"Wednesday");
         }
 
-        private void thursday_Click(object sender, RoutedEventArgs e)
+        private void thursday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoThursday.Visibility == System.Windows.Visibility.Hidden)
@@ -415,7 +457,7 @@ namespace guiprojekt
             addLabel(infoThursday,"Thursday");
         }
 
-        private void friday_Click(object sender, RoutedEventArgs e)
+        private void friday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoFriday.Visibility == System.Windows.Visibility.Hidden)
@@ -432,7 +474,7 @@ namespace guiprojekt
             addLabel(infoFriday,"Friday");
         }
 
-        private void saturday_Click(object sender, RoutedEventArgs e)
+        private void saturday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoSaturday.Visibility == System.Windows.Visibility.Hidden)
@@ -449,7 +491,7 @@ namespace guiprojekt
             addLabel(infoSaturday,"Saturday");
         }
 
-        private void sunday_Click(object sender, RoutedEventArgs e)
+        private void sunday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoSunday.Visibility == System.Windows.Visibility.Hidden)
