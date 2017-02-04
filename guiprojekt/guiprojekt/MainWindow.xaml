@@ -384,10 +384,12 @@
 
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
 
+
             <local:addReminder/>
         </StackPanel>
         <StackPanel Name="showEditReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
             <local:EditReminder x:Name="editReminder"/>
+
 
         </StackPanel>
 

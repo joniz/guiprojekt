@@ -31,72 +31,74 @@ namespace guiprojekt
             InitializeComponent();
         }
 
-        
+
 
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
             _parentWindow = Application.Current.MainWindow as MainWindow;
-            System.Diagnostics.Debug.WriteLine(_parentWindow._listWithAllReminders.Count);
-            
-            
-                List<DayOfWeek> weekDays = new List<DayOfWeek>();
-
-                string reminderTitle = titleForReminder.Text;
-                string startTime = starttid.Text;
-                string alarmTime = alarmtid.Text;
-
-                if ((bool)mondaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Monday);
-                }
-                if ((bool)tuesdaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Tuesday);
-                }
-                if ((bool)wednesdaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Wednesday);
-                }
-                if ((bool)thursdaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Thursday);
-                }
-                if ((bool)fridaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Friday);
-                }
-                if ((bool)saturdaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Saturday);
-                }
-                if ((bool)sundaybox.IsChecked)
-                {
-                    weekDays.Add(DayOfWeek.Sunday);
-                }
-                checkTextFile();
 
 
-                for (int x = 0; x < weekDays.Count; x++)
-                {
-                    reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays[x].ToString());
-                    _parentWindow._listWithAllReminders.Add(reminderObj);
-                }
 
-                writeToFile(_parentWindow._listWithAllReminders);
-                _parentWindow.readFromFile();
-                titleForReminder.Text = "";
-                alarmtid.Text = "";
-                starttid.Text = "";
-                mondaybox.IsChecked = false;
-                tuesdaybox.IsChecked = false;
-                wednesdaybox.IsChecked = false;
-                thursdaybox.IsChecked = false;
-                fridaybox.IsChecked = false;
-                saturdaybox.IsChecked = false;
-                sundaybox.IsChecked = false;
 
-            
+
+            List<DayOfWeek> weekDays = new List<DayOfWeek>();
+
+            string reminderTitle = titleForReminder.Text;
+            string startTime = starttid.Text;
+            string alarmTime = alarmtid.Text;
+
+            if ((bool)mondaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Monday);
+            }
+            if ((bool)tuesdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Tuesday);
+            }
+            if ((bool)wednesdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Wednesday);
+            }
+            if ((bool)thursdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Thursday);
+            }
+            if ((bool)fridaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Friday);
+            }
+            if ((bool)saturdaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Saturday);
+            }
+            if ((bool)sundaybox.IsChecked)
+            {
+                weekDays.Add(DayOfWeek.Sunday);
+            }
+            checkTextFile();
+
+
+            for (int x = 0; x < weekDays.Count; x++)
+            {
+                reminder reminderObj = new reminder(reminderTitle, startTime, alarmTime, weekDays[x].ToString());
+                _parentWindow._listWithAllReminders.Add(reminderObj);
+            }
+
+            writeToFile(_parentWindow._listWithAllReminders);
+            _parentWindow.readFromFile();
+            titleForReminder.Text = "";
+            alarmtid.Text = "";
+            starttid.Text = "";
+            mondaybox.IsChecked = false;
+            tuesdaybox.IsChecked = false;
+            wednesdaybox.IsChecked = false;
+            thursdaybox.IsChecked = false;
+            fridaybox.IsChecked = false;
+            saturdaybox.IsChecked = false;
+            sundaybox.IsChecked = false;
+
         }
+        
 
         private void writeToFile(List<reminder> reminderList)
         {
@@ -164,3 +166,4 @@ namespace guiprojekt
 
 
 
+    
