@@ -116,11 +116,11 @@ namespace guiprojekt
         }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            CheckBox c = (CheckBox)sender as CheckBox;
+            Button checkButton = (Button)sender as Button;
             int pos = 0;
             for (int i = 0; i < _listWithAllReminders.Count; i++)
             {
-                if ("r" + _listWithAllReminders[i]._idNum.ToString() == c.Name)
+                if ("r" + _listWithAllReminders[i]._idNum.ToString() == checkButton.Name)
                 {
                     pos = i;
                 }
@@ -128,6 +128,8 @@ namespace guiprojekt
             DateTime test = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, _listWithAllReminders[pos]._alarmTime.Hour, _listWithAllReminders[pos]._alarmTime.Minute, 0);
             _listWithAllReminders[pos]._alarmTime = test;
             _listWithAllReminders[pos]._alarmStatus = 1;
+            
+            writeToFile(_listWithAllReminders);
             loadCurrentDay();
 
 
@@ -194,7 +196,16 @@ namespace guiprojekt
                 DateTime currentTime = DateTime.Now;
                 string time = currentTime.ToShortTimeString();
                 string reminderAlarmTime = _listWithAllReminders[x]._alarmTime.ToShortTimeString();
-                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == reminderAlarmTime && _listWithAllReminders[x]._alarmStatus == 0)
+                
+                if (_listWithAllReminders[x]._startTime.Hour <= DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute <= DateTime.Now.Minute && _listWithAllReminders[x]._startTime.Hour <= _listWithAllReminders[x]._alarmTime.Hour && _listWithAllReminders[x]._startTime.Minute <= _listWithAllReminders[x]._alarmTime.Minute)
+                {
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        loadCurrentDay();
+                    });
+
+                }
+                if(_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == reminderAlarmTime && _listWithAllReminders[x]._alarmStatus == 0)
                 {
                     _listWithAllReminders[x]._alarmStatus = 2;
                     writeToFile(_listWithAllReminders);
@@ -229,46 +240,33 @@ namespace guiprojekt
                 });
             }
 
-                
-            }
+           
+        }
 
         private void loadCurrentDay()
         {
-            switch (Convert.ToInt32(DateTime.Now.DayOfWeek))
+            if (_page != 8 && _page != 9)
             {
-                case 0: sunday_Click(); break;
-                case 1: monday_Click(); break;
-                case 2: tuesday_Click(); break;
-                case 3: wednesday_Click(); break;
-                case 4: thursday_Click(); break;
-                case 5: friday_Click(); break;
-                case 6: saturday_Click(); break;
+                switch (Convert.ToInt32(DateTime.Now.DayOfWeek))
+                {
+                    case 0: sunday_Click(); break;
+                    case 1: monday_Click(); break;
+                    case 2: tuesday_Click(); break;
+                    case 3: wednesday_Click(); break;
+                    case 4: thursday_Click(); break;
+                    case 5: friday_Click(); break;
+                    case 6: saturday_Click(); break;
+                }
             }
+                
         }
 
         private void addLabel(StackPanel panel,String day)
         {
-            //Sätt annars till 285
-                                 
-            //Thickness marginLeft = deleteButton.Margin;
-            //Thickness marginTop = deleteButton.Margin;
-            //Thickness marginRight = deleteButton.Margin;
-            //Thickness marginBottom = deleteButton.Margin;
-
-            //marginLeft.Left = 0;
-            //marginLeft.Top = 0;
-            //marginLeft.Right = 0;
-            //marginLeft.Bottom = 0;
-
-            //deleteButton.Margin = marginLeft;
-
+           
             buttonStyle.Setters.Add(new Setter(BackgroundProperty, null));
             buttonStyle.Setters.Add(new Setter(BorderBrushProperty, null));
-            //deleteButton.Style = this.Resources["tabortStyle"] as Style;
-            //editButton.Style = this.Resources["redigeraStyle"] as Style;
-
-            //panel.Name = "reminderAndButtonStackPanel";
-
+           
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
                 string test = _listWithAllReminders[x]._weekDays;
@@ -277,32 +275,46 @@ namespace guiprojekt
                     Label text = new Label();
                     Button deleteButton = new Button();
                     Button editButton = new Button();
-                    //StackPanel stack = new StackPanel();
+                    Button checkButton = new Button();
+                    checkButton.IsEnabled = false;
+                    
                     StackPanel stack = new StackPanel();
-                    deleteButton.Name = "deleteButton";
-                    editButton.Name = "editButton";
+                    
                     stack.Orientation = Orientation.Horizontal;
+                    checkButton.Content = "Checka av";
                     deleteButton.Content = "Ta bort";
                     editButton.Content = "Redigera";
 
                     deleteButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(deleteButton_Click));
                     editButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(editButton_Click));
-
-                    //text.Width = 325;      
+                    checkButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(CheckBox_Checked));
+                       
                     text.Background =  alarmColors[_listWithAllReminders[x]._alarmStatus];
                     System.Diagnostics.Debug.WriteLine(_listWithAllReminders[x]._alarmStatus);
                     text.BorderBrush = _brush2;
                     text.BorderThickness = _thick;
-                    text.Content = "Titel: " + _listWithAllReminders[x]._title + " Starttid: " + _listWithAllReminders[x]._startTime.ToShortTimeString() +  " Alarmtid: " + _listWithAllReminders[x]._alarmTime.ToShortTimeString();
+                    text.Content = "Titel: " + _listWithAllReminders[x]._title + " |" + " Starttid: " + _listWithAllReminders[x]._startTime.ToShortTimeString() + " |" + " Alarmtid: " + _listWithAllReminders[x]._alarmTime.ToShortTimeString();
                     text.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
+                    checkButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     editButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     deleteButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
+
+                    if (_listWithAllReminders[x]._startTime.Hour <= DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute <= DateTime.Now.Minute && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2 && _listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString())
+                    {
+                        checkButton.IsEnabled = true;
+
+
+                    }
                     
+
                     stack.Children.Add(text);
+                    
                     stack.Children.Add(editButton);
                     stack.Children.Add(deleteButton);
-                   
+                    stack.Children.Add(checkButton);
+
                     panel.Children.Add(stack);
+                    
                 }
             }
         }
@@ -333,25 +345,7 @@ namespace guiprojekt
                 }
             }
 
-            //var test = ((Button)sender).Parent;
-            //var test2 = ((StackPanel)parentOfButton).Parent;
-
-            //Control control = (Button)sender;
-            //StackPanel hideStackPanel = (StackPanel)control.Parent;
-
-
-            //string name = control.Name;
-            //var test3 = control.Parent;
-
-            ////stackpanelReminder är stackpanelen som innehåller labeln samt delete-knappen
-            //string stackpanelReminder = parentOfButton.Name;
-
-            ////parentOfStackpanelReminder är stackpanelen som innehåller stackpanelen som innehåller labeln och knappen
-            //string parentOfStackpanelReminder = parentOfStackPanel.Name;
-
-            
-
-        }
+          }
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
@@ -371,11 +365,7 @@ namespace guiprojekt
             {
                 if (test.Name == "r" + _listWithAllReminders[i]._idNum)
                 {
-                    _listWithAllReminders[i]._editing = true;
-                    editReminder.titleForReminder.Text = _listWithAllReminders[i]._title;
-
-                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.ToShortTimeString();
-                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.ToShortTimeString();
+                   
 
                     if (_listWithAllReminders[i]._weekDays == "Monday")
                     {
@@ -405,7 +395,11 @@ namespace guiprojekt
                     {
                         editReminder.sundaybox.IsChecked = true;
                     }
+                    _listWithAllReminders[i]._editing = true;
+                    editReminder.titleForReminder.Text = _listWithAllReminders[i]._title;
 
+                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.ToShortTimeString();
+                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.ToShortTimeString();
 
 
                 }
@@ -425,6 +419,10 @@ namespace guiprojekt
                     {
                         _listWithAllReminders[x]._idNum = _idCount + 1;
                         _idCount++;
+                        if (_listWithAllReminders[x]._alarmTime.Date != DateTime.Now.Date)
+                        {
+                            _listWithAllReminders[x]._alarmStatus = 0;
+                        }
                     }
                  }
             }

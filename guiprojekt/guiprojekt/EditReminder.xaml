@@ -60,7 +60,7 @@
             <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Söndag</CheckBox>
         </UniformGrid>
 
-        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="False"></Button>
+        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="true"></Button>
 
 
         <!--<StackPanel Orientation="Horizontal">
