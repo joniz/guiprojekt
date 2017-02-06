@@ -6,18 +6,59 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <StackPanel Background="LightBlue">
+    <UserControl.Resources>
+        <Style x:Key="input" TargetType="Button">
 
-        <Label HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
-        <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>
+            <Style.Triggers>
 
-        <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Starttid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
+                <Trigger x:Name="input" Property="IsEnabled" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Image Source= "input.png"></Image>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+                <Trigger Property="Button.IsPressed" Value="True">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Image Source="input.png"></Image>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+
+    <StackPanel  Background="LightBlue">
+
+        <Label  HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="17" FontFamily="Rockwell Extra Bold"/>
+
+
+        <TextBox  Height="30" MaxLength="20" FontFamily="Rockwell Extra Bold" Foreground="White" FontSize="20" BorderBrush="Transparent" BorderThickness="0"  Name="titleForReminder" TextAlignment="Center"  TextChanged="testInput">
+            <TextBox.Background>
+                <ImageBrush ImageSource="input.png" />
+            </TextBox.Background>
+        </TextBox>
+
+
+
+        <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Starttid: (hh:mm)" FontSize="17" FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
 
 
 
         <Grid>
-            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" ></TextBox>
-            <TextBlock FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+            <TextBox MaxLength="20" FontFamily="Rockwell Extra Bold" Foreground="White" Height="30" FontSize="20"  TextAlignment="Center" BorderThickness="0" BorderBrush="Transparent"  Name="starttid" TextChanged="testInput" >
+                <TextBox.Background>
+                    <ImageBrush ImageSource="input.png" />
+                </TextBox.Background>
+            </TextBox>
+            <!--<TextBlock FontSize="16" Foreground="White"  FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"></Setter>
@@ -28,14 +69,22 @@
                         </Style.Triggers>
                     </Style>
                 </TextBlock.Style>
-            </TextBlock>
+            </TextBlock>-->
         </Grid>
 
-        <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Alarmtid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="2"  />
+
+        <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Alarmtid: (hh:mm)" FontSize="17" FontFamily="Rockwell Extra Bold" Grid.Row="2"  />
+
+
 
         <Grid>
-            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
-            <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+            <TextBox FontSize="20" Foreground="White" FontFamily="Rockwell Extra Bold" MaxLength="20" Height="30" TextAlignment="Center" BorderBrush="Transparent" BorderThickness="0" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput">
+                <TextBox.Background>
+                    <ImageBrush ImageSource="input.png" />
+                </TextBox.Background>
+
+            </TextBox>
+            <!--<TextBlock FontSize="16" Foreground="White" FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"></Setter>
@@ -46,30 +95,22 @@
                         </Style.Triggers>
                     </Style>
                 </TextBlock.Style>
-            </TextBlock>
+            </TextBlock>-->
         </Grid>
 
 
         <UniformGrid Margin="0,10,0,0" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
-            <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput"     >Måndag</CheckBox>
+            <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Måndag</CheckBox>
             <CheckBox Name="tuesdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Tisdag</CheckBox>
-            <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Onsdag</CheckBox>
+            <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Onsdag</CheckBox>
             <CheckBox Name="thursdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Torsdag</CheckBox>
             <CheckBox Name="fridaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Fredag</CheckBox>
             <CheckBox Name="saturdaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Lördag</CheckBox>
-            <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Söndag</CheckBox>
+            <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold" Click="testRoutedInput">Söndag</CheckBox>
         </UniformGrid>
 
-        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="True"></Button>
-
-
-        <!--<StackPanel Orientation="Horizontal">
-            <Label HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
-            -->
-        <!--<TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>-->
-        <!--
-        </StackPanel>-->
-
+        <Button FontSize="20" Content="Redigera reminder"  Height="45" Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold"  Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="False">
+        </Button>
 
     </StackPanel>
 

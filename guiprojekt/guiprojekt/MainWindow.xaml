@@ -3,19 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
         Title="MainWindow" Height="450" Width="550" Style="{DynamicResource CustomWindow}" Deactivated="Window_Deactivated" >
-        
+
     <Window.Resources>
 
 
         <Style x:Key="CustomWindow" TargetType="Window">
             <Setter Property="ResizeMode" Value="CanMinimize"></Setter>
-            
-   
-                
-            
+
+
+
+
         </Style>
 
-        <Style x:Key="tabortStyle" TargetType="Button">
+        <!--<Style x:Key="tabortStyle" TargetType="Button">
 
             <Setter Property="Width" Value="90"></Setter>
             <Setter Property="Height" Value="30"></Setter>
@@ -49,9 +49,9 @@
             </Style.Triggers>
 
 
-        </Style>
+        </Style>-->
 
-        <Style x:Key="redigeraStyle" TargetType="Button">
+        <!--<Style x:Key="redigeraStyle" TargetType="Button">
 
             <Setter Property="Width" Value="90"></Setter>
             <Setter Property="Height" Value="30"></Setter>
@@ -85,7 +85,7 @@
             </Style.Triggers>
 
 
-        </Style>
+        </Style>-->
 
 
         <Style x:Key="måndagStyle" TargetType="Button">
@@ -96,7 +96,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "måndag3.png"></Image>
+                                <Image Source="måndag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -106,7 +106,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="måndagPushed3.png" Width="102" Height="72"></Image>
+                                <Image Source="måndagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -128,7 +128,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "tisdag2.png"></Image>
+                                <Image Source="tisdag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -138,7 +138,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="tisdagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="tisdagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -160,7 +160,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "onsdag2.png"></Image>
+                                <Image Source="onsdag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -170,7 +170,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="onsdagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="onsdagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -192,7 +192,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "torsdag2.png"></Image>
+                                <Image Source="torsdag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -202,7 +202,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="torsdagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="torsdagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -224,7 +224,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "fredag2.png"></Image>
+                                <Image Source="fredag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -234,7 +234,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="fredagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="fredagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -256,7 +256,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "lördag2.png"></Image>
+                                <Image Source="lördag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -266,7 +266,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="lördagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="lördagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -288,7 +288,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "söndag2.png"></Image>
+                                <Image Source="söndag6.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -298,7 +298,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="söndagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="söndagPushed6.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -320,8 +320,14 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "påminnelse3.png"></Image>
+                                <Image Source="plus.png"></Image>
                             </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Black"  Opacity="0.4"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -330,20 +336,14 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="påminnelsePushed3.png" Width="102" Height="72"></Image>
+                                <Image Opacity="0.5" Source="plus.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
 
-
-
-
             </Style.Triggers>
-
-
         </Style>
-
 
     </Window.Resources>
 
@@ -362,14 +362,13 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="2" FontSize="20" HorizontalContentAlignment="Center" FontStyle="Italic" Margin="0,0,0.333,0">
+        <Label Name="header" Content="Daily Reminder" FontFamily="Rockwell Extra Bold" Foreground="White" FontSize="50" Grid.ColumnSpan="2"  HorizontalContentAlignment="Center" FontStyle="Italic" Margin="0,0,0.333,0">
             <Label.Background>
-                <ImageBrush ImageSource="dailyReminder2.png"></ImageBrush>
+                <ImageBrush ImageSource="header.png"></ImageBrush>
             </Label.Background>
-
         </Label>
         <UniformGrid Rows="8" Name="pickMonth" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Background="Transparent">
-            <Button Cursor="Hand"  Style="{DynamicResource läggTillPåminnelseStyle}"  Name="reminder" Foreground="White"  Click="newReminder_Click"></Button>
+
             <Button Cursor="Hand"  Style="{DynamicResource måndagStyle}"   Name="monday" Foreground="white" Click="monday_Click"></Button>
             <Button Cursor="Hand"  Style="{DynamicResource tisdagStyle}"  Name="tuesday" Foreground="white" Click="tuesday_Click"></Button>
             <Button Cursor="Hand"  Style="{DynamicResource onsdagStyle}"  Name="wednesday" Foreground="white"  Click="wednesday_Click"></Button>
@@ -377,7 +376,7 @@
             <Button Cursor="Hand"  Style="{DynamicResource fredagStyle}"  Name="friday"   Foreground="white"  Click="friday_Click"></Button>
             <Button Cursor="Hand"  Style="{DynamicResource lördagStyle}"  Name="saturday"   Foreground="white"  Click="saturday_Click"></Button>
             <Button Cursor="Hand"  Style="{DynamicResource söndagStyle}"  Name="sunday"   Foreground="white"  Click="sunday_Click"></Button>
-
+            <Button Cursor="Hand"  Style="{DynamicResource läggTillPåminnelseStyle}"  Name="reminder" Foreground="White"  Click="newReminder_Click"></Button>
         </UniformGrid>
 
 
@@ -394,27 +393,37 @@
         </StackPanel>
 
 
-        <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+        <ScrollViewer Name="scrollBar" Visibility="Visible" Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
+                <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
-        </StackPanel>
+                </StackPanel>
 
-        <StackPanel Name="infoTuesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+                <StackPanel Name="infoTuesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
-        </StackPanel>
-        <StackPanel Name="infoWednesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+                </StackPanel>
 
-        </StackPanel>
-        <StackPanel Name="infoThursday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+                <StackPanel Name="infoWednesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden" >
 
-        </StackPanel>
-        <StackPanel Name="infoFriday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+                </StackPanel>
 
-        </StackPanel>
-        <StackPanel Name="infoSaturday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+                <StackPanel Name="infoThursday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
-        </StackPanel>
-        <StackPanel Name="infoSunday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+                </StackPanel>
 
-        </StackPanel>
+                <StackPanel Name="infoFriday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+
+                </StackPanel>
+
+                <StackPanel Name="infoSaturday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+
+                </StackPanel>
+
+                <StackPanel Name="infoSunday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
+
+                </StackPanel>
+
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>
