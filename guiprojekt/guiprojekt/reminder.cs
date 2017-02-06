@@ -20,6 +20,7 @@ namespace guiprojekt
         public bool _editing { get; set; }
 
 
+
                 
         public reminder(string title, string startTime, string alarmTime, String day)
 

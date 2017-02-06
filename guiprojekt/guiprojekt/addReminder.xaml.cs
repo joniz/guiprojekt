@@ -41,7 +41,7 @@ namespace guiprojekt
         private void createReminder_Click(object sender, RoutedEventArgs e)
         {
             _parentWindow = Application.Current.MainWindow as MainWindow;
-            System.Diagnostics.Debug.WriteLine(_parentWindow._listWithAllReminders.Count);
+           
             if (boxCheck())
             {
                 List<DayOfWeek> weekDays = new List<DayOfWeek>();
@@ -165,3 +165,4 @@ namespace guiprojekt
 
 
 
+    

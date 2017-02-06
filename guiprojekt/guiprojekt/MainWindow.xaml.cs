@@ -29,13 +29,18 @@ namespace guiprojekt
         private System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private static System.Timers.Timer aTimer;
 
-
-        Style buttonStyle = new Style(typeof(Control));
+       Style buttonStyle = new Style(typeof(Control));
 
         public List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
 
         int _page = 0;
         int _idCount = 0;
+
+        string[] _allAlarms = new string[20];
+        string[] _allStartAlarms = new string[20];
+        string[] _allAlarmDays = new string[20];
+
+
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
         System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
@@ -47,10 +52,9 @@ namespace guiprojekt
 
             readFromFile();
             
-            string env = Environment.UserName;
-            string path="";
-            
-            path += @"C:\Users\" + env + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
+
+            string user = Environment.UserName;
+            string path = @"C:\Users\" + user + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
 
             string batStart = "cd \"";
             batStart += Directory.GetCurrentDirectory();
@@ -93,10 +97,7 @@ namespace guiprojekt
             this.Focus();
         }
       
-        private void monthPicker_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         public void CheckAlarm(object sender, EventArgs e)
         {
@@ -104,10 +105,7 @@ namespace guiprojekt
 
         }
 
-        private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
-        {
-           
-        }
+        
         private void newReminder_Click(object sender, RoutedEventArgs e)
         {
             CheckWeekday(_page);
@@ -156,6 +154,7 @@ namespace guiprojekt
 
         private void alarm(object source, System.Timers.ElapsedEventArgs e)
         {
+            System.Windows.MessageBox.Show(_listWithAllReminders.Count.ToString());
             bool ok = false;
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
@@ -170,17 +169,23 @@ namespace guiprojekt
             }
             if (ok)
             {
+
                 if (this.WindowState == System.Windows.WindowState.Minimized)
                 {
                     MyNotifyIcon.BalloonTipTitle = "ALARM";
                     MyNotifyIcon.BalloonTipText = "Du har ett alarm";
                     MyNotifyIcon.ShowBalloonTip(400);
+
                 }
-                
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Du har ett alarm");
 
+                }
             }
+       }
 
-        }
+        
 
         private void addLabel(StackPanel panel,String day)
         {
@@ -266,24 +271,12 @@ namespace guiprojekt
                     writeToFile(_listWithAllReminders);
                 }
             }
-            //var test = ((Button)sender).Parent;
-            //var test2 = ((StackPanel)parentOfButton).Parent;
-
-            //Control control = (Button)sender;
-            //StackPanel hideStackPanel = (StackPanel)control.Parent;
-
-            //string name = control.Name;
-            //var test3 = control.Parent;
-
-            ////stackpanelReminder är stackpanelen som innehåller labeln samt delete-knappen
-            //string stackpanelReminder = parentOfButton.Name;
-
-            ////parentOfStackpanelReminder är stackpanelen som innehåller stackpanelen som innehåller labeln och knappen
-            //string parentOfStackpanelReminder = parentOfStackPanel.Name;
+            
         }
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
+            
             CheckWeekday(_page);
             if (showEditReminder.Visibility == System.Windows.Visibility.Collapsed)
             {
@@ -294,14 +287,15 @@ namespace guiprojekt
 
             Button test = (Button)sender as Button;
             System.Diagnostics.Debug.WriteLine(test.Name);
+
             for (int i = 0; i < _listWithAllReminders.Count; i++)
             {
                 if (test.Name == "r" + _listWithAllReminders[i]._idNum)
                 {
                     _listWithAllReminders[i]._editing = true;
                     editReminder.titleForReminder.Text = _listWithAllReminders[i]._title;
-                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.ToString();
-                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.ToString();
+                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.Hour.ToString() + ":" + _listWithAllReminders[i]._startTime.Minute.ToString();
+                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.Hour.ToString() + ":" + _listWithAllReminders[i]._alarmTime.Minute.ToString();
                     if (_listWithAllReminders[i]._weekDays == "Monday")
                     {
                         editReminder.mondaybox.IsChecked = true;
@@ -329,19 +323,14 @@ namespace guiprojekt
                     else if (_listWithAllReminders[i]._weekDays == "Sunday")
                     {
                         editReminder.sundaybox.IsChecked = true;
-                    }                    
-                    //writeToFile(_listWithAllReminders);
+                    }
+
+
                 }
-            }
-        }
-
-        public void NewReminder(reminder obj)
-        {
-            
-        }
-
-        public void readFromFile()
-        {
+              }
+           }
+            public void readFromFile()
+            {
             _idCount = 0;
             if (File.Exists(@"remindersBin.bin"))
             {

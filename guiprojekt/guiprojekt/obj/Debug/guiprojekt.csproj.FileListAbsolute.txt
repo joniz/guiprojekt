@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
 C:\Users\Johannes\Documents\GitHub\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
@@ -35,3 +36,24 @@ C:\Users\Oscar\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainW
 C:\Users\Oscar\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.g.resources
 C:\Users\Oscar\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Properties.Resources.resources
 C:\Users\Oscar\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
+=======
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe.config
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.exe
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\bin\Debug\guiprojekt.pdb
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.baml
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\EditReminder.baml
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\addReminder.g.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\EditReminder.g.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.g.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\App.g.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt_MarkupCompile.cache
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt_MarkupCompile.lref
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\MainWindow.baml
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.g.resources
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.Properties.Resources.resources
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.exe
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.pdb
+C:\Users\Jonathan\Documents\GitHub\guiprojekt\guiprojekt\guiprojekt\obj\Debug\guiprojekt.csprojResolveAssemblyReference.cache
+>>>>>>> 53186d98d7245c65ae90ed1cb22aa0dda3f8cb23
