@@ -16,12 +16,14 @@ namespace guiprojekt
         public DateTime _startTime { get; set; }
         public DateTime _alarmTime { get; set; }
         public int _idNum;
-        public String _weekDays { get; set; }
+        public string _weekDays { get; set; }
         public bool _editing { get; set; }
+        
+        public int _alarmStatus { get; set; }
 
 
                 
-        public reminder(string title, string startTime, string alarmTime, String day)
+        public reminder(string title, string startTime, string alarmTime, string day)
 
         {
             _title = title;
@@ -29,6 +31,8 @@ namespace guiprojekt
             _alarmTime = Convert.ToDateTime(alarmTime);
             _weekDays = day;
             _editing = false;
+           
+            _alarmStatus = 0; // 0 = ingenting, 1 = checkad, 2 = alarm
         
         }
         public static void writeToFile(List<reminder> reminderList)

@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
         Title="MainWindow" Height="450" Width="550" Style="{DynamicResource CustomWindow}" Deactivated="Window_Deactivated" >
-
+        
     <Window.Resources>
+
 
         <Style x:Key="CustomWindow" TargetType="Window">
             <Setter Property="ResizeMode" Value="CanMinimize"></Setter>
@@ -346,6 +347,7 @@
 
     </Window.Resources>
 
+
     <Grid  Background="LightBlue">
 
 
@@ -382,10 +384,12 @@
 
         <StackPanel Name="newReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
 
+
             <local:addReminder/>
         </StackPanel>
         <StackPanel Name="showEditReminder" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
             <local:EditReminder x:Name="editReminder"/>
+
 
         </StackPanel>
 

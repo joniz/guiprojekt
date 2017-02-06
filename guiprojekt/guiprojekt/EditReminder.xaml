@@ -9,14 +9,14 @@
     <StackPanel Background="LightBlue">
 
         <Label HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
-        <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>
+        <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
 
         <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Starttid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
 
 
 
         <Grid>
-            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" ></TextBox>
+            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
             <TextBlock FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -34,7 +34,7 @@
         <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Alarmtid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="2"  />
 
         <Grid>
-            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
+            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
             <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -60,7 +60,7 @@
             <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold"  Click="testRoutedInput">Söndag</CheckBox>
         </UniformGrid>
 
-        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="False"></Button>
+        <Button Margin="0,10,0,0" Name="editReminder" FontFamily="Rockwell Extra Bold" Content="Spara Påminnelse" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="editReminder_Click" IsEnabled="true"></Button>
 
 
         <!--<StackPanel Orientation="Horizontal">
