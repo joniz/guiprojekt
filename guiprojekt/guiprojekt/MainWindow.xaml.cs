@@ -82,6 +82,7 @@ namespace guiprojekt
             aTimer = new System.Timers.Timer(10000);
             aTimer.Start();
             aTimer.Elapsed += alarm;
+            loadCurrentDay();
          
             if(args.Length > 1)
             {
@@ -117,6 +118,7 @@ namespace guiprojekt
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox c = (CheckBox)sender as CheckBox;
+            c.IsChecked = true;
             int pos = 0;
             for (int i = 0; i < _listWithAllReminders.Count; i++)
             {
@@ -128,6 +130,8 @@ namespace guiprojekt
             DateTime test = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, _listWithAllReminders[pos]._alarmTime.Hour, _listWithAllReminders[pos]._alarmTime.Minute, 0);
             _listWithAllReminders[pos]._alarmTime = test;
             _listWithAllReminders[pos]._alarmStatus = 1;
+            
+            writeToFile(_listWithAllReminders);
             loadCurrentDay();
 
 
@@ -194,9 +198,13 @@ namespace guiprojekt
                 DateTime currentTime = DateTime.Now;
                 string time = currentTime.ToShortTimeString();
                 string reminderAlarmTime = _listWithAllReminders[x]._alarmTime.ToShortTimeString();
-                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == reminderAlarmTime && _listWithAllReminders[x]._alarmStatus == 0)
+                if (_listWithAllReminders[x]._startTime.Hour >= currentTime.Hour && _listWithAllReminders[x]._startTime.Minute >= currentTime.Minute)
                 {
-                    _listWithAllReminders[x]._alarmStatus = 2;
+
+                }
+                else if(_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == reminderAlarmTime && _listWithAllReminders[x]._alarmStatus == 0)
+                {
+                    _listWithAllReminders[x]._alarmStatus = 2; //alarmstatus
                     writeToFile(_listWithAllReminders);
                     this.Dispatcher.Invoke(() =>
                     {
@@ -271,10 +279,12 @@ namespace guiprojekt
 
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
+                
                 string test = _listWithAllReminders[x]._weekDays;
                 if (test == day)
                 {
                     Label text = new Label();
+                    CheckBox checkBox = new CheckBox();
                     Button deleteButton = new Button();
                     Button editButton = new Button();
                     //StackPanel stack = new StackPanel();
@@ -284,10 +294,11 @@ namespace guiprojekt
                     stack.Orientation = Orientation.Horizontal;
                     deleteButton.Content = "Ta bort";
                     editButton.Content = "Redigera";
+                    
 
                     deleteButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(deleteButton_Click));
                     editButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(editButton_Click));
-
+                    checkBox.AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(CheckBox_Checked));
                     //text.Width = 325;      
                     text.Background =  alarmColors[_listWithAllReminders[x]._alarmStatus];
                     System.Diagnostics.Debug.WriteLine(_listWithAllReminders[x]._alarmStatus);
@@ -297,11 +308,14 @@ namespace guiprojekt
                     text.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     editButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     deleteButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
-                    
+                    checkBox.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
+
                     stack.Children.Add(text);
+                    
                     stack.Children.Add(editButton);
                     stack.Children.Add(deleteButton);
-                   
+                    stack.Children.Add(checkBox);
+
                     panel.Children.Add(stack);
                 }
             }
