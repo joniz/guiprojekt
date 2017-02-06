@@ -37,6 +37,7 @@
 
     <StackPanel Background="LightBlue">
 
+
         <Label  HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="17" FontFamily="Rockwell Extra Bold"/>
 
 
@@ -48,17 +49,23 @@
 
 
 
+
         <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Starttid: (hh:mm)" FontSize="17" FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
 
 
 
         <Grid>
+
             <TextBox MaxLength="20" FontFamily="Rockwell Extra Bold" Foreground="White" Height="30" FontSize="20"  TextAlignment="Center" BorderThickness="0" BorderBrush="Transparent"  Name="starttid" TextChanged="testInput" >
                 <TextBox.Background>
                     <ImageBrush ImageSource="input.png" />
                 </TextBox.Background>
             </TextBox>
             <!--<TextBlock FontSize="16" Foreground="White"  FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+=======
+            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
+            <TextBlock FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+>>>>>>> 86ea1d00b7f42677301fa57d3d09a6f002f26276
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"></Setter>
@@ -78,6 +85,7 @@
 
 
         <Grid>
+
             <TextBox FontSize="20" Foreground="White" FontFamily="Rockwell Extra Bold" MaxLength="20" Height="30" TextAlignment="Center" BorderBrush="Transparent" BorderThickness="0" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput">
                 <TextBox.Background>
                     <ImageBrush ImageSource="input.png" />
@@ -85,6 +93,10 @@
 
             </TextBox>
             <!--<TextBlock FontSize="16" Foreground="White" FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+=======
+            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
+            <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
+>>>>>>> 86ea1d00b7f42677301fa57d3d09a6f002f26276
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"></Setter>
