@@ -84,7 +84,7 @@ namespace guiprojekt
                 _parentWindow._listWithAllReminders.Add(reminderObj);
             }
 
-            _parentWindow.writeToFile(_parentWindow._listWithAllReminders);
+            Model.writeToFile(_parentWindow._listWithAllReminders);
             _parentWindow.readFromFile();
             titleForReminder.Text = "";
             alarmtid.Text = "";

@@ -24,22 +24,16 @@ namespace guiprojekt
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        
+        
         public List<reminder> _listWithAllReminders =  new List<reminder>();
-        private System.Windows.Forms.NotifyIcon MyNotifyIcon;
+        public System.Windows.Forms.NotifyIcon MyNotifyIcon;
         private static System.Timers.Timer aTimer;
 
        Style buttonStyle = new Style(typeof(Control));
 
-        public List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
-
         
-
-        
-        
-        string[] _allAlarms = new string[20];
-        string[] _allStartAlarms = new string[20];
-        string[] _allAlarmDays = new string[20];
-
         int _idCount = 0;
         int _page = 0;
 
@@ -61,7 +55,7 @@ namespace guiprojekt
         {
 
             readFromFile();
-
+            
             string user = Environment.UserName;
             string path = @"C:\Users\" + user + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
             string batStart = "cd \"";
@@ -76,7 +70,7 @@ namespace guiprojekt
             InitializeComponent();
 
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
+            MyNotifyIcon.Icon = new System.Drawing.Icon("C:\\Users\\Jonathan\\Documents\\GitHub\\guiprojekt\\guiprojekt\\guiprojekt\\ReminderIcon.ico", 16, 16);
             MyNotifyIcon.MouseClick += MyNotifyIcon_MouseDoubleClick;
             MyNotifyIcon.BalloonTipClicked += showAlarm;
             aTimer = new System.Timers.Timer(10000);
@@ -132,8 +126,8 @@ namespace guiprojekt
             _listWithAllReminders[pos]._alarmTime = test;
             _listWithAllReminders[pos]._alarmStatus = 1;
             
-            writeToFile(_listWithAllReminders);
-            loadCurrentDay();
+            Model.writeToFile(_listWithAllReminders);
+            //loadCurrentDay();
 
 
 
@@ -144,12 +138,12 @@ namespace guiprojekt
             scrollBar.Visibility = Visibility.Hidden;
             header.FontSize = 40;
             header.Content = "Lägg till påminnelse";
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             _page = 8;
             newReminder.Visibility = System.Windows.Visibility.Visible;
         }
 
-        private void CheckWeekday(int page)
+        private void hidePreviousDay(int page)
         {
             if (page == 1)
             {
@@ -216,7 +210,7 @@ namespace guiprojekt
                 {
                     
                     _listWithAllReminders[x]._alarmStatus = 2; //alarmstatus
-                    writeToFile(_listWithAllReminders);
+                    Model.writeToFile(_listWithAllReminders);
                     this.Dispatcher.Invoke(() =>
                     {
                         loadCurrentDay();
@@ -335,14 +329,7 @@ namespace guiprojekt
                 }
             }
         }
-        public void writeToFile(List<reminder> reminderList)
-        {
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
-            {
-                BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(stream, reminderList);
-            }
-        }
+     
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -358,7 +345,7 @@ namespace guiprojekt
                 {
                     parentOfButton.Visibility = Visibility.Collapsed;
                     _listWithAllReminders.RemoveAt(i);
-                    writeToFile(_listWithAllReminders);
+                    Model.writeToFile(_listWithAllReminders);
                 }
             }
 
@@ -367,7 +354,7 @@ namespace guiprojekt
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
             
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (showEditReminder.Visibility == System.Windows.Visibility.Collapsed)
             {
                 scrollBar.Visibility = Visibility.Hidden;
@@ -452,20 +439,14 @@ namespace guiprojekt
         private void monday_Click(object sender = null, RoutedEventArgs e = null)
 
         {
-            CheckWeekday(_page);
-            if (infoMonday.Visibility == System.Windows.Visibility.Hidden)
-            {
+            hidePreviousDay(_page);
+           
                 infoMonday.Visibility = System.Windows.Visibility.Visible;
                 _page = 1;
                 scrollBar.Visibility = Visibility.Visible;
                 scrollBar.ScrollToTop();
                 header.FontSize = 50;
                 header.Content = "Måndag";
-            }
-            else
-            {
-                infoMonday.Visibility = System.Windows.Visibility.Hidden;
-            }
             infoMonday.Children.Clear();
             readFromFile();
             addLabel(infoMonday,"Monday");
@@ -473,7 +454,7 @@ namespace guiprojekt
 
         private void tuesday_Click(object sender = null, RoutedEventArgs e = null)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (infoTuesday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoTuesday.Visibility = System.Windows.Visibility.Visible;
@@ -494,7 +475,7 @@ namespace guiprojekt
 
         private void wednesday_Click(object sender = null, RoutedEventArgs e = null)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (infoWednesday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoWednesday.Visibility = System.Windows.Visibility.Visible;
@@ -515,7 +496,7 @@ namespace guiprojekt
 
         private void thursday_Click(object sender = null, RoutedEventArgs e = null)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (infoThursday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoThursday.Visibility = System.Windows.Visibility.Visible;
@@ -536,7 +517,7 @@ namespace guiprojekt
 
         private void friday_Click(object sender = null, RoutedEventArgs e = null)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (infoFriday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoFriday.Visibility = System.Windows.Visibility.Visible;
@@ -557,7 +538,7 @@ namespace guiprojekt
 
         private void saturday_Click(object sender = null, RoutedEventArgs e = null)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (infoSaturday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoSaturday.Visibility = System.Windows.Visibility.Visible;
@@ -578,7 +559,7 @@ namespace guiprojekt
 
         private void sunday_Click(object sender = null, RoutedEventArgs e = null)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (infoSunday.Visibility == System.Windows.Visibility.Hidden)
             {
                 infoSunday.Visibility = System.Windows.Visibility.Visible;
@@ -601,7 +582,7 @@ namespace guiprojekt
 
         private void reminder_Click(object sender, RoutedEventArgs e)
         {
-            CheckWeekday(_page);
+            hidePreviousDay(_page);
             if (newReminder.Visibility == System.Windows.Visibility.Collapsed)
             {
                 newReminder.Visibility = System.Windows.Visibility.Visible;
@@ -609,12 +590,7 @@ namespace guiprojekt
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void Window_Deactivated(object sender=null, EventArgs e=null)
+     private void Window_Deactivated(object sender=null, EventArgs e=null)
         {
             if (this.WindowState == System.Windows.WindowState.Minimized)
             {
