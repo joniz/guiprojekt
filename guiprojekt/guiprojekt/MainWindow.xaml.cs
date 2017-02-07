@@ -217,7 +217,7 @@ namespace guiprojekt
 
 
 
-                if (_listWithAllReminders[x]._startTime.Hour <= currentTime.Hour && _listWithAllReminders[x]._startTime.Minute <= currentTime.Minute && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2)
+                if (_listWithAllReminders[x]._startTime.Hour <= currentTime.Hour && _listWithAllReminders[x]._startTime.Minute <= currentTime.Minute && _listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString()  && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2)
                 {
                     this.Dispatcher.Invoke(() =>
                     {
