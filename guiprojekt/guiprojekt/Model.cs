@@ -25,7 +25,50 @@ namespace guiprojekt
 
 
         }
+        public static bool timeTest(DateTime startTime, DateTime alarmTime)
+        {
+            if (startTime.Hour > alarmTime.Hour)
+            {
+                return false;
+            }
+            else if (startTime.Hour == alarmTime.Hour)
+            {
+                if (startTime.Minute >= alarmTime.Minute)
+                {
+                    return false;
+                }
+                else
+                {
 
+                    return true;
+                }
+            }
+
+
+            else return true;
+
+
+        }
+        public static bool checkBoxTest(DateTime startTime)
+        {
+            if (startTime.Hour > DateTime.Now.Hour)
+            {
+                return false;
+            }
+            else if (startTime.Hour == DateTime.Now.Hour)
+            {
+                if (startTime.Minute > DateTime.Now.Minute)
+                {
+                    return false;
+                }
+                else return true;
+
+            }
+            else return true;
+
+
+
+        }
 
     }
 

@@ -18,7 +18,7 @@ namespace guiprojekt
         public int _idNum;
         public string _weekDays { get; set; }
         public bool _editing { get; set; }
-        
+        public bool _isEnabled;
         public int _alarmStatus { get; set; }
 
 
@@ -31,14 +31,15 @@ namespace guiprojekt
             _alarmTime = Convert.ToDateTime(alarmTime);
             _weekDays = day;
             _editing = false;
-           
+            _isEnabled = false;
+            
             _alarmStatus = 0; // 0 = ingenting, 1 = checkad, 2 = alarm
         
         }
         public static void writeToFile(List<reminder> reminderList)
         {
 
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
+            using (Stream stream = File.Open("C:\\Users\\" + Environment.UserName + "\\remindersBin.bin", FileMode.Create))
             {
 
                 BinaryFormatter bin = new BinaryFormatter();
@@ -65,9 +66,9 @@ namespace guiprojekt
         }
         public List<reminder> readFromFile()
         {
-            if (File.Exists(@"remindersBin.bin"))
+            if (File.Exists(@"C:\Users\" + Environment.UserName + "\\remindersBin.bin"))
             {
-                using (Stream stream = File.Open(@"remindersBin.bin", FileMode.Open))
+                using (Stream stream = File.Open(@"C:\Users\" + Environment.UserName + "\\remindersBin.bin", FileMode.Open))
                 {
                     BinaryFormatter bin = new BinaryFormatter();
                     List<reminder> _listWithAllReminders = (List<reminder>)bin.Deserialize(stream);

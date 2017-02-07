@@ -112,7 +112,9 @@ namespace guiprojekt
             }
         }
 
+
       
+
         public bool boxCheck()
         {
             if ((bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked)
@@ -123,15 +125,7 @@ namespace guiprojekt
         }
 
      
-        private bool timeTest(DateTime startTime, DateTime alarmTime)
-        {
-            if (startTime.Hour >= alarmTime.Hour && startTime.Minute >= alarmTime.Minute)
-            {
-                return false;
-
-            }
-            else return true;
-        }
+    
 
         private bool isValidTime(string time)
         {
@@ -147,7 +141,7 @@ namespace guiprojekt
         {
             string titel = titleForReminder.Text;
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
-                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked) && timeTest(Convert.ToDateTime(starttid.Text), Convert.ToDateTime(alarmtid.Text)))
+                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked) && Model.timeTest(Convert.ToDateTime(starttid.Text), Convert.ToDateTime(alarmtid.Text)))
             {
                 editReminder.IsEnabled = true;
 

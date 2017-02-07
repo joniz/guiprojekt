@@ -114,23 +114,49 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fredag6.png" />
-    <Resource Include="fredagPushed6.png" />
-    <Resource Include="header.png" />
-    <Resource Include="input.png" />
-    <Resource Include="lördag6.png" />
-    <Resource Include="lördagPushed6.png" />
-    <Resource Include="måndag6.png" />
-    <Resource Include="måndagPushed6.png" />
-    <Resource Include="onsdag6.png" />
-    <Resource Include="onsdagPushed6.png" />
-    <Resource Include="plus.png" />
-    <Resource Include="söndag6.png" />
-    <Resource Include="söndagPushed6.png" />
-    <Resource Include="tisdag6.png" />
-    <Resource Include="tisdagPushed6.png" />
-    <Resource Include="torsdag6.png" />
-    <Resource Include="torsdagPushed6.png" />
+    <Resource Include="Resources\Images\fredag6.png" />
+    <Resource Include="Resources\Images\fredagPushed6.png" />
+    <Resource Include="Resources\Images\header.png" />
+    <Resource Include="Resources\Images\input.png" />
+    <Resource Include="Resources\Images\lördag6.png" />
+    <Resource Include="Resources\Images\lördagPushed6.png" />
+    <Resource Include="Resources\Images\måndag6.png" />
+    <Resource Include="Resources\Images\måndagPushed6.png" />
+    <Resource Include="Resources\Images\onsdag6.png" />
+    <Resource Include="Resources\Images\onsdagPushed6.png" />
+    <Resource Include="Resources\Images\plus.png" />
+    <Resource Include="Resources\Images\söndag6.png" />
+    <Resource Include="Resources\Images\söndagPushed6.png" />
+    <Resource Include="Resources\Images\tisdag6.png" />
+    <Resource Include="Resources\Images\tisdagPushed6.png" />
+    <Resource Include="Resources\Images\torsdag6.png" />
+    <Resource Include="Resources\Images\torsdagPushed6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\dailyReminder2.png" />
+    <Resource Include="Resources\Images\fredag2.png" />
+    <Resource Include="Resources\Images\fredagPushed2.png" />
+    <Resource Include="Resources\Images\lördag2.png" />
+    <Resource Include="Resources\Images\lördagPushed2.png" />
+    <Resource Include="Resources\Images\måndag3.png" />
+    <Resource Include="Resources\Images\måndagPushed3.png" />
+    <Resource Include="Resources\Images\onsdag2.png" />
+    <Resource Include="Resources\Images\onsdagPushed2.png" />
+    <Resource Include="Resources\Images\påminnelse3.png" />
+    <Resource Include="Resources\Images\påminnelsePushed3.png" />
+    <Resource Include="Resources\Images\redigera.png" />
+    <Resource Include="Resources\Images\redigeraPushed.png" />
+    <Resource Include="Resources\Images\söndag2.png" />
+    <Resource Include="Resources\Images\söndagPushed2.png" />
+    <Resource Include="Resources\Images\Tabort.png" />
+    <Resource Include="Resources\Images\TabortPushed.png" />
+    <Resource Include="Resources\Images\tisdag2.png" />
+    <Resource Include="Resources\Images\tisdagPushed2.png" />
+    <Resource Include="Resources\Images\torsdag2.png" />
+    <Resource Include="Resources\Images\torsdagPushed2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ReminderIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

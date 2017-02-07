@@ -15,7 +15,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "input.png"></Image>
+                                <Image Source= "/Resources/Images/input.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -25,7 +25,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="input.png"></Image>
+                                <Image Source="/Resources/Images/input.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -43,7 +43,7 @@
 
         <TextBox  Height="30" MaxLength="20" FontFamily="Rockwell Extra Bold" Foreground="White" FontSize="20" BorderBrush="Transparent" BorderThickness="0"  Name="titleForReminder" TextAlignment="Center"  TextChanged="testInput">
             <TextBox.Background>
-                <ImageBrush ImageSource="input.png" />
+                <ImageBrush ImageSource="/Resources/Images/input.png" />
             </TextBox.Background>
         </TextBox>
 
@@ -58,7 +58,7 @@
 
             <TextBox MaxLength="20" FontFamily="Rockwell Extra Bold" Foreground="White" Height="30" FontSize="20"  TextAlignment="Center" BorderThickness="0" BorderBrush="Transparent"  Name="starttid" TextChanged="testInput" >
                 <TextBox.Background>
-                    <ImageBrush ImageSource="input.png" />
+                    <ImageBrush ImageSource="/Resources/Images/input.png" />
                 </TextBox.Background>
             </TextBox>
             <!--<TextBlock FontSize="16" Foreground="White"  FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
@@ -88,7 +88,7 @@
 
             <TextBox FontSize="20" Foreground="White" FontFamily="Rockwell Extra Bold" MaxLength="20" Height="30" TextAlignment="Center" BorderBrush="Transparent" BorderThickness="0" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput">
                 <TextBox.Background>
-                    <ImageBrush ImageSource="input.png" />
+                    <ImageBrush ImageSource="/Resources/Images/input.png" />
                 </TextBox.Background>
 
             </TextBox>

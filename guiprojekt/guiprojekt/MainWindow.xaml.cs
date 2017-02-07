@@ -33,22 +33,23 @@ namespace guiprojekt
 
        Style buttonStyle = new Style(typeof(Control));
 
-        
+         
         int _idCount = 0;
         int _page = 0;
 
 
 
-       // System.Windows.Media.Brush lawl = new SolidColorBrush(Color.FromRgb(78, 194, 231));
-        System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
-        System.Windows.Media.Brush _brush2 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
-        System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
-        System.Windows.Media.Brush _brush4 = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+       
+     
+
+
         System.Windows.Thickness _thick = new Thickness(1);
+        
         Brush[] alarmColors = new Brush[3]
         {
-            Brushes.Yellow, Brushes.Green, Brushes.Red
-
+            new SolidColorBrush(Color.FromRgb(72,118,255)),
+            new SolidColorBrush(Color.FromRgb(46,138,87)),
+            new SolidColorBrush(Color.FromRgb(189,32,49)),
         };
 
         public MainWindow()
@@ -70,8 +71,14 @@ namespace guiprojekt
             InitializeComponent();
 
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            MyNotifyIcon.Icon = new System.Drawing.Icon("C:\\Users\\Jonathan\\Documents\\GitHub\\guiprojekt\\guiprojekt\\guiprojekt\\ReminderIcon.ico", 16, 16);
+
+
+            MyNotifyIcon.Icon = new System.Drawing.Icon(guiprojekt.Properties.Resources.ReminderIcon, 16, 16);
+ 
+ 
+
             MyNotifyIcon.MouseClick += MyNotifyIcon_MouseDoubleClick;
+
             MyNotifyIcon.BalloonTipClicked += showAlarm;
             aTimer = new System.Timers.Timer(10000);
             aTimer.Start();
@@ -125,9 +132,11 @@ namespace guiprojekt
             DateTime test = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, _listWithAllReminders[pos]._alarmTime.Hour, _listWithAllReminders[pos]._alarmTime.Minute, 0);
             _listWithAllReminders[pos]._alarmTime = test;
             _listWithAllReminders[pos]._alarmStatus = 1;
+            _listWithAllReminders[pos]._isEnabled = false;
             
             Model.writeToFile(_listWithAllReminders);
-            //loadCurrentDay();
+            refreshCurrentPage();
+
 
 
 
@@ -135,7 +144,13 @@ namespace guiprojekt
 
         private void newReminder_Click(object sender, RoutedEventArgs e)
         {
-            scrollBar.Visibility = Visibility.Hidden;
+            scrollBar1.Visibility = Visibility.Hidden;
+            scrollBar2.Visibility = Visibility.Hidden;
+            scrollBar3.Visibility = Visibility.Hidden;
+            scrollBar4.Visibility = Visibility.Hidden;
+            scrollBar5.Visibility = Visibility.Hidden;
+            scrollBar6.Visibility = Visibility.Hidden;
+            scrollBar7.Visibility = Visibility.Hidden;
             header.FontSize = 40;
             header.Content = "Lägg till påminnelse";
             hidePreviousDay(_page);
@@ -195,17 +210,21 @@ namespace guiprojekt
             {
                 DateTime currentTime = DateTime.Now;
                 
-                
-                
-                if (_listWithAllReminders[x]._startTime.Hour == DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute == DateTime.Now.Minute)
+
+
+
+                if (_listWithAllReminders[x]._startTime.Hour <= currentTime.Hour && _listWithAllReminders[x]._startTime.Minute <= currentTime.Minute && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2)
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        loadCurrentDay();
+                        _listWithAllReminders[x]._isEnabled = true;
+                        refreshCurrentPage();
+                        System.Diagnostics.Debug.WriteLine("Hej");
                     });
-
                 }
-                if(_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && currentTime.Hour >= _listWithAllReminders[x]._alarmTime.Hour && currentTime.Minute >= _listWithAllReminders[x]._alarmTime.Minute && _listWithAllReminders[x]._alarmStatus == 0)
+
+
+                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && currentTime.Hour >= _listWithAllReminders[x]._alarmTime.Hour && currentTime.Minute >= _listWithAllReminders[x]._alarmTime.Minute && _listWithAllReminders[x]._alarmStatus == 0)
 
                 {
                     
@@ -263,18 +282,59 @@ namespace guiprojekt
                 
         }
 
+        private void refreshCurrentPage()
+        {
+            Model.writeToFile(_listWithAllReminders);
+            switch (_page)
+            {
+                case 0: infoSunday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoSunday, "Sunday"); break;
+                case 1: infoMonday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoMonday, "Monday"); break;
+                case 2: infoTuesday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoTuesday, "Tuesday"); break;
+                case 3: infoWednesday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoWednesday, "Wednesday"); break;
+                case 4: infoThursday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoThursday, "Thursday"); break;
+                case 5: infoFriday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoFriday, "Friday"); break;
+                case 6: infoSaturday.Children.Clear();
+                    readFromFile();
+                    addLabel(infoSaturday, "Saturday"); break;
+            }
+        }
+
         private void addLabel(StackPanel panel,String day)
         {
-           
+            int value = 0;
+
+            for (int i = 0; i < _listWithAllReminders.Count; i++)
+            {
+                string test = _listWithAllReminders[i]._weekDays;
+                if (test == day)
+                {
+                    value++;
+                }
+            }
+            
             buttonStyle.Setters.Add(new Setter(BackgroundProperty, null));
             buttonStyle.Setters.Add(new Setter(BorderBrushProperty, null));
            
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
-                
                 string test = _listWithAllReminders[x]._weekDays;
+
+
                 if (test == day)
                 {
+                    
                     System.Windows.Media.Brush lawl = new SolidColorBrush(Color.FromRgb(78, 194, 231));
                     Label text = new Label();
                     CheckBox checkBox = new CheckBox();
@@ -282,22 +342,26 @@ namespace guiprojekt
                     Button editButton = new Button();
                     Button checkButton = new Button();
                     checkButton.IsEnabled = false;
-                    
+                    DockPanel buttonwrap = new DockPanel();
                     StackPanel stack = new StackPanel();
                     
                     stack.Orientation = Orientation.Horizontal;
                     checkButton.Content = "Checka av";
                     deleteButton.Content = "Ta bort";
                     editButton.Content = "Redigera";
-                   
+                    
+                    
                     deleteButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(deleteButton_Click));
                     editButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(editButton_Click));
 
                     checkButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(CheckBox_Checked));
-
+                    deleteButton.FontFamily = new FontFamily("Rockwell Extra Bold");
+                    editButton.FontFamily = new FontFamily("Rockwell Extra Bold");
+                    checkButton.FontFamily = new FontFamily("Rockwell Extra Bold");
+                    text.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                     text.FontSize = 15;
                     text.Background =  alarmColors[_listWithAllReminders[x]._alarmStatus];
-                    text.Width = 257;
+                    
                     text.FontFamily = new FontFamily("Rockwell Bold");
                     text.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                     text.BorderThickness = _thick;
@@ -307,25 +371,36 @@ namespace guiprojekt
                     editButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     deleteButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
 
-                    if (_listWithAllReminders[x]._startTime.Hour <= DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute <= DateTime.Now.Minute && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2 && _listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString())
+                    if (_listWithAllReminders[x]._isEnabled /*_listWithAllReminders[x]._startTime.Hour <= DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute <= DateTime.Now.Minute && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2 && _listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString()*/)
                     {
                         checkButton.IsEnabled = true;
 
 
                     }
-                    
 
+                    if (value >= 5)
+                    {
+
+                        text.Width = 202;
+                    }
+                    else text.Width = 219;
 
                     stack.Children.Add(text);
                     
                     stack.Children.Add(editButton);
                     stack.Children.Add(deleteButton);
-
+                    
                     stack.Children.Add(checkButton);
+                   
 
-
+                    //buttonwrap.Children.Add(editButton);
+                    //buttonwrap.Children.Add(deleteButton);
+                    //buttonwrap.Children.Add(checkBox);
+                    //stack.Children.Add(buttonwrap);
                     panel.Children.Add(stack);
                     
+                    
+
                 }
             }
         }
@@ -353,11 +428,18 @@ namespace guiprojekt
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            
+           
             hidePreviousDay(_page);
             if (showEditReminder.Visibility == System.Windows.Visibility.Collapsed)
             {
-                scrollBar.Visibility = Visibility.Hidden;
+
+                scrollBar1.Visibility = Visibility.Hidden;
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 showEditReminder.Visibility = System.Windows.Visibility.Visible;
                 _page = 9;
                 
@@ -443,8 +525,14 @@ namespace guiprojekt
            
                 infoMonday.Visibility = System.Windows.Visibility.Visible;
                 _page = 1;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar1.Visibility = Visibility.Visible;
+                scrollBar1.ScrollToTop();
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Måndag";
             infoMonday.Children.Clear();
@@ -459,8 +547,14 @@ namespace guiprojekt
             {
                 infoTuesday.Visibility = System.Windows.Visibility.Visible;
                 _page = 2;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar2.Visibility = Visibility.Visible;
+                scrollBar2.ScrollToTop();
+                scrollBar1.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Tisdag";
             }
@@ -480,8 +574,15 @@ namespace guiprojekt
             {
                 infoWednesday.Visibility = System.Windows.Visibility.Visible;
                 _page = 3;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar3.Visibility = Visibility.Visible;
+                scrollBar3.ScrollToTop();
+
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar1.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Onsdag";
             }
@@ -501,8 +602,14 @@ namespace guiprojekt
             {
                 infoThursday.Visibility = System.Windows.Visibility.Visible;
                 _page = 4;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar4.Visibility = Visibility.Visible;
+                scrollBar4.ScrollToTop();
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar1.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Torsdag";
             }
@@ -522,8 +629,14 @@ namespace guiprojekt
             {
                 infoFriday.Visibility = System.Windows.Visibility.Visible;
                 _page = 5;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar5.Visibility = Visibility.Visible;
+                scrollBar5.ScrollToTop();
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar1.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Fredag";
             }
@@ -543,8 +656,14 @@ namespace guiprojekt
             {
                 infoSaturday.Visibility = System.Windows.Visibility.Visible;
                 _page = 6;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar6.Visibility = Visibility.Visible;
+                scrollBar6.ScrollToTop();
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar1.Visibility = Visibility.Hidden;
+                scrollBar7.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Lördag";
             }
@@ -564,8 +683,14 @@ namespace guiprojekt
             {
                 infoSunday.Visibility = System.Windows.Visibility.Visible;
                 _page = 7;
-                scrollBar.Visibility = Visibility.Visible;
-                scrollBar.ScrollToTop();
+                scrollBar7.Visibility = Visibility.Visible;
+                scrollBar7.ScrollToTop();
+                scrollBar2.Visibility = Visibility.Hidden;
+                scrollBar3.Visibility = Visibility.Hidden;
+                scrollBar4.Visibility = Visibility.Hidden;
+                scrollBar5.Visibility = Visibility.Hidden;
+                scrollBar6.Visibility = Visibility.Hidden;
+                scrollBar1.Visibility = Visibility.Hidden;
                 header.FontSize = 50;
                 header.Content = "Söndag";
             }

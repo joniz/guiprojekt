@@ -100,10 +100,11 @@ namespace guiprojekt
         }
         
 
+
       private void checkTextFile()
         {
            
-            string path = @"remindersBin.bin";
+            string path = @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
@@ -122,18 +123,7 @@ namespace guiprojekt
             else return false;
 
         }
-        private bool timeTest(DateTime startTime, DateTime alarmTime)
-        {
-            if (startTime.Hour >= alarmTime.Hour && startTime.Minute >= alarmTime.Minute)
-            {
-                return false;
-
-
-            }
-            else return true;
-
-
-        }
+      
 
 
         private bool isValidTime(string time)
@@ -151,7 +141,7 @@ namespace guiprojekt
             string titel = titleForReminder.Text;
 
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
-                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked) && timeTest(Convert.ToDateTime(starttid.Text), Convert.ToDateTime(alarmtid.Text)))
+                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked) && Model.timeTest(Convert.ToDateTime(starttid.Text), Convert.ToDateTime(alarmtid.Text)))
 
 
             {
