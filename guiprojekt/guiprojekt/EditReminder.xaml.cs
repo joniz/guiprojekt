@@ -28,7 +28,9 @@ namespace guiprojekt
 
         public EditReminder()
         {
+
             InitializeComponent();
+            titleForReminder.IsEnabled = true;
         }
 
         /* public List<reminder> getReminderList
@@ -94,7 +96,7 @@ namespace guiprojekt
                     _parentWindow._listWithAllReminders.Add(reminderObj);
                 }
                 
-                writeToFile(_parentWindow._listWithAllReminders);
+                _parentWindow.writeToFile(_parentWindow._listWithAllReminders);
                 _parentWindow.readFromFile();
                 titleForReminder.Text = "";
                 alarmtid.Text = "";
@@ -110,14 +112,9 @@ namespace guiprojekt
             }
         }
 
-        private void writeToFile(List<reminder> reminderList)
-        {
-            using (Stream stream = File.Open("C:\\Users\\" + Environment.UserName + "\\remindersBin.bin", FileMode.Create))
-            {
-                BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(stream, reminderList);
-            }
-        }
+
+      
+
         public bool boxCheck()
         {
             if ((bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked)

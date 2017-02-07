@@ -113,27 +113,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="dailyReminder2.png" />
-    <Resource Include="fredag2.png" />
-    <Resource Include="fredagPushed2.png" />
-    <Resource Include="lördag2.png" />
-    <Resource Include="lördagPushed2.png" />
-    <Resource Include="måndag3.png" />
-    <Resource Include="måndagPushed3.png" />
-    <Resource Include="onsdag2.png" />
-    <Resource Include="onsdagPushed2.png" />
-    <Resource Include="påminnelse3.png" />
-    <Resource Include="påminnelsePushed3.png" />
-    <Resource Include="redigera.png" />
-    <Resource Include="redigeraPushed.png" />
-    <Resource Include="söndag2.png" />
-    <Resource Include="söndagPushed2.png" />
-    <Resource Include="Tabort.png" />
-    <Resource Include="TabortPushed.png" />
-    <Resource Include="tisdag2.png" />
-    <Resource Include="tisdagPushed2.png" />
-    <Resource Include="torsdag2.png" />
-    <Resource Include="torsdagPushed2.png" />
+    <Resource Include="Resources\Images\fredag6.png" />
+    <Resource Include="Resources\Images\fredagPushed6.png" />
+    <Resource Include="Resources\Images\header.png" />
+    <Resource Include="Resources\Images\input.png" />
+    <Resource Include="Resources\Images\lördag6.png" />
+    <Resource Include="Resources\Images\lördagPushed6.png" />
+    <Resource Include="Resources\Images\måndag6.png" />
+    <Resource Include="Resources\Images\måndagPushed6.png" />
+    <Resource Include="Resources\Images\onsdag6.png" />
+    <Resource Include="Resources\Images\onsdagPushed6.png" />
+    <Resource Include="Resources\Images\plus.png" />
+    <Resource Include="Resources\Images\söndag6.png" />
+    <Resource Include="Resources\Images\söndagPushed6.png" />
+    <Resource Include="Resources\Images\tisdag6.png" />
+    <Resource Include="Resources\Images\tisdagPushed6.png" />
+    <Resource Include="Resources\Images\torsdag6.png" />
+    <Resource Include="Resources\Images\torsdagPushed6.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\dailyReminder2.png" />

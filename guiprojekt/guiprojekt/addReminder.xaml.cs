@@ -84,7 +84,7 @@ namespace guiprojekt
                 _parentWindow._listWithAllReminders.Add(reminderObj);
             }
 
-            writeToFile(_parentWindow._listWithAllReminders);
+            _parentWindow.writeToFile(_parentWindow._listWithAllReminders);
             _parentWindow.readFromFile();
             titleForReminder.Text = "";
             alarmtid.Text = "";
@@ -100,17 +100,8 @@ namespace guiprojekt
         }
         
 
-        private void writeToFile(List<reminder> reminderList)
-        {
-            using (Stream stream = File.Open("C:\\Users\\" + Environment.UserName + "\\remindersBin.bin", FileMode.Create))
-            {
-                BinaryFormatter bin = new BinaryFormatter();
-                bin.Serialize(stream, reminderList);
-            }
-        }
-        
 
-        private void checkTextFile()
+      private void checkTextFile()
         {
            
             string path = @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
@@ -132,6 +123,18 @@ namespace guiprojekt
             else return false;
 
         }
+        private bool timeTest(DateTime startTime, DateTime alarmTime)
+        {
+            if (startTime.Hour >= alarmTime.Hour && startTime.Minute >= alarmTime.Minute)
+            {
+                return false;
+
+
+            }
+            else return true;
+
+
+        }
 
 
         private bool isValidTime(string time)
@@ -147,8 +150,11 @@ namespace guiprojekt
         private void testInput(object sender = null, TextChangedEventArgs e = null)
         {
             string titel = titleForReminder.Text;
-            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
-                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked))
+
+            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
+                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked) && timeTest(Convert.ToDateTime(starttid.Text), Convert.ToDateTime(alarmtid.Text)))
+
+
             {
                 if(validateSelectedDays())
                 createReminder.IsEnabled = true;
