@@ -29,7 +29,7 @@ namespace guiprojekt
 
         public void writeToFile(reminder remObj)
         {
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
+            using (Stream stream = File.Open("C:\\Users\\" + Environment.UserName + "\\remindersBin.bin", FileMode.Create))
             {
 
                 BinaryFormatter bin = new BinaryFormatter();

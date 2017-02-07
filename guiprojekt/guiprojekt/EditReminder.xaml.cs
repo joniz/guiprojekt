@@ -112,7 +112,7 @@ namespace guiprojekt
 
         private void writeToFile(List<reminder> reminderList)
         {
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
+            using (Stream stream = File.Open("C:\\Users\\" + Environment.UserName + "\\remindersBin.bin", FileMode.Create))
             {
                 BinaryFormatter bin = new BinaryFormatter();
                 bin.Serialize(stream, reminderList);
@@ -130,7 +130,7 @@ namespace guiprojekt
         private void checkTextFile()
         {
             string path = @"reminders.txt";
-            string path2 = @"remindersBin.bin";
+            string path2 = @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
@@ -154,7 +154,7 @@ namespace guiprojekt
         private void testInput(object sender = null, TextChangedEventArgs e = null)
         {
             string titel = titleForReminder.Text;
-            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !titel.Contains("|") && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
+            if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
                 (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked))
             {
                 editReminder.IsEnabled = true;

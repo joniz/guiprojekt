@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:guiprojekt"
         Title="MainWindow" Height="450" Width="550" Style="{DynamicResource CustomWindow}" Deactivated="Window_Deactivated" >
-
+        
     <Window.Resources>
+
 
         <Style x:Key="CustomWindow" TargetType="Window">
             <Setter Property="ResizeMode" Value="CanMinimize"></Setter>
@@ -24,7 +25,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "Tabort.png"></Image>
+                                <Image Source= "/Resources/Images/Tabort.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -36,7 +37,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="TabortPushed.png" Width="85" Height="25"></Image>
+                                <Image Source="/Resources/Images/TabortPushed.png" Width="85" Height="25"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -60,7 +61,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "redigera.png"></Image>
+                                <Image Source= "/Resources/Images/redigera.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -72,7 +73,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="redigeraPushed.png" Width="85" Height="25"></Image>
+                                <Image Source="/Resources/Images/redigeraPushed.png" Width="85" Height="25"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -87,7 +88,7 @@
         </Style>
 
 
-        <Style x:Key="måndagStyle" TargetType="Button">
+        <Style  x:Key="måndagStyle" TargetType="Button">
 
             <Style.Triggers>
 
@@ -95,7 +96,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "måndag3.png"></Image>
+                                <Image  Source= "/Resources/Images/måndag3.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -105,7 +106,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="måndagPushed3.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/måndagPushed3.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -127,7 +128,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "tisdag2.png"></Image>
+                                <Image Source= "/Resources/Images/tisdag2.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -137,7 +138,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="tisdagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/tisdagPushed2.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -159,7 +160,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "onsdag2.png"></Image>
+                                <Image Source= "/Resources/Images/onsdag2.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -169,7 +170,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="onsdagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/onsdagPushed2.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -191,7 +192,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "torsdag2.png"></Image>
+                                <Image Source= "/Resources/Images/torsdag2.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -201,7 +202,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="torsdagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/torsdagPushed2.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -223,7 +224,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "fredag2.png"></Image>
+                                <Image Source= "/Resources/Images/fredag2.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -233,7 +234,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="fredagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/fredagPushed2.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -255,7 +256,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "lördag2.png"></Image>
+                                <Image Source= "/Resources/Images/lördag2.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -265,7 +266,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="lördagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/lördagPushed2.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -287,7 +288,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "söndag2.png"></Image>
+                                <Image Source= "/Resources/Images/söndag2.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -297,7 +298,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="söndagPushed2.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/söndagPushed2.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -319,7 +320,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Image Source= "påminnelse3.png"></Image>
+                                <Image Source= "/Resources/Images/påminnelse3.png"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -329,7 +330,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate>
-                                <Image Source="påminnelsePushed3.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/påminnelsePushed3.png" Width="102" Height="72"></Image>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -345,6 +346,7 @@
 
 
     </Window.Resources>
+
 
     <Grid  Background="LightBlue">
 

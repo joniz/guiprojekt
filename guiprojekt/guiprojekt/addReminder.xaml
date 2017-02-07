@@ -9,14 +9,14 @@
     <StackPanel Background="LightBlue">
 
         <Label HorizontalAlignment="Center" Content="Kom ihåg:" FontSize="15" FontFamily="Rockwell Extra Bold"/>
-        <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput"></TextBox>
+        <TextBox Background="#CF000F" Name="titleForReminder"  TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
 
         <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Starttid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="1"/>
 
 
 
         <Grid>
-            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" ></TextBox>
+            <TextBox Background="#DB0A5B" Name="starttid" TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
             <TextBlock FontFamily="Rockwell Extra Bold" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -34,7 +34,7 @@
         <Label Margin="0,10,0,0" HorizontalAlignment="Center" Content="Alarmtid:" FontSize="15" FontFamily="Rockwell Extra Bold" Grid.Row="2"  />
 
         <Grid>
-            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput"></TextBox>
+            <TextBox Background="#913D88" Name="alarmtid" Grid.Row="2" Grid.Column="1" TextChanged="testInput" TextAlignment="Center" Foreground="White"></TextBox>
             <TextBlock FontFamily="Rockwell Extra Bold" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Text="(hh:mm)">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
@@ -133,6 +133,17 @@
             
         </TextBlock>
         <UniformGrid Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
+<<<<<<< HEAD
+            <CheckBox Name="mondaybox" IsChecked="True">monday</CheckBox>
+            <CheckBox Name="tuesdaybox">tuesday</CheckBox>
+            <CheckBox Name ="wednesdaybox">wednesday</CheckBox>
+            <CheckBox Name="thursdaybox" >thursday</CheckBox>
+            <CheckBox Name="fridaybox">friday</CheckBox>
+            <CheckBox Name="saturdaybox">saturday</CheckBox>
+            <CheckBox Name="sundaybox">sunday</CheckBox>
+
+
+=======
             <CheckBox Name="mondaybox" FontFamily="Rockwell Extra Bold">Måndag</CheckBox>
             <CheckBox Name="tuesdaybox" FontFamily="Rockwell Extra Bold">Tisdag</CheckBox>
             <CheckBox Name ="wednesdaybox" FontFamily="Rockwell Extra Bold">Onsdag</CheckBox>
@@ -140,6 +151,7 @@
             <CheckBox Name="fridaybox" FontFamily="Rockwell Extra Bold">Fredag</CheckBox>
             <CheckBox Name="saturdaybox" FontFamily="Rockwell Extra Bold">Lördag</CheckBox>
             <CheckBox Name="sundaybox" FontFamily="Rockwell Extra Bold">Söndag</CheckBox>
+>>>>>>> 8e33e67cb047445202b83530a1fd639d216bd599
         </UniformGrid>
         <Button Name="createReminder" FontFamily="Rockwell Extra Bold" Content="Create reminder" Grid.Row="4" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Click="createReminder_Click" IsEnabled="False"></Button>
 

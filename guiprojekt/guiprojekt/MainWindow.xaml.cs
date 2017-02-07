@@ -17,7 +17,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 
 
-
 namespace guiprojekt
 {
     /// <summary>
@@ -33,12 +32,18 @@ namespace guiprojekt
 
         public List<reminder> _reminderListForThreads = new List<reminder>(); //ska funka som vector, då vector i c# är en matematisk vektor
 
-        int _page = 0;
-        int _idCount = 0;
+        
 
+        
+        
         string[] _allAlarms = new string[20];
         string[] _allStartAlarms = new string[20];
         string[] _allAlarmDays = new string[20];
+
+        int _idCount = 0;
+        int _page = 0;
+
+
 
 
         System.Windows.Media.Brush _brush = new SolidColorBrush(Color.FromRgb(245, 245, 220));
@@ -46,16 +51,19 @@ namespace guiprojekt
         System.Windows.Media.Brush _brush3 = new SolidColorBrush(Color.FromRgb(38, 38, 38));
         System.Windows.Media.Brush _brush4 = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         System.Windows.Thickness _thick = new Thickness(1);
+        Brush[] alarmColors = new Brush[3]
+        {
+            Brushes.Yellow, Brushes.Green, Brushes.Red
+
+        };
 
         public MainWindow()
         {
 
             readFromFile();
-            
 
             string user = Environment.UserName;
             string path = @"C:\Users\" + user + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
-
             string batStart = "cd \"";
             batStart += Directory.GetCurrentDirectory();
             string batContinue = "Start guiprojekt.exe startup";
@@ -64,19 +72,17 @@ namespace guiprojekt
                     sw.WriteLine(batStart);
                     sw.WriteLine(batContinue);
             }
-            
-
-            string[] args = Environment.GetCommandLineArgs();            
+            string[] args = Environment.GetCommandLineArgs();
             InitializeComponent();
 
             MyNotifyIcon = new System.Windows.Forms.NotifyIcon();
-            MyNotifyIcon.Icon = new System.Drawing.Icon(@"ReminderIcon.ico", 16, 16);
+            MyNotifyIcon.Icon = new System.Drawing.Icon(guiprojekt.Properties.Resources.ReminderIcon, 16, 16);
             MyNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(MyNotifyIcon_MouseDoubleClick);
-            MyNotifyIcon.BalloonTipClicked += CheckAlarm;
-            aTimer = new System.Timers.Timer(3000);
+            MyNotifyIcon.BalloonTipClicked += showAlarm;
+            aTimer = new System.Timers.Timer(10000);
             aTimer.Start();
             aTimer.Elapsed += alarm;
-
+         
             if(args.Length > 1)
             {
                  if(args[1] == "startup")
@@ -84,9 +90,9 @@ namespace guiprojekt
                  this.WindowState = System.Windows.WindowState.Minimized;
                  Window_Deactivated();                
                  }
-            }
-        }
 
+            } 
+        }
         void MyNotifyIcon_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
 
@@ -99,13 +105,37 @@ namespace guiprojekt
       
         
 
-        public void CheckAlarm(object sender, EventArgs e)
+        public void showAlarm(object sender, EventArgs e)
         {
-            //för att bocka av alarm typ
+            this.WindowState = WindowState.Normal;
+
+            MyNotifyIcon.Visible = false;
+            this.ShowInTaskbar = true;
+            this.Focus();
+            
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Button checkButton = (Button)sender as Button;
+            int pos = 0;
+            for (int i = 0; i < _listWithAllReminders.Count; i++)
+            {
+                if ("r" + _listWithAllReminders[i]._idNum.ToString() == checkButton.Name)
+                {
+                    pos = i;
+                }
+            }
+            DateTime test = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, _listWithAllReminders[pos]._alarmTime.Hour, _listWithAllReminders[pos]._alarmTime.Minute, 0);
+            _listWithAllReminders[pos]._alarmTime = test;
+            _listWithAllReminders[pos]._alarmStatus = 1;
+            
+            writeToFile(_listWithAllReminders);
+            loadCurrentDay();
+
+
 
         }
 
-        
         private void newReminder_Click(object sender, RoutedEventArgs e)
         {
             CheckWeekday(_page);
@@ -152,64 +182,91 @@ namespace guiprojekt
             }
         }
 
+        
+        
+
         private void alarm(object source, System.Timers.ElapsedEventArgs e)
         {
-            System.Windows.MessageBox.Show(_listWithAllReminders.Count.ToString());
+            
+
             bool ok = false;
+            int value = 0;
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
                 DateTime currentTime = DateTime.Now;
-                string time = currentTime.Hour + ":" + currentTime.Minute;
-                string test = _listWithAllReminders[x]._alarmTime.Hour + ":" + _listWithAllReminders[x]._alarmTime.Minute;
-                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == test)
+                string time = currentTime.ToShortTimeString();
+                string reminderAlarmTime = _listWithAllReminders[x]._alarmTime.ToShortTimeString();
+                
+                if (_listWithAllReminders[x]._startTime.Hour <= DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute <= DateTime.Now.Minute && _listWithAllReminders[x]._startTime.Hour <= _listWithAllReminders[x]._alarmTime.Hour && _listWithAllReminders[x]._startTime.Minute <= _listWithAllReminders[x]._alarmTime.Minute)
                 {
-                    System.Diagnostics.Debug.WriteLine("alarm");
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        loadCurrentDay();
+                    });
+
+                }
+                if(_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && time == reminderAlarmTime && _listWithAllReminders[x]._alarmStatus == 0)
+                {
+                    _listWithAllReminders[x]._alarmStatus = 2;
+                    writeToFile(_listWithAllReminders);
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        loadCurrentDay();
+                    });
+                    
                     ok = true;
+                    value = x;
                 }
             }
             if (ok)
             {
-
-                if (this.WindowState == System.Windows.WindowState.Minimized)
+                this.Dispatcher.Invoke(() =>
                 {
-                    MyNotifyIcon.BalloonTipTitle = "ALARM";
-                    MyNotifyIcon.BalloonTipText = "Du har ett alarm";
-                    MyNotifyIcon.ShowBalloonTip(400);
 
-                }
-                else
+                    if (this.WindowState == System.Windows.WindowState.Minimized)
+                    {
+                        MyNotifyIcon.BalloonTipTitle = "ALARM";
+                        MyNotifyIcon.BalloonTipText = "Du har ett alarm";
+                        MyNotifyIcon.ShowBalloonTip(400);
+                    }
+                    else
+                    {
+                        this.Focus();
+                        System.Windows.Forms.MessageBox.Show("Du har ett alarm");
+
+
+                    }
+
+                });
+            }
+
+           
+        }
+
+        private void loadCurrentDay()
+        {
+            if (_page != 8 && _page != 9)
+            {
+                switch (Convert.ToInt32(DateTime.Now.DayOfWeek))
                 {
-                    System.Windows.Forms.MessageBox.Show("Du har ett alarm");
-
+                    case 0: sunday_Click(); break;
+                    case 1: monday_Click(); break;
+                    case 2: tuesday_Click(); break;
+                    case 3: wednesday_Click(); break;
+                    case 4: thursday_Click(); break;
+                    case 5: friday_Click(); break;
+                    case 6: saturday_Click(); break;
                 }
             }
-       }
-
-        
+                
+        }
 
         private void addLabel(StackPanel panel,String day)
         {
-            //Sätt annars till 285
-                                 
-            //Thickness marginLeft = deleteButton.Margin;
-            //Thickness marginTop = deleteButton.Margin;
-            //Thickness marginRight = deleteButton.Margin;
-            //Thickness marginBottom = deleteButton.Margin;
-
-            //marginLeft.Left = 0;
-            //marginLeft.Top = 0;
-            //marginLeft.Right = 0;
-            //marginLeft.Bottom = 0;
-
-            //deleteButton.Margin = marginLeft;
-
+           
             buttonStyle.Setters.Add(new Setter(BackgroundProperty, null));
             buttonStyle.Setters.Add(new Setter(BorderBrushProperty, null));
-            //deleteButton.Style = this.Resources["tabortStyle"] as Style;
-            //editButton.Style = this.Resources["redigeraStyle"] as Style;
-
-            //panel.Name = "reminderAndButtonStackPanel";
-
+           
             for (int x = 0; x < _listWithAllReminders.Count; x++)
             {
                 string test = _listWithAllReminders[x]._weekDays;
@@ -218,30 +275,46 @@ namespace guiprojekt
                     Label text = new Label();
                     Button deleteButton = new Button();
                     Button editButton = new Button();
-                    //StackPanel stack = new StackPanel();
+                    Button checkButton = new Button();
+                    checkButton.IsEnabled = false;
+                    
                     StackPanel stack = new StackPanel();
-                    deleteButton.Name = "deleteButton";
-                    editButton.Name = "editButton";
+                    
                     stack.Orientation = Orientation.Horizontal;
+                    checkButton.Content = "Checka av";
                     deleteButton.Content = "Ta bort";
                     editButton.Content = "Redigera";
 
                     deleteButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(deleteButton_Click));
                     editButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(editButton_Click));
-
-                    //text.Width = 325;      
-                    text.Background = _brush;
+                    checkButton.AddHandler(Button.ClickEvent, new RoutedEventHandler(CheckBox_Checked));
+                       
+                    text.Background =  alarmColors[_listWithAllReminders[x]._alarmStatus];
+                    System.Diagnostics.Debug.WriteLine(_listWithAllReminders[x]._alarmStatus);
                     text.BorderBrush = _brush2;
                     text.BorderThickness = _thick;
-                    text.Content = "Titel: " + _listWithAllReminders[x]._title + " Starttid: " + _listWithAllReminders[x]._startTime.Hour + ":" + _listWithAllReminders[x]._startTime.Minute + " Alarmtid: " + _listWithAllReminders[x]._alarmTime.Hour + ":" + _listWithAllReminders[x]._alarmTime.Minute;
+                    text.Content = "Titel: " + _listWithAllReminders[x]._title + " |" + " Starttid: " + _listWithAllReminders[x]._startTime.ToShortTimeString() + " |" + " Alarmtid: " + _listWithAllReminders[x]._alarmTime.ToShortTimeString();
                     text.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
+                    checkButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     editButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
                     deleteButton.Name = "r" + _listWithAllReminders[x]._idNum.ToString();
+
+                    if (_listWithAllReminders[x]._startTime.Hour <= DateTime.Now.Hour && _listWithAllReminders[x]._startTime.Minute <= DateTime.Now.Minute && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2 && _listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString())
+                    {
+                        checkButton.IsEnabled = true;
+
+
+                    }
+                    
+
                     stack.Children.Add(text);
+                    
                     stack.Children.Add(editButton);
                     stack.Children.Add(deleteButton);
-                   
+                    stack.Children.Add(checkButton);
+
                     panel.Children.Add(stack);
+                    
                 }
             }
         }
@@ -271,8 +344,8 @@ namespace guiprojekt
                     writeToFile(_listWithAllReminders);
                 }
             }
-            
-        }
+
+          }
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
@@ -292,10 +365,8 @@ namespace guiprojekt
             {
                 if (test.Name == "r" + _listWithAllReminders[i]._idNum)
                 {
-                    _listWithAllReminders[i]._editing = true;
-                    editReminder.titleForReminder.Text = _listWithAllReminders[i]._title;
-                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.Hour.ToString() + ":" + _listWithAllReminders[i]._startTime.Minute.ToString();
-                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.Hour.ToString() + ":" + _listWithAllReminders[i]._alarmTime.Minute.ToString();
+                   
+
                     if (_listWithAllReminders[i]._weekDays == "Monday")
                     {
                         editReminder.mondaybox.IsChecked = true;
@@ -324,6 +395,11 @@ namespace guiprojekt
                     {
                         editReminder.sundaybox.IsChecked = true;
                     }
+                    _listWithAllReminders[i]._editing = true;
+                    editReminder.titleForReminder.Text = _listWithAllReminders[i]._title;
+
+                    editReminder.starttid.Text = _listWithAllReminders[i]._startTime.ToShortTimeString();
+                    editReminder.alarmtid.Text = _listWithAllReminders[i]._alarmTime.ToShortTimeString();
 
 
                 }
@@ -343,12 +419,18 @@ namespace guiprojekt
                     {
                         _listWithAllReminders[x]._idNum = _idCount + 1;
                         _idCount++;
+                        if (_listWithAllReminders[x]._alarmTime.Date != DateTime.Now.Date)
+                        {
+                            _listWithAllReminders[x]._alarmStatus = 0;
+                        }
                     }
                  }
             }
         }
 
-        private void monday_Click(object sender, RoutedEventArgs e)
+
+        private void monday_Click(object sender = null, RoutedEventArgs e = null)
+
         {
             CheckWeekday(_page);
             if (infoMonday.Visibility == System.Windows.Visibility.Hidden)
@@ -365,7 +447,7 @@ namespace guiprojekt
             addLabel(infoMonday,"Monday");
         }
 
-        private void tuesday_Click(object sender, RoutedEventArgs e)
+        private void tuesday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoTuesday.Visibility == System.Windows.Visibility.Hidden)
@@ -382,7 +464,7 @@ namespace guiprojekt
             addLabel(infoTuesday,"Tuesday");
         }
 
-        private void wednesday_Click(object sender, RoutedEventArgs e)
+        private void wednesday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoWednesday.Visibility == System.Windows.Visibility.Hidden)
@@ -399,7 +481,7 @@ namespace guiprojekt
             addLabel(infoWednesday,"Wednesday");
         }
 
-        private void thursday_Click(object sender, RoutedEventArgs e)
+        private void thursday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoThursday.Visibility == System.Windows.Visibility.Hidden)
@@ -416,7 +498,7 @@ namespace guiprojekt
             addLabel(infoThursday,"Thursday");
         }
 
-        private void friday_Click(object sender, RoutedEventArgs e)
+        private void friday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoFriday.Visibility == System.Windows.Visibility.Hidden)
@@ -433,7 +515,7 @@ namespace guiprojekt
             addLabel(infoFriday,"Friday");
         }
 
-        private void saturday_Click(object sender, RoutedEventArgs e)
+        private void saturday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoSaturday.Visibility == System.Windows.Visibility.Hidden)
@@ -450,7 +532,7 @@ namespace guiprojekt
             addLabel(infoSaturday,"Saturday");
         }
 
-        private void sunday_Click(object sender, RoutedEventArgs e)
+        private void sunday_Click(object sender = null, RoutedEventArgs e = null)
         {
             CheckWeekday(_page);
             if (infoSunday.Visibility == System.Windows.Visibility.Hidden)
@@ -493,6 +575,7 @@ namespace guiprojekt
                 MyNotifyIcon.BalloonTipTitle = "Minimize Sucessful";
                 MyNotifyIcon.BalloonTipText = "Minimized the app ";
                 MyNotifyIcon.ShowBalloonTip(400);
+
             }
         }
     }
