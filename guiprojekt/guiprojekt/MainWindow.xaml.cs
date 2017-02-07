@@ -63,15 +63,19 @@ namespace guiprojekt
             readFromFile();
 
             string user = Environment.UserName;
-            string path = @"C:\Users\" + user + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\startupreminder.bat";
-            string batStart = "cd \"";
-            batStart += Directory.GetCurrentDirectory();
+            string path = @"C:\Users\" + user + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup";
+            string batStart = "cd \"" + Directory.GetCurrentDirectory() +"\"";
             string batContinue = "Start guiprojekt.exe startup";
-            using (StreamWriter sw = File.CreateText(path)) 
+            if(Directory.Exists(path))
             {
+                path += "\\startupreminder.bat";
+                using (StreamWriter sw = File.CreateText(path))
+                {
                     sw.WriteLine(batStart);
                     sw.WriteLine(batContinue);
+                }
             }
+            
             string[] args = Environment.GetCommandLineArgs();
             InitializeComponent();
 
@@ -369,7 +373,16 @@ namespace guiprojekt
         }
         public void writeToFile(List<reminder> reminderList)
         {
-            using (Stream stream = File.Open("remindersBin.bin", FileMode.Create))
+            string path = "";
+            if(Directory.Exists(@"C:\Users\" + Environment.UserName ))
+            {
+                path += @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
+            }
+            else
+            {
+                path += Directory.GetCurrentDirectory() + "\\remindersBin.bin";
+            }
+            using (Stream stream = File.Open(path, FileMode.Create))
             {
                 BinaryFormatter bin = new BinaryFormatter();
                 bin.Serialize(stream, reminderList);
@@ -457,12 +470,23 @@ namespace guiprojekt
                 }
               }
            }
-            public void readFromFile()
+        
+        public void readFromFile()
             {
             _idCount = 0;
-            if (File.Exists(@"remindersBin.bin"))
+            string path = "";
+            if (Directory.Exists(@"C:\Users\" + Environment.UserName))
             {
-                using (Stream stream = File.Open(@"remindersBin.bin", FileMode.Open))
+                path += @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
+            }
+            else
+            {
+                path += Directory.GetCurrentDirectory() + "\\remindersBin.bin";
+            }
+            
+            if (File.Exists(path))
+            {
+                using (Stream stream = File.Open(path, FileMode.Open))
                 {
                     BinaryFormatter bin = new BinaryFormatter();
                     

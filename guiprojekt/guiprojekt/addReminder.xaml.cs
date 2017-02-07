@@ -103,8 +103,17 @@ namespace guiprojekt
 
       private void checkTextFile()
         {
-           
-            string path = @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
+
+            string path = "";
+            if (Directory.Exists(@"C:\Users\" + Environment.UserName + "\\remindersBin.bin"))
+            {
+                path += Directory.Exists(@"C:\Users\" + Environment.UserName + "\\remindersBin.bin");
+            }
+            else
+            {
+                path += Directory.GetCurrentDirectory() + "\\remindersBin.bin";
+            }
+            
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path)) { }
