@@ -88,7 +88,7 @@ namespace guiprojekt
             aTimer.Start();
             aTimer.Elapsed += alarm;
             loadCurrentDay();
-         
+            alarm();
             if(args.Length > 1)
             {
                  if(args[1] == "startup")
@@ -204,7 +204,7 @@ namespace guiprojekt
         
         
 
-        private void alarm(object source, System.Timers.ElapsedEventArgs e)
+        private void alarm(object source = null, System.Timers.ElapsedEventArgs e = null)
         {
 
            
@@ -214,10 +214,11 @@ namespace guiprojekt
             {
                 DateTime currentTime = DateTime.Now;
                 
+                bool time = (_listWithAllReminders[x]._startTime.Hour < currentTime.Hour) || ( _listWithAllReminders[x]._startTime.Minute <= currentTime.Minute && _listWithAllReminders[x]._startTime.Hour == currentTime.Hour);
+                bool day = (_listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString());
+                bool status = ( _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2);
 
-
-
-                if (_listWithAllReminders[x]._startTime.Hour <= currentTime.Hour && _listWithAllReminders[x]._startTime.Minute <= currentTime.Minute && _listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString()  && _listWithAllReminders[x]._alarmStatus == 0 || _listWithAllReminders[x]._alarmStatus == 2)
+                if (time && day && status)
                 {
                     this.Dispatcher.Invoke(() =>
                     {
@@ -227,8 +228,11 @@ namespace guiprojekt
                     });
                 }
 
+                 time = (_listWithAllReminders[x]._alarmTime.Hour < currentTime.Hour) || (_listWithAllReminders[x]._alarmTime.Minute <= currentTime.Minute && _listWithAllReminders[x]._alarmTime.Hour == currentTime.Hour);
+                 day = (_listWithAllReminders[x]._weekDays == DateTime.Now.DayOfWeek.ToString());
+                 status = (_listWithAllReminders[x]._alarmStatus == 0);
 
-                if (_listWithAllReminders[x]._weekDays == currentTime.DayOfWeek.ToString() && currentTime.Hour >= _listWithAllReminders[x]._alarmTime.Hour && currentTime.Minute >= _listWithAllReminders[x]._alarmTime.Minute && _listWithAllReminders[x]._alarmStatus == 0)
+                if (time && day && status)
 
                 {
                     
@@ -442,6 +446,7 @@ namespace guiprojekt
                     Model.writeToFile(_listWithAllReminders);
                 }
             }
+            refreshCurrentPage();
 
           }
 
