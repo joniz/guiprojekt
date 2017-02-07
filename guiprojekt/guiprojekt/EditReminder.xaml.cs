@@ -33,13 +33,7 @@ namespace guiprojekt
             titleForReminder.IsEnabled = true;
         }
 
-        /* public List<reminder> getReminderList
-         {
-            get { return _reminderList;}
-
-
-         }*/
-
+      
         private void editReminder_Click(object sender, RoutedEventArgs e)
         {
             _parentWindow = Application.Current.MainWindow as MainWindow;
@@ -80,7 +74,7 @@ namespace guiprojekt
                 {
                     weekDays.Add(DayOfWeek.Sunday);
                 }
-                checkTextFile();
+                
 
                 for (int x = 0; x < _parentWindow._listWithAllReminders.Count; x++ )
                 {
@@ -96,7 +90,7 @@ namespace guiprojekt
                     _parentWindow._listWithAllReminders.Add(reminderObj);
                 }
                 
-                _parentWindow.writeToFile(_parentWindow._listWithAllReminders);
+                Model.writeToFile(_parentWindow._listWithAllReminders);
                 _parentWindow.readFromFile();
                 titleForReminder.Text = "";
                 alarmtid.Text = "";
@@ -124,19 +118,8 @@ namespace guiprojekt
             else return false;
         }
 
-        private void checkTextFile()
-        {
-            string path = @"reminders.txt";
-            string path2 = @"C:\Users\" + Environment.UserName + "\\remindersBin.bin";
-            if (!File.Exists(path))
-            {
-                using (StreamWriter sw = File.CreateText(path)) { }
-            }
-            else if (!File.Exists(path2))
-            {
-                using (StreamWriter sw = File.CreateText(path2)) { }
-            }
-        }
+     
+    
 
         private bool isValidTime(string time)
         {
@@ -152,7 +135,7 @@ namespace guiprojekt
         {
             string titel = titleForReminder.Text;
             if (isValidTime(starttid.Text) && isValidTime(alarmtid.Text) && !(titel.Length > 20) && !(string.IsNullOrWhiteSpace(titel)) && !(titel.Length < 3) && (
-                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked))
+                (bool)mondaybox.IsChecked || (bool)tuesdaybox.IsChecked || (bool)wednesdaybox.IsChecked || (bool)thursdaybox.IsChecked || (bool)fridaybox.IsChecked || (bool)saturdaybox.IsChecked || (bool)sundaybox.IsChecked) && Model.timeTest(Convert.ToDateTime(starttid.Text), Convert.ToDateTime(alarmtid.Text)))
             {
                 editReminder.IsEnabled = true;
 

@@ -364,7 +364,7 @@
                         <Setter.Value>
                             <ControlTemplate>
 
-                                <Image Source="/Resources/Images/plus.png" Width="102" Height="72"></Image>
+                                <Image Source="/Resources/Images/plus.png" Opacity="0.7"></Image>
 
                             </ControlTemplate>
                         </Setter.Value>
@@ -422,37 +422,63 @@
         </StackPanel>
 
 
-        <ScrollViewer Name="scrollBar" Visibility="Visible" Grid.Column="1" Grid.Row="1">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Name="scrollBar1" Grid.Column="1" Grid.Row="1">
             <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoMonday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
                 </StackPanel>
+            </Grid>
+        </ScrollViewer>
 
+        <ScrollViewer Name="scrollBar2" VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoTuesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
                 </StackPanel>
+            </Grid>
+        </ScrollViewer>
 
+        <ScrollViewer Name="scrollBar3" VerticalScrollBarVisibility="Auto"  Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoWednesday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden" >
 
                 </StackPanel>
+            </Grid>
+        </ScrollViewer>
 
+        <ScrollViewer Name="scrollBar4" VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoThursday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
                 </StackPanel>
+            </Grid>
+        </ScrollViewer>
 
+        <ScrollViewer Name="scrollBar5" VerticalScrollBarVisibility="Auto" Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoFriday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
                 </StackPanel>
+            </Grid>
+        </ScrollViewer>
 
+        <ScrollViewer Name="scrollBar6" VerticalScrollBarVisibility="Auto"  Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoSaturday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
                 </StackPanel>
+            </Grid>
+        </ScrollViewer>
 
+        <ScrollViewer Name="scrollBar7" VerticalScrollBarVisibility="Auto"  Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <StackPanel Name="infoSunday" Orientation="Vertical" Grid.Column="1" Grid.Row="1" Visibility="Hidden">
 
                 </StackPanel>
-
             </Grid>
         </ScrollViewer>
+
+
     </Grid>
 </Window>
